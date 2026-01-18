@@ -1,0 +1,419 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as **Strong Match**.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    \"No strong matches were found for this query.\"\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank 1: [Discussion](<url>)\n        - Rank 2: [Discussion](<url>)\n        - Rank 3: [Discussion](<url>)\n        - ...\n        - List ALL available solution writeups.\n        - If the total number is uncertain, explicitly state the uncertainty.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion in the final output.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output ONLY:\n    \"No strong matches were found for this query.\"",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Project about Sport domain have number of solutions more than 5",
+          "timestamp": "2026-01-18T17:30:58.421708+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as **Strong Match**.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    \"No strong matches were found for this query.\"\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank 1: [Discussion](<url>)\n        - Rank 2: [Discussion](<url>)\n        - Rank 3: [Discussion](<url>)\n        - ...\n        - List ALL available solution writeups.\n        - If the total number is uncertain, explicitly state the uncertainty.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion in the final output.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output ONLY:\n    \"No strong matches were found for this query.\"",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"Sport\",\"k\":10}",
+          "tool_call_id": "call_MATDw9xCMBAiggxwhyABD3hi",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 593,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 18,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-18T17:30:58+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzQu2UdNVmT1wdX2dzMwir86nugkb",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "National Data Science Bowl",
+              "metric": "Multiclass Loss (Deprecated)",
+              "link": "https://www.kaggle.com/c/datasciencebowl",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/datasciencebowl/discussion/12844",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "NFL Big Data Bowl",
+              "metric": "Continuous Rank Probability Score",
+              "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119400",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119314",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119357",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/121397",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119885",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119383",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119433",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/124999",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119318",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119395",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119330",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/124851",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119438",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119552",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119381",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119461",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119382",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119301",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119475",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/125162",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119443",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 21
+            },
+            {
+              "title": "Tabular Playground Series - Jun 2021",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-jun-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-jun-2021/discussion/250046",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-jun-2021/discussion/250060",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Tabular Playground Series - May 2021",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021/discussion/243054",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021/discussion/243093",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021/discussion/243028",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Data Science Bowl 2017",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/data-science-bowl-2017",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/lfz/DSB2017",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/dhammack/DSB2017",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/juliandewit/kaggle_ndsb2017",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://juliandewit.github.io/kaggle-ndsb2017/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://github.com/mdai/kaggle-lung-cancer",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/data-science-bowl-2017/discussion/31576",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://github.com/EliasVansteenkiste/dsb3",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/owkin/DSB2017",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 8
+            },
+            {
+              "title": "Second Annual Data Science Bowl",
+              "metric": "Continuous Rank Probability Score",
+              "link": "https://www.kaggle.com/c/second-annual-data-science-bowl",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/woshialex/diagnose-heart",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/second-annual-data-science-bowl/discussion/19519",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2016/04/13/diagnosing-heart-diseases-with-deep-neural-networks-2nd-place-ira-korshunova/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/juliandewit/kaggle_ndsb2",
+                  "kind": "code"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://github.com/nagadomi/kaggle-ndsb2",
+                  "kind": "code"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://github.com/udibr/DSB2",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "Google Cloud & NCAA\u00ae ML Competition 2018-Womens",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/womens-machine-learning-competition-2018",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/womens-machine-learning-competition-2018/discussion/53597",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Google Cloud & NCAA\u00ae ML Competition 2018-Mens",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/mens-machine-learning-competition-2018",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/womens-machine-learning-competition-2019/discussion/80689#latest-509892",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Kobe Bryant Shot Selection",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/kobe-bryant-shot-selection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "15",
+                  "link": "https://github.com/shiba24/kaggle-Kobe-Bryant-Shot-Selection",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "NFL 1st and Future - Analytics",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/nfl-playing-surface-analytics",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/nfl-playing-surface-analytics/discussion/125977",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_MATDw9xCMBAiggxwhyABD3hi",
+          "metadata": null,
+          "timestamp": "2026-01-18T17:30:59.615280+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as **Strong Match**.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    \"No strong matches were found for this query.\"\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank 1: [Discussion](<url>)\n        - Rank 2: [Discussion](<url>)\n        - Rank 3: [Discussion](<url>)\n        - ...\n        - List ALL available solution writeups.\n        - If the total number is uncertain, explicitly state the uncertainty.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion in the final output.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output ONLY:\n    \"No strong matches were found for this query.\"",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** NFL Big Data Bowl\n   - **Competition URL:** [NFL Big Data Bowl](https://www.kaggle.com/c/nfl-big-data-bowl-2020)\n   - **Evaluation Metric:** Continuous Rank Probability Score\n   - **Total Number of Solution Writeups:** 21\n   - **List of Available Solution Writeups:**\n       - Rank 1: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119400)\n       - Rank 2: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119314)\n       - Rank 3: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119357)\n       - Rank 4: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/121397)\n       - Rank 4: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119885)\n       - Rank 5: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119383)\n       - Rank 6: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119433)\n       - Rank 7: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/124999)\n       - Rank 8: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119318)\n       - Rank 10: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119395)\n       - Rank 11: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119330)\n       - Rank 13: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/124851)\n       - Rank 16: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119438)\n       - Rank 21: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119552)\n       - Rank 22: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119381)\n       - Rank 23: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119461)\n       - Rank 26: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119382)\n       - Rank 30: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119301)\n       - Rank 34: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119475)\n       - Rank 37: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/125162)\n       - Rank 42: [Discussion](https://www.kaggle.com/c/nfl-big-data-bowl-2020/discussion/119443)\n\n2. **Competition Name:** Second Annual Data Science Bowl\n   - **Competition URL:** [Second Annual Data Science Bowl](https://www.kaggle.com/c/second-annual-data-science-bowl)\n   - **Evaluation Metric:** Continuous Rank Probability Score\n   - **Total Number of Solution Writeups:** 6\n   - **List of Available Solution Writeups:**\n       - Rank 1: [Discussion](https://github.com/woshialex/diagnose-heart)\n       - Rank 2: [Discussion](https://www.kaggle.com/c/second-annual-data-science-bowl/discussion/19519)\n       - Rank 2: [Discussion](http://blog.kaggle.com/2016/04/13/diagnosing-heart-diseases-with-deep-neural-networks-2nd-place-ira-korshunova/)\n       - Rank 3: [Discussion](https://github.com/juliandewit/kaggle_ndsb2)\n       - Rank 16: [Discussion](https://github.com/nagadomi/kaggle-ndsb2)\n       - Rank 19: [Discussion](https://github.com/udibr/DSB2)\n\n3. **Competition Name:** Data Science Bowl 2017\n   - **Competition URL:** [Data Science Bowl 2017](https://www.kaggle.com/c/data-science-bowl-2017)\n   - **Evaluation Metric:** Log Loss\n   - **Total Number of Solution Writeups:** 8\n   - **List of Available Solution Writeups:**\n       - Rank 1: [Discussion](https://github.com/lfz/DSB2017)\n       - Rank 2: [Discussion](https://github.com/dhammack/DSB2017)\n       - Rank 2: [Discussion](https://github.com/juliandewit/kaggle_ndsb2017)\n       - Rank 2: [Discussion](http://juliandewit.github.io/kaggle-ndsb2017/)\n       - Rank 6: [Discussion](https://github.com/mdai/kaggle-lung-cancer)\n       - Rank 7: [Discussion](https://www.kaggle.com/c/data-science-bowl-2017/discussion/31576)\n       - Rank 9: [Discussion](https://github.com/EliasVansteenkiste/dsb3)\n       - Rank 10: [Discussion](https://github.com/owkin/DSB2017)",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2520,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 1277,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-18T17:30:59+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-CzQu3OE4MGC4wXBXXyZHBXBN2D4FE",
+      "finish_reason": "stop"
+    }
+  ]
+}

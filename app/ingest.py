@@ -2,95 +2,82 @@ import io
 import zipfile
 import requests
 import yaml
-from minsearch import Index, VectorSearch
-from pydantic_ai import Agent
-from pydantic import BaseModel
-from pydantic_ai.messages import ModelMessagesTypeAdapter
 
-import json
-from tqdm.auto import tqdm
-import random
-import secrets
-from pathlib import Path
-from datetime import datetime
+from minsearch import VectorSearch
+from sentence_transformers import SentenceTransformer
 
-LOG_DIR = Path('logs')
-LOG_DIR.mkdir(exist_ok=True)
-
-########################################
-# PHASE 1 — Data Loading
-########################################
-
-def read_repo_data(repo_owner, repo_name, branch='main'):
-    """
-    Download and parse _data/competitions.yml from a GitHub repo.
-    Returns parsed YAML as Python objects.
-    """
-
-    prefix = 'https://codeload.github.com'
-    url = f'{prefix}/{repo_owner}/{repo_name}/zip/refs/heads/{branch}'
+def read_repo_data(repo_owner, repo_name, branch="main"):
+    url = f"https://codeload.github.com/{repo_owner}/{repo_name}/zip/refs/heads/{branch}"
     resp = requests.get(url)
+    resp.raise_for_status()
 
-    if resp.status_code != 200:
-        raise Exception(f"Failed to download repository: {resp.status_code}")
-
-    repository_data = []
     zf = zipfile.ZipFile(io.BytesIO(resp.content))
+    repository_data = []
 
     for file_info in zf.infolist():
-        filename = file_info.filename
+        if file_info.filename.endswith("_data/competitions.yml"):
+            with zf.open(file_info) as f:
+                competitions = yaml.safe_load(
+                    f.read().decode("utf-8", errors="ignore")
+                )
+                repository_data.append({
+                    "filename": file_info.filename,
+                    "content": competitions
+                })
 
-        if not filename.endswith('_data/competitions.yml'):
-            continue
-
-        with zf.open(file_info) as f:
-            raw = f.read().decode('utf-8', errors='ignore')
-            competitions = yaml.safe_load(raw)
-
-            repository_data.append({
-                'filename': filename,
-                'content': competitions  # ✅ parsed YAML list
-            })
-
-    zf.close()
     return repository_data
 
 def extract_completed_competitions(project_docs):
     results = []
 
     for doc in project_docs:
-        content = doc.get('content')
+        content = doc.get("content")
 
-        # Case 1: top-level dict with 'competitions'
         if isinstance(content, dict):
-            competitions = content.get('competitions', [])
-
-        # Case 2: top-level list
+            competitions = content.get("competitions", [])
         elif isinstance(content, list):
             competitions = content
-
         else:
             continue
 
-        if not isinstance(competitions, list):
-            continue
-
         for comp in competitions:
-            if str(comp.get('done', '')).lower() == 'true':
+            if str(comp.get("done", "")).lower() == "true":
                 results.append({
-                    'title': comp.get('title'),
-                    'metric': comp.get('metric'),
-                    'link': comp.get('link'),
-                    'done': True,
-                    'solutions': comp.get('solutions', [])  # ✅ keep all solutions
+                    "title": comp.get("title"),
+                    "metric": comp.get("metric"),
+                    "link": comp.get("link"),
+                    "done": True,
+                    "solutions": comp.get("solutions", [])
                 })
 
     return results
 
-if __name__ == "__main__":
-    ### read repo
-    project_docs = read_repo_data('Khangtran94','kaggle-solutions','gh-pages')
+def build_vector_index(completed_competitions):
+    model = SentenceTransformer("multi-qa-distilbert-cos-v1")
 
-    ### extract complete competitions
-    completed_competitions = extract_completed_competitions(project_docs)
-    print('Number of Kaggle competitions have the solutions:', len(completed_competitions))
+    texts, docs = [], []
+
+    for comp in completed_competitions:
+        solutions = comp["solutions"]
+
+        text = (
+            f"Competition title: {comp['title']}. "
+            f"Evaluation metric: {comp['metric']}. "
+            f"This competition has {len(solutions)} solutions. "
+            f"Solution ranks include {', '.join(s.get('rank','') for s in solutions)}. "
+            f"Solution types include {', '.join(s.get('kind','') for s in solutions)}."
+        )
+
+        texts.append(text)
+        docs.append({**comp, "solution_count": len(solutions)})
+
+    embeddings = model.encode(
+        texts, batch_size = 32,
+        normalize_embeddings=True,
+        show_progress_bar=True
+    )
+
+    vindex = VectorSearch()
+    vindex.fit(embeddings, docs)
+
+    return model, vindex
