@@ -1,0 +1,1343 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Considering there are 10 solutions submitted for the competition, how might the diversity in these solutions impact the learning outcomes and potential approaches for future participants?",
+          "timestamp": "2026-01-19T18:47:03.359479+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"competition solutions diversity impact learning outcomes\"}",
+          "tool_call_id": "call_azcQFZNSW1LWQTWf8Gl0ANkc",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 669,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 19,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-19T18:47:03+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzoZDHGuAlRrZzSKZqghx521eJJbL",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Feedback Prize - Predicting Effective Arguments",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/feedback-prize-effectiveness",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347536",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347537",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347359",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347433",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347433",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347371",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347692",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347379",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347369",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/352458",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347488",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347891",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347386",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347490",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347713",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347356",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347418",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347450",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 19
+            },
+            {
+              "title": "Challenges in Representation Learning; Multi-modal Learning",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/challenges-in-representation-learning-multi-modal-learning",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-multi-modal-learning/discussion/4727",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Jun 2021",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-jun-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-jun-2021/discussion/250046",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-jun-2021/discussion/250060",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Learning Equality - Curriculum Recommendations",
+              "metric": "F-Score Beta (Micro)",
+              "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394812",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/395110",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394838",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394984",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394827",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394813",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/395190",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394886",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394910",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394955",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394807",
+                  "kind": "description"
+                },
+                {
+                  "rank": "32",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/395018",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394896",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 13
+            },
+            {
+              "title": "Playground Series - Season 3, Episode 26",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/playground-series-s3e26",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e26/discussion/464887",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e26/discussion/464863",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e26/discussion/464876",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_azcQFZNSW1LWQTWf8Gl0ANkc",
+          "metadata": null,
+          "timestamp": "2026-01-19T18:47:04.258462+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Feedback Prize - Predicting Effective Arguments\"}",
+          "tool_call_id": "call_njcP5uTNhmQwZUzaFinc9Y0T",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Challenges in Representation Learning; Multi-modal Learning\"}",
+          "tool_call_id": "call_PFdNuztPLXQTrEhToYAf1xpY",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Tabular Playground Series - Jun 2021\"}",
+          "tool_call_id": "call_EwmkCoBdnvQA23KZczVGJLb4",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Learning Equality - Curriculum Recommendations\"}",
+          "tool_call_id": "call_x6d7pN8xB1d2DNBLhuxC0o1x",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Playground Series - Season 3, Episode 26\"}",
+          "tool_call_id": "call_LH4XgbLOur8zusi8GEllXy6D",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2165,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 121,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-19T18:47:04+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzoZEcgCW20uLC79GX3IceOXIOZ1m",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Feedback Prize - Predicting Effective Arguments",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/feedback-prize-effectiveness",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347536",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347537",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347359",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347433",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347433",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347371",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347692",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347379",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347369",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/352458",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347488",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347891",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347386",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347490",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347713",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347356",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347418",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347450",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 19
+            },
+            {
+              "title": "Feedback Prize - English Language Learning",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369457",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369369",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369609",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369621",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369578",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369567",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369736",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369524",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369956",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369373",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369409",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369565",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369440",
+                  "kind": "code"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369564",
+                  "kind": "code"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369626",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369626",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/370974",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369533",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369538",
+                  "kind": "code"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369822",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369584",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369691",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369559",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/371602",
+                  "kind": "description"
+                },
+                {
+                  "rank": "38",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/370459",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/371203",
+                  "kind": "description"
+                },
+                {
+                  "rank": "44",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/371467",
+                  "kind": "description"
+                },
+                {
+                  "rank": "46",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369664",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369770",
+                  "kind": "description"
+                },
+                {
+                  "rank": "49",
+                  "link": "https://www.kaggle.com/c/feedback-prize-english-language-learning/discussion/369793",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 31
+            },
+            {
+              "title": "Enefit - Predict Energy Behavior of Prosumers",
+              "metric": "Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472793",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499938",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499397",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499649",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472537",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499364",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499475",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499358",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472598",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 9
+            },
+            {
+              "title": "Facebook V; Predicting Check Ins",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/ttvand/Facebook-V",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/mkliegl/kaggle-Facebook-V",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/aikinogard/5th_place_solution_facebook_check_ins",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22123",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22078#126195",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/pershinmr/kaggle_facebook_v",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22078#126222",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://github.com/tonyzhangrt/facebook-checkin",
+                  "kind": "code"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22189",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 9
+            },
+            {
+              "title": "Predict Closed Questions on Stack Overflow",
+              "metric": "Multiclass Loss (Deprecated)",
+              "link": "https://www.kaggle.com/c/predict-closed-questions-on-stack-overflow",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "10",
+                  "link": "https://github.com/saffsd/kaggle-stackoverflow2012",
+                  "kind": "code"
+                },
+                {
+                  "rank": "33",
+                  "link": "http://fastml.com/predicting-closed-questions-on-stack-overflow/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_njcP5uTNhmQwZUzaFinc9Y0T",
+          "metadata": null,
+          "timestamp": "2026-01-19T18:47:07.209950+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Challenges in Representation Learning; Multi-modal Learning",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/challenges-in-representation-learning-multi-modal-learning",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-multi-modal-learning/discussion/4727",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Challenges in Representation Learning; The Black Box Learning Challenge",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/challenges-in-representation-learning-the-black-box-learning-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-the-black-box-learning-challenge/discussion/4717",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-the-black-box-learning-challenge/discussion/4726",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Challenges in Representation Learning; Facial Expression Recognition Challenge",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/discussion/4676#25019",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/discussion/4676#25022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Open Problems - Multimodal Single-Cell Integration",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/open-problems-multimodal",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366961",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366453",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366428",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366460",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366409",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366417",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366471",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366667",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366455",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366504",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366392",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/368052",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366578",
+                  "kind": "code"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/367195",
+                  "kind": "code"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/366372",
+                  "kind": "code"
+                },
+                {
+                  "rank": "43",
+                  "link": "https://www.kaggle.com/c/open-problems-multimodal/discussion/368421",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 16
+            },
+            {
+              "title": "Tabular Playground Series - Jun 2021",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-jun-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-jun-2021/discussion/250046",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-jun-2021/discussion/250060",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_PFdNuztPLXQTrEhToYAf1xpY",
+          "metadata": null,
+          "timestamp": "2026-01-19T18:47:07.209298+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Tabular Playground Series - Apr 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021/discussion/235739",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Dec 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021/discussion/298304",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Nov 2022",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/369674",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/370126",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/369731",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Tabular Playground Series - May 2021",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021/discussion/243054",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021/discussion/243093",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021/discussion/243028",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Tabular Playground Series - Jul 2022",
+              "metric": "Adjusted Rand Index",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-jul-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-jul-2022/discussion/341023",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_EwmkCoBdnvQA23KZczVGJLb4",
+          "metadata": null,
+          "timestamp": "2026-01-19T18:47:07.187996+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Learning Equality - Curriculum Recommendations",
+              "metric": "F-Score Beta (Micro)",
+              "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394812",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/395110",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394838",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394984",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394827",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394813",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/395190",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394886",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394910",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394955",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394807",
+                  "kind": "description"
+                },
+                {
+                  "rank": "32",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/395018",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394896",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 13
+            },
+            {
+              "title": "Challenges in Representation Learning; The Black Box Learning Challenge",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/challenges-in-representation-learning-the-black-box-learning-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-the-black-box-learning-challenge/discussion/4717",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-the-black-box-learning-challenge/discussion/4726",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Integer Sequence Learning",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/integer-sequence-learning",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/integer-sequence-learning/discussion/24971",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/Kyubyong/integer_sequence_learning",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Text Normalization Challenge - English Language",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/text-normalization-challenge-english-language",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/text-normalization-challenge-english-language/discussion/43963",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/text-normalization-challenge-english-language/discussion/43901",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Tabular Playground Series - Feb 2022",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-feb-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-feb-2022/discussion/310359",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-feb-2022/discussion/310367",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_x6d7pN8xB1d2DNBLhuxC0o1x",
+          "metadata": null,
+          "timestamp": "2026-01-19T18:47:07.205434+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Playground Series - Season 3, Episode 26",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/playground-series-s3e26",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e26/discussion/464887",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e26/discussion/464863",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e26/discussion/464876",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Playground Series Season 3, Episode 1",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/playground-series-s3e1",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e1/discussion/377137",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e1/discussion/377179",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e1/discussion/377993",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Playground Series - Season 3, Episode 23",
+              "metric": "Roc Auc Score",
+              "link": "https://www.kaggle.com/c/playground-series-s3e23",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e23/discussion/450315",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Playground Series - Season 5, Episode 7",
+              "metric": "Accuracy Score",
+              "link": "https://www.kaggle.com/c/playground-series-s5e7",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e7/writeups/3rd-place-solution-predict-the-introverts-from-the",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Playground Series Season 3, Episode 2",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/playground-series-s3e2",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e2/discussion/378780",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e2/discussion/378866",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e2/discussion/381377",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_LH4XgbLOur8zusi8GEllXy6D",
+          "metadata": null,
+          "timestamp": "2026-01-19T18:47:07.197864+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** Feedback Prize - Predicting Effective Arguments\n   - **Competition URL:** [Feedback Prize - Predicting Effective Arguments](https://www.kaggle.com/c/feedback-prize-effectiveness)\n   - **Evaluation Metric:** Multiclass Loss\n   - **Total Number of Solution Writeups:** 19\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347536\n     - Rank 1: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347537\n     - Rank 2: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347359\n     - Rank 3: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347433\n     - Rank 3: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347433\n     - Rank 3: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347371\n     - Rank 4: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347692\n     - Rank 5: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347379\n     - Rank 5: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347369\n     - Rank 5: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347387\n     - Rank 6: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/352458\n     - Rank 7: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347488\n     - Rank 7: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347891\n     - Rank 11: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347386\n     - Rank 12: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347490\n     - Rank 14: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347713\n     - Rank 23: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347356\n     - Rank 24: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347418\n     - Rank all solutions: https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347450\n\n2. **Competition Name:** Learning Equality - Curriculum Recommendations\n   - **Competition URL:** [Learning Equality - Curriculum Recommendations](https://www.kaggle.com/c/learning-equality-curriculum-recommendations)\n   - **Evaluation Metric:** F-Score Beta (Micro)\n   - **Total Number of Solution Writeups:** 13\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394812\n     - Rank 2: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/395110\n     - Rank 3: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394838\n     - Rank 4: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394984\n     - Rank 5: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394827\n     - Rank 6: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394813\n     - Rank 10: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/395190\n     - Rank 12: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394886\n     - Rank 17: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394910\n     - Rank 28: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394955\n     - Rank 31: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394807\n     - Rank 32: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/395018\n     - Rank 39: https://www.kaggle.com/c/learning-equality-curriculum-recommendations/discussion/394896\n\n3. **Competition Name:** Playground Series - Season 3, Episode 26\n   - **Competition URL:** [Playground Series - Season 3, Episode 26](https://www.kaggle.com/c/playground-series-s3e26)\n   - **Evaluation Metric:** Multiclass Loss\n   - **Total Number of Solution Writeups:** 3\n   - **List of Available Solution Writeups:**\n     - Rank 2: https://www.kaggle.com/c/playground-series-s3e26/discussion/464887\n     - Rank 4: https://www.kaggle.com/c/playground-series-s3e26/discussion/464863\n     - Rank 39: https://www.kaggle.com/c/playground-series-s3e26/discussion/464876\n\nNo strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 8858,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2176,
+        "output_tokens": 1226,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-19T18:47:07+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-CzoZHJ3xp4hgwtYnZgJEACa0EAduw",
+      "finish_reason": "stop"
+    }
+  ]
+}

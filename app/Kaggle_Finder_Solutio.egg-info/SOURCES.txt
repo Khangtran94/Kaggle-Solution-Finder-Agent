@@ -1,0 +1,6 @@
+pyproject.toml
+Kaggle_Finder_Solutio.egg-info/PKG-INFO
+Kaggle_Finder_Solutio.egg-info/SOURCES.txt
+Kaggle_Finder_Solutio.egg-info/dependency_links.txt
+Kaggle_Finder_Solutio.egg-info/requires.txt
+Kaggle_Finder_Solutio.egg-info/top_level.txt

@@ -1,0 +1,1378 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "What does the Bidirectional AUC metric specifically measure in the context of determining cause-effect pairs, and how can participants optimize their models to improve this score?",
+          "timestamp": "2026-01-19T18:49:46.262694+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"Bidirectional AUC cause-effect pairs\"}",
+          "tool_call_id": "call_pMmyYMnWWLBjz8oFlNJwbf8A",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 671,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 20,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-19T18:49:46+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzobqkzEdlV5pkZMlIddPCNhZFKVi",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Cause-effect pairs",
+              "metric": "Bidirectional AUC for Cause Effect Pairs",
+              "link": "https://www.kaggle.com/c/cause-effect-pairs",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/jarfo/cause-effect",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Jigsaw Unintended Bias in Toxicity Classification",
+              "metric": "Jigsaw Bias AUC",
+              "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/103280#latest-619135",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100661#latest-597994",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97471#latest-599024",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/101927#latest-628546",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100718#latest-582601",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100611#latest-584896",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100961#latest-593873",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100530#latest-621342",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/101630",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100799",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100821#latest-600513",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97443",
+                  "kind": "code"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100708#latest-582600",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97425#latest-568460",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97400",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97422#latest-592199",
+                  "kind": "description"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97389",
+                  "kind": "description"
+                },
+                {
+                  "rank": "32",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100713#latest-581135",
+                  "kind": "description"
+                },
+                {
+                  "rank": "33",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97464#latest-568442",
+                  "kind": "description"
+                },
+                {
+                  "rank": "53",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97484#latest-580046",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97435#latest-599026",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 21
+            },
+            {
+              "title": "MLSP 2014 Schizophrenia Classification Challenge",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/mlsp-2014-mri",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/mlsp-2014-mri/discussion/9907",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/mlsp-2014-mri/discussion/9854",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/mlsp-2014-mri/discussion/9967",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Avito Duplicate Ads Detection",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/avito-duplicate-ads-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2016/08/24/avito-duplicate-ads-detection-winners-interview-1st-place-team-devil-team-stanislav-dmitrii/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/avito-duplicate-ads-detection/discussion/22205",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/sonnylaskar/Competitions/tree/master/Kaggle/Avito%20Duplicate%20Ad%20Detection",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2016/08/31/avito-duplicate-ads-detection-winners-interview-2nd-place-team-the-quants-mikel-peter-marios-sonny/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2016/07/27/avito-duplicate-ads-detection-winners-interview-3rd-place-mario-gerard-kele-praveen-gilberto/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ZFTurbo/KAGGLE_AVITO_2016",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/alexeygrigorev/avito-duplicates-kaggle",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/XAMeLeOH/KAGGLE_AVITO_2016",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 8
+            },
+            {
+              "title": "LLM - Detect AI Generated Text",
+              "metric": "Roc Auc Score",
+              "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/473295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470333",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470179",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470093",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471831",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470255",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470396",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470593",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470193",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470061",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470181",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470148",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470153",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470077",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470134",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470256",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470353",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471898",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470290",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471788",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 22
+            }
+          ],
+          "tool_call_id": "call_pMmyYMnWWLBjz8oFlNJwbf8A",
+          "metadata": null,
+          "timestamp": "2026-01-19T18:49:47.300434+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Bidirectional AUC for Cause Effect Pairs\", \"k\": 5}",
+          "tool_call_id": "call_y2uDzpRmFiT9bWYMoSwBFHmP",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Bidirectional AUC\"}",
+          "tool_call_id": "call_vj88oxSLzJBQG6NYzSlF6lX2",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Cause effect pairs\", \"k\": 5}",
+          "tool_call_id": "call_OO2PCHW1be6Hs8ifT0EQ2cex",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2958,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 79,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-19T18:49:47+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzobrWdRd6G3KRQ5fdhRulcf3oxO2",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Cause-effect pairs",
+              "metric": "Bidirectional AUC for Cause Effect Pairs",
+              "link": "https://www.kaggle.com/c/cause-effect-pairs",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/jarfo/cause-effect",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Jigsaw Unintended Bias in Toxicity Classification",
+              "metric": "Jigsaw Bias AUC",
+              "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/103280#latest-619135",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100661#latest-597994",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97471#latest-599024",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/101927#latest-628546",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100718#latest-582601",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100611#latest-584896",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100961#latest-593873",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100530#latest-621342",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/101630",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100799",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100821#latest-600513",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97443",
+                  "kind": "code"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100708#latest-582600",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97425#latest-568460",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97400",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97422#latest-592199",
+                  "kind": "description"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97389",
+                  "kind": "description"
+                },
+                {
+                  "rank": "32",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/100713#latest-581135",
+                  "kind": "description"
+                },
+                {
+                  "rank": "33",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97464#latest-568442",
+                  "kind": "description"
+                },
+                {
+                  "rank": "53",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97484#latest-580046",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/discussion/97435#latest-599026",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 21
+            },
+            {
+              "title": "MLSP 2014 Schizophrenia Classification Challenge",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/mlsp-2014-mri",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/mlsp-2014-mri/discussion/9907",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/mlsp-2014-mri/discussion/9854",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/mlsp-2014-mri/discussion/9967",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "LLM - Detect AI Generated Text",
+              "metric": "Roc Auc Score",
+              "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/473295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470333",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470179",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470093",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471831",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470255",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470396",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470593",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470193",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470061",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470181",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470148",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470153",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470077",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470134",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470256",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470353",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471898",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470290",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471788",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 22
+            },
+            {
+              "title": "BirdCLEF 2024",
+              "metric": "Birdclef ROC AUC",
+              "link": "https://www.kaggle.com/c/birdclef-2024",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/512197",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/512340",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511905",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511845",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511535",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511527",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511540",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511528",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511510",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511596",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511499",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511559",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511851",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511567",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 14
+            }
+          ],
+          "tool_call_id": "call_y2uDzpRmFiT9bWYMoSwBFHmP",
+          "metadata": null,
+          "timestamp": "2026-01-19T18:49:49.803500+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Cause-effect pairs",
+              "metric": "Bidirectional AUC for Cause Effect Pairs",
+              "link": "https://www.kaggle.com/c/cause-effect-pairs",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/jarfo/cause-effect",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "LLM - Detect AI Generated Text",
+              "metric": "Roc Auc Score",
+              "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/473295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470333",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470179",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470093",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471831",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470255",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470396",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470593",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470193",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470061",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470181",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470148",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470153",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470077",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470134",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470256",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470353",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471898",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470290",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471788",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 22
+            },
+            {
+              "title": "BirdCLEF 2024",
+              "metric": "Birdclef ROC AUC",
+              "link": "https://www.kaggle.com/c/birdclef-2024",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/512197",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/512340",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511905",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511845",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511535",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511527",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511540",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511528",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511510",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511596",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511499",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511559",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511851",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/birdclef-2024/discussion/511567",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 14
+            },
+            {
+              "title": "Playground Series - Season 5, Episode 11",
+              "metric": "Roc Auc Score",
+              "link": "https://www.kaggle.com/c/playground-series-s5e11",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e11/writeups/1st-place-a-lot-of-features-a-lot-of-models-an",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e11/writeups/2nd-place-solution-7-models-but-1-was-also-enou",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e11/writeups/4th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e11/writeups/5th-place-solution-xgb-lgbm-tabm5seeds-ag",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e11/writeups/6-solution-ensembling-was-the-key",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e11/writeups/rank8-approach-trust-the-cv-score",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e11/writeups/a-10th-place-experiment",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Playground Series - Season 5, Episode 8",
+              "metric": "Roc Auc Score",
+              "link": "https://www.kaggle.com/c/playground-series-s5e8",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/2nd-place-yet-another-ensemble",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/3rd-place-solution-oof-stacking-autogluon",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/4th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/rank-3-public-rank-5-private-approach",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/6th-place-solution-oof-stacking-with-lgbm",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/8th-place-hill-climb-selected-meta-learners",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/10th-place-node-neural-oblivious-decision-ensemble",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/11th-place-solution-autogluon-with-two-feature-set",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/12th-place-solution-stacking-with-xgb-and-nn",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/15-solution-try-genetic-programming-features",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/17-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/19th-place-solution-108-oofs-blending-with-ridgecv",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/21st-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/playground-series-s5e8/writeups/top25",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 14
+            }
+          ],
+          "tool_call_id": "call_vj88oxSLzJBQG6NYzSlF6lX2",
+          "metadata": null,
+          "timestamp": "2026-01-19T18:49:49.802654+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Cause-effect pairs",
+              "metric": "Bidirectional AUC for Cause Effect Pairs",
+              "link": "https://www.kaggle.com/c/cause-effect-pairs",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/jarfo/cause-effect",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "CONNECTOMICS",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/connectomics",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/asutera/kaggle-connectomics",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Avito Duplicate Ads Detection",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/avito-duplicate-ads-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2016/08/24/avito-duplicate-ads-detection-winners-interview-1st-place-team-devil-team-stanislav-dmitrii/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/avito-duplicate-ads-detection/discussion/22205",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/sonnylaskar/Competitions/tree/master/Kaggle/Avito%20Duplicate%20Ad%20Detection",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2016/08/31/avito-duplicate-ads-detection-winners-interview-2nd-place-team-the-quants-mikel-peter-marios-sonny/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2016/07/27/avito-duplicate-ads-detection-winners-interview-3rd-place-mario-gerard-kele-praveen-gilberto/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ZFTurbo/KAGGLE_AVITO_2016",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/alexeygrigorev/avito-duplicates-kaggle",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/XAMeLeOH/KAGGLE_AVITO_2016",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 8
+            },
+            {
+              "title": "Mechanisms of Action (MoA) Prediction",
+              "metric": "Mean Columnwise Log Loss",
+              "link": "https://www.kaggle.com/c/lish-moa",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/201510",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200736",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/202256",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/202078",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200808",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200533",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200784",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200992",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200585",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/201565",
+                  "kind": "code"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200630",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200679",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200798",
+                  "kind": "description"
+                },
+                {
+                  "rank": "35",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200795",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200552",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "ICDM 2015; Drawbridge Cross-Device Connections",
+              "metric": "Mean F-Score Beta",
+              "link": "https://www.kaggle.com/c/icdm-2015-drawbridge-cross-device-connections",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/icdm-2015-drawbridge-cross-device-connections/discussion/16122",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/bikash/ICDM2015",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/icdm-2015-drawbridge-cross-device-connections/discussion/16122#90342",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/mlandry22/icdm-2015",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_OO2PCHW1be6Hs8ifT0EQ2cex",
+          "metadata": null,
+          "timestamp": "2026-01-19T18:49:49.775504+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** Cause-effect pairs\n   - **Competition URL:** [Cause-effect pairs](https://www.kaggle.com/c/cause-effect-pairs)\n   - **Evaluation Metric:** Bidirectional AUC for Cause Effect Pairs\n   - **Total Number of Solution Writeups:** 1\n   - **List of Available Solution Writeups:**\n     - Rank 2: https://github.com/jarfo/cause-effect",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 9833,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2944,
+        "output_tokens": 96,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-19T18:49:50+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-CzobuyDZhsXfTRlVUBUK8T51JZihv",
+      "finish_reason": "stop"
+    }
+  ]
+}
