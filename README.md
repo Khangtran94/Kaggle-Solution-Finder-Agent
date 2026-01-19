@@ -6,6 +6,11 @@ An AI-powered agent that searches, analyzes, and retrieves relevant Kaggle solut
 👉 [Kaggle Solution Finder Agent – Streamlit App](https://kaggle-solution-finder-agent-khu7xeychro7gp5byrqyfw.streamlit.app)
 
 ---
+Demo:
+
+[Screen_Recording.webm](https://github.com/user-attachments/assets/b7857273-bee2-4e15-946f-0cccdc64fb76)
+
+---
 
 ## 1. Project Title & Description
 
