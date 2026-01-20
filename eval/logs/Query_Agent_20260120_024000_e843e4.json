@@ -1,0 +1,1358 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Are no required elements missing?",
+          "timestamp": "2026-01-20T02:39:55.913027+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"Are no required elements missing?\"}",
+          "tool_call_id": "call_0j1BP3aEw9JxxwpqCdnnVvDN",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 646,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 19,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:39:56+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czvwqqp8TxE6Y93zZ3GQ26qzGzA5c",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Enefit - Predict Energy Behavior of Prosumers",
+              "metric": "Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472793",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499938",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499397",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499649",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472537",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499364",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499475",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499358",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472598",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 9
+            },
+            {
+              "title": "iNaturalist 2019 at FGVC6",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-2019-fgvc6",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/praxitelisk/iNaturalist-2019",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "iNaturalist Challenge at FGVC 2017",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-challenge-at-fgvc-2017",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://github.com/phunterlau/iNaturalist",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Avito Demand Prediction Challenge",
+              "metric": "Root Mean Squared Error",
+              "link": "https://www.kaggle.com/c/avito-demand-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/59880",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/59885",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/59881",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/darraghdog/avito-demand",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/59914",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/60026",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/60154",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/59886",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/60059",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://github.com/khuangaf/Kaggle-Avito-NN",
+                  "kind": "code"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/59936",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/60102",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://github.com/khumbuai/kaggle_avito_demand",
+                  "kind": "code"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/60006",
+                  "kind": "description"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/neptune-ml/open-solution-avito-demand-prediction",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 15
+            }
+          ],
+          "tool_call_id": "call_0j1BP3aEw9JxxwpqCdnnVvDN",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:39:56.815127+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"The Hunt for Prohibited Content\"}",
+          "tool_call_id": "call_PuAcMV0qtjkA1wkp5yp9tbQM",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Enefit - Predict Energy Behavior of Prosumers\"}",
+          "tool_call_id": "call_S11MJgQdNaJU9cZHcDIOajpu",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"iNaturalist 2019 at FGVC6\"}",
+          "tool_call_id": "call_HEJVMhXTk7nUO0uXc5tZ770M",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"iNaturalist Challenge at FGVC 2017\"}",
+          "tool_call_id": "call_jyKqr69fTLKbMLRWzHO0gabu",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Avito Demand Prediction Challenge\"}",
+          "tool_call_id": "call_hR2RPX5mYyeMUqaDJ27fzgCL",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1782,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 123,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:39:57+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvwrOqbspBNc3KuZK9Aj0mDpnWlP",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Open Images 2019 - Object Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-object-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/110953",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111266",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2022 - FGVC9",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328281",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328345",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328237",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2021 - FGVC8",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242087",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242030",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "NIPS 2017; Non-targeted Adversarial Attack",
+              "metric": "Score",
+              "link": "https://www.kaggle.com/c/nips-2017-non-targeted-adversarial-attack",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/dongyp13/Non-Targeted-Adversarial-Attacks",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/nips-2017-non-targeted-adversarial-attack/discussion/43413",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/anlthms/nips-2017",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/erko/nips17-attack",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_PuAcMV0qtjkA1wkp5yp9tbQM",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:39:59.954883+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Enefit - Predict Energy Behavior of Prosumers",
+              "metric": "Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472793",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499938",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499397",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499649",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472537",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499364",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499475",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499358",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472598",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 9
+            },
+            {
+              "title": "ASHRAE - Great Energy Predictor III",
+              "metric": "Root Mean Squared Logarithmic Error",
+              "link": "https://www.kaggle.com/c/ashrae-energy-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/ashrae-energy-prediction/discussion/124709",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/ashrae-energy-prediction/discussion/123481",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/ashrae-energy-prediction/discussion/124984",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/ashrae-energy-prediction/discussion/127086",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/ashrae-energy-prediction/discussion/123525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/ashrae-energy-prediction/discussion/123496",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/ashrae-energy-prediction/discussion/123654",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/ashrae-energy-prediction/discussion/125307",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/ashrae-energy-prediction/discussion/122863",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/ashrae-energy-prediction/discussion/123526",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 10
+            },
+            {
+              "title": "Predicting Molecular Properties",
+              "metric": "Group Mean Log MAE",
+              "link": "https://www.kaggle.com/c/champs-scalar-coupling",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106575#latest-635305",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/108845#latest-632839",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106468#latest-618474",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106572#latest-620382",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106534#latest-613848",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106864#latest-615484",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106407#latest-616839",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106421#latest-619300",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106347#latest-629355",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106649#latest-616956",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106271#latest-618034",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106293#latest-611400",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106275#latest-619893",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106377#latest-615686",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106298#latest-612917",
+                  "kind": "code"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106288#latest-612721",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106905#latest-615483",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106379#latest-613495",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106424#latest-612689",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106404#latest-612274",
+                  "kind": "description"
+                },
+                {
+                  "rank": "35",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106718#latest-615475",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106263#latest-613897",
+                  "kind": "description"
+                },
+                {
+                  "rank": "43",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106280#latest-613069",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/champs-scalar-coupling/discussion/106292#latest-612700",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 24
+            },
+            {
+              "title": "Mechanisms of Action (MoA) Prediction",
+              "metric": "Mean Columnwise Log Loss",
+              "link": "https://www.kaggle.com/c/lish-moa",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/201510",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200736",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/202256",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/202078",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200808",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200533",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200784",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200992",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200585",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/201565",
+                  "kind": "code"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200630",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200679",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200798",
+                  "kind": "description"
+                },
+                {
+                  "rank": "35",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200795",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200552",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "Microsoft Malware Prediction",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/microsoft-malware-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/microsoft-malware-prediction/discussion/84065#latest-503765",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/microsoft-malware-prediction/discussion/84515#latest-493038",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/microsoft-malware-prediction/discussion/84069#latest-499864",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/microsoft-malware-prediction/discussion/84112#latest-501154",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/microsoft-malware-prediction/discussion/84570#latest-493569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/microsoft-malware-prediction/discussion/84054#latest-491551",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/microsoft-malware-prediction/discussion/84427#latest-492727",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 7
+            }
+          ],
+          "tool_call_id": "call_S11MJgQdNaJU9cZHcDIOajpu",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:39:59.975578+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "iNaturalist Challenge at FGVC 2017",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-challenge-at-fgvc-2017",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://github.com/phunterlau/iNaturalist",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "iNaturalist 2019 at FGVC6",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-2019-fgvc6",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/praxitelisk/iNaturalist-2019",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "iMet Collection 2019 - FGVC6",
+              "metric": "Mean F-Score Beta",
+              "link": "https://www.kaggle.com/c/imet-2019-fgvc6",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/imet-2019-fgvc6/discussion/94687#latest-570986",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/imet-2019-fgvc6/discussion/94817#latest-550074",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/imet-2019-fgvc6/discussion/95282#latest-550969",
+                  "kind": "code"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/imet-2019-fgvc6/discussion/94837#latest-550728",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/imet-2019-fgvc6/discussion/95311#latest-568748",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/imet-2019-fgvc6/discussion/94783#latest-547886",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "iWildCam 2019 - FGVC6",
+              "metric": "Macro F-Score",
+              "link": "https://www.kaggle.com/c/iwildcam-2019-fgvc6",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/iwildcam-2019-fgvc6/discussion/95406#latest-550812",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://github.com/Walleclipse/iWildCam_2019_FGVC6",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "iWildCam 2020 - FGVC7",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/iwildcam-2020-fgvc7",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/iwildcam-2020-fgvc7/discussion/158370",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/iwildcam-2020-fgvc7/discussion/157946",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/iwildcam-2020-fgvc7/discussion/157932",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/iwildcam-2020-fgvc7/discussion/156420",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/iwildcam-2020-fgvc7/discussion/154211",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            }
+          ],
+          "tool_call_id": "call_HEJVMhXTk7nUO0uXc5tZ770M",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:39:59.974629+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "iNaturalist Challenge at FGVC 2017",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-challenge-at-fgvc-2017",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://github.com/phunterlau/iNaturalist",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "iNaturalist 2019 at FGVC6",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-2019-fgvc6",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/praxitelisk/iNaturalist-2019",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "iMaterialist Challenge (Fashion) at FGVC5",
+              "metric": "Mean F-Score Beta",
+              "link": "https://www.kaggle.com/c/imaterialist-challenge-fashion-2018",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/imaterialist-challenge-fashion-2018/discussion/57944",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/imaterialist-challenge-fashion-2018/discussion/57934",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/imaterialist-challenge-fashion-2018/discussion/57984",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://github.com/gombru/iMaterialistFashion",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "iMaterialist Challenge (Furniture) at FGVC5",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/imaterialist-challenge-furniture-2018",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/imaterialist-challenge-furniture-2018/discussion/57951",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/imaterialist-challenge-furniture-2018/discussion/57939",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/haowang1992/imaterialist2018",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Challenges in Representation Learning; Facial Expression Recognition Challenge",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/discussion/4676#25019",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/discussion/4676#25022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_jyKqr69fTLKbMLRWzHO0gabu",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:39:59.974090+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Avito Demand Prediction Challenge",
+              "metric": "Root Mean Squared Error",
+              "link": "https://www.kaggle.com/c/avito-demand-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/59880",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/59885",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/59881",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/darraghdog/avito-demand",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/59914",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/60026",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/60154",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/59886",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/60059",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://github.com/khuangaf/Kaggle-Avito-NN",
+                  "kind": "code"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/59936",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/60102",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://github.com/khumbuai/kaggle_avito_demand",
+                  "kind": "code"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/avito-demand-prediction/discussion/60006",
+                  "kind": "description"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/neptune-ml/open-solution-avito-demand-prediction",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "Avito Context Ad Clicks",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/avito-context-ad-clicks",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/owenzhang/kaggle-avito",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2015/08/26/avito-winners-interview-1st-place-owen-zhang/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/Gzsiceberg/kaggle-avito",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2015/08/21/avito-winners-interview-2nd-place-changsheng-gu-aka-gzs_iceberg/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/diefimov/avito_context_click_2015",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/avito-context-ad-clicks/discussion/15606#87421",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/avito-context-ad-clicks/discussion/15606#87438",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Avito Duplicate Ads Detection",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/avito-duplicate-ads-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2016/08/24/avito-duplicate-ads-detection-winners-interview-1st-place-team-devil-team-stanislav-dmitrii/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/avito-duplicate-ads-detection/discussion/22205",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/sonnylaskar/Competitions/tree/master/Kaggle/Avito%20Duplicate%20Ad%20Detection",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2016/08/31/avito-duplicate-ads-detection-winners-interview-2nd-place-team-the-quants-mikel-peter-marios-sonny/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2016/07/27/avito-duplicate-ads-detection-winners-interview-3rd-place-mario-gerard-kele-praveen-gilberto/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ZFTurbo/KAGGLE_AVITO_2016",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/alexeygrigorev/avito-duplicates-kaggle",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/XAMeLeOH/KAGGLE_AVITO_2016",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 8
+            },
+            {
+              "title": "Enefit - Predict Energy Behavior of Prosumers",
+              "metric": "Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472793",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499938",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499397",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499649",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472537",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499364",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499475",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499358",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472598",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 9
+            },
+            {
+              "title": "Allstate Purchase Prediction Challenge",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/allstate-purchase-prediction-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/alzmcr/allstate",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/B1aine/kaggle-allstate",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_hR2RPX5mYyeMUqaDJ27fzgCL",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:39:59.963599+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "No strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 9154,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1792,
+        "output_tokens": 10,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:40:00+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-Czvwu7uY2SCe5C7v3WJPAPlM8QsdH",
+      "finish_reason": "stop"
+    }
+  ]
+}

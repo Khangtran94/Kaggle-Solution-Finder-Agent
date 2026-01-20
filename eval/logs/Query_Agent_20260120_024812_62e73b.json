@@ -1,0 +1,1240 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Is the reported number of solutions consistent with the listed solutions? Are links plausible and correctly associated with the competition? Are all available solutions listed when required by the system prompt?",
+          "timestamp": "2026-01-20T02:47:58.343143+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"reported number of solutions consistency listed solutions links plausibility competition links\",\"k\":5}",
+          "tool_call_id": "call_VehwUSMpohsP4h6TPcMKTZwp",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 674,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 29,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:47:58+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw4czi6vSzJklDZFGYiXnP9KeyXG",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "iNaturalist 2019 at FGVC6",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-2019-fgvc6",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/praxitelisk/iNaturalist-2019",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "LLM 20 Questions",
+              "metric": "llm_20_questions",
+              "link": "https://www.kaggle.com/c/llm-20-questions",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531883",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531104",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531081",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/530996",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "Data Science for Good; CareerVillage.org",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/data-science-for-good-careervillage",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/dataroot/Kaggle-CV",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "dunnhumbys Shopper Challenge",
+              "metric": "% Correct Visits",
+              "link": "https://www.kaggle.com/c/dunnhumbychallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_VehwUSMpohsP4h6TPcMKTZwp",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:47:59.511588+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"iNaturalist 2019 at FGVC6\", \"k\": 1}",
+          "tool_call_id": "call_yC48oRJlQBPQQtqZWwuwLZ1g",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"LLM 20 Questions\", \"k\": 1}",
+          "tool_call_id": "call_3blkBLqrQs7BHRVi8sltNVS3",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Data Science for Good; CareerVillage.org\", \"k\": 1}",
+          "tool_call_id": "call_mjRnguzrmyQHwf5Rll2VGcR7",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Personalized Web Search Challenge\", \"k\": 1}",
+          "tool_call_id": "call_WlicFIQqj3O5AmwZaahsqyFY",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"dunnhumbys Shopper Challenge\", \"k\": 1}",
+          "tool_call_id": "call_VE3tb6x7kawauInXjCQZUqrN",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1552,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 136,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:47:59+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw4dckACmTwmOtRao9CH0IoYA3Pw",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "iNaturalist Challenge at FGVC 2017",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-challenge-at-fgvc-2017",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://github.com/phunterlau/iNaturalist",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_yC48oRJlQBPQQtqZWwuwLZ1g",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:02.586959+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "LLM 20 Questions",
+              "metric": "llm_20_questions",
+              "link": "https://www.kaggle.com/c/llm-20-questions",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531883",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531104",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531081",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/530996",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            }
+          ],
+          "tool_call_id": "call_3blkBLqrQs7BHRVi8sltNVS3",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:02.557413+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Data Science for Good; CareerVillage.org",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/data-science-for-good-careervillage",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/dataroot/Kaggle-CV",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_mjRnguzrmyQHwf5Rll2VGcR7",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:02.584683+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_WlicFIQqj3O5AmwZaahsqyFY",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:02.568564+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "dunnhumbys Shopper Challenge",
+              "metric": "% Correct Visits",
+              "link": "https://www.kaggle.com/c/dunnhumbychallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_VE3tb6x7kawauInXjCQZUqrN",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:02.573514+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"iNaturalist 2019 at FGVC6\", \"k\": 1}",
+          "tool_call_id": "call_hPvPJIC2ufwdZ2JfRIAqNoae",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"LLM 20 Questions\", \"k\": 1}",
+          "tool_call_id": "call_ATTKj4PcCPelZRDgJaHbM6ju",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Data Science for Good; CareerVillage.org\", \"k\": 1}",
+          "tool_call_id": "call_NFXILCbAgimpy3Sa9BEvsp9k",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Personalized Web Search Challenge\", \"k\": 1}",
+          "tool_call_id": "call_b14WUiMf3TMc2qrXaaowkjCf",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"dunnhumbys Shopper Challenge\", \"k\": 1}",
+          "tool_call_id": "call_zllu0aDH6afDqShQytBRuQtY",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2684,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1664,
+        "output_tokens": 136,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:48:02+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw4gQJAAWd0g5smWSIEmoEKT30Nw",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "iNaturalist Challenge at FGVC 2017",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-challenge-at-fgvc-2017",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://github.com/phunterlau/iNaturalist",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_hPvPJIC2ufwdZ2JfRIAqNoae",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:05.795987+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "LLM 20 Questions",
+              "metric": "llm_20_questions",
+              "link": "https://www.kaggle.com/c/llm-20-questions",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531883",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531104",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531081",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/530996",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            }
+          ],
+          "tool_call_id": "call_ATTKj4PcCPelZRDgJaHbM6ju",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:05.783654+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Data Science for Good; CareerVillage.org",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/data-science-for-good-careervillage",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/dataroot/Kaggle-CV",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_NFXILCbAgimpy3Sa9BEvsp9k",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:05.803733+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_b14WUiMf3TMc2qrXaaowkjCf",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:05.795948+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "dunnhumbys Shopper Challenge",
+              "metric": "% Correct Visits",
+              "link": "https://www.kaggle.com/c/dunnhumbychallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_zllu0aDH6afDqShQytBRuQtY",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:05.799682+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"iNaturalist 2019 at FGVC6\", \"k\": 1}",
+          "tool_call_id": "call_NeR6dmV6uO3WSHRcPKk9cQr4",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"LLM 20 Questions\", \"k\": 1}",
+          "tool_call_id": "call_p2LvHJTCEet4kpgo2rrupztg",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Data Science for Good; CareerVillage.org\", \"k\": 1}",
+          "tool_call_id": "call_pvxokvuZGgT8XUhLQ4OCMYku",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Personalized Web Search Challenge\", \"k\": 1}",
+          "tool_call_id": "call_NcNqulk6tka1g8KLMpYZcVI8",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"dunnhumbys Shopper Challenge\", \"k\": 1}",
+          "tool_call_id": "call_lKoDqvQ1UmT1r6KQKDsH4cYP",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3816,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2688,
+        "output_tokens": 136,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:48:06+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw4ksyjO2zRlQTxdtMtQu2STEd6N",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "iNaturalist Challenge at FGVC 2017",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-challenge-at-fgvc-2017",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://github.com/phunterlau/iNaturalist",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_NeR6dmV6uO3WSHRcPKk9cQr4",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:08.899161+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "LLM 20 Questions",
+              "metric": "llm_20_questions",
+              "link": "https://www.kaggle.com/c/llm-20-questions",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531883",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531104",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531081",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/530996",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            }
+          ],
+          "tool_call_id": "call_p2LvHJTCEet4kpgo2rrupztg",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:08.888827+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Data Science for Good; CareerVillage.org",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/data-science-for-good-careervillage",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/dataroot/Kaggle-CV",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_pvxokvuZGgT8XUhLQ4OCMYku",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:08.892553+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_NcNqulk6tka1g8KLMpYZcVI8",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:08.889648+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "dunnhumbys Shopper Challenge",
+              "metric": "% Correct Visits",
+              "link": "https://www.kaggle.com/c/dunnhumbychallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_lKoDqvQ1UmT1r6KQKDsH4cYP",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:08.875514+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"iNaturalist 2019 at FGVC6\", \"k\": 1}",
+          "tool_call_id": "call_XCoqZlzJJULdP9bLzMbqDjbJ",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"LLM 20 Questions\", \"k\": 1}",
+          "tool_call_id": "call_eCLinl6SYvXld4TVi3lLnW2B",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Data Science for Good; CareerVillage.org\", \"k\": 1}",
+          "tool_call_id": "call_fRCC1OaCrkOJ4VIRGWHkI0DJ",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Personalized Web Search Challenge\", \"k\": 1}",
+          "tool_call_id": "call_dJfPOh1san4EMe7dmol6p75M",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"dunnhumbys Shopper Challenge\", \"k\": 1}",
+          "tool_call_id": "call_SZdhr10eAa9yxmXxG3lFrUpW",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 4948,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 3840,
+        "output_tokens": 136,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:48:09+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw4ntbH0xV8cmai00jqtxZgu3I4i",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "iNaturalist Challenge at FGVC 2017",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-challenge-at-fgvc-2017",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://github.com/phunterlau/iNaturalist",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_XCoqZlzJJULdP9bLzMbqDjbJ",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:12.511362+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "LLM 20 Questions",
+              "metric": "llm_20_questions",
+              "link": "https://www.kaggle.com/c/llm-20-questions",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531883",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531104",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531081",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/530996",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            }
+          ],
+          "tool_call_id": "call_eCLinl6SYvXld4TVi3lLnW2B",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:12.512541+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Data Science for Good; CareerVillage.org",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/data-science-for-good-careervillage",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/dataroot/Kaggle-CV",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_fRCC1OaCrkOJ4VIRGWHkI0DJ",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:12.528015+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_dJfPOh1san4EMe7dmol6p75M",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:12.524635+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "dunnhumbys Shopper Challenge",
+              "metric": "% Correct Visits",
+              "link": "https://www.kaggle.com/c/dunnhumbychallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_SZdhr10eAa9yxmXxG3lFrUpW",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:12.524665+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "No strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 6080,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 4992,
+        "output_tokens": 10,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:48:12+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-Czw4qyaTuGlLx7EOMaMLkGcGfap3l",
+      "finish_reason": "stop"
+    }
+  ]
+}

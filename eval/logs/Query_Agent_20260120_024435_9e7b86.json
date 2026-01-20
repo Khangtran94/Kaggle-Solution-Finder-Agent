@@ -1,0 +1,254 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "PASS",
+          "timestamp": "2026-01-20T02:44:34.076703+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"PASS\"}",
+          "tool_call_id": "call_nqlDaDMkKu67C2E3WSA8nhMZ",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 641,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 14,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:44:34+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw1KOBjAJNkuhNdWYfTnCWg5jt1X",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Transfer Learning on Stack Exchange Tags",
+              "metric": "Mean F-Score",
+              "link": "https://www.kaggle.com/c/transfer-learning-on-stack-exchange-tags",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "4",
+                  "link": "https://github.com/viig99/stackexchange-transfer-learning",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Santas Stolen Sleigh",
+              "metric": "SantaRideShare",
+              "link": "https://www.kaggle.com/c/santas-stolen-sleigh",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santas-stolen-sleigh/discussion/18312",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/woshialex/SantaStolenSleigh",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2016/01/28/santas-stolen-sleigh-winners-interview-2nd-place-woshialex-weezy/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2016/03/03/santas-stolen-sleigh-winners-interview-3rd-place-marcin-marek/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://github.com/nagadomi/kaggle-santas-stolen-sleigh",
+                  "kind": "code"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/santas-stolen-sleigh/discussion/18336",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/danieloliveira56/SantaStolenSleigh",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Traveling Santa 2018 - Prime Paths",
+              "metric": "Traveling Santa Metric 2 - Prime Edition",
+              "link": "https://www.kaggle.com/c/traveling-santa-2018-prime-paths",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/traveling-santa-2018-prime-paths/discussion/77250",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/traveling-santa-2018-prime-paths/discussion/77324",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/traveling-santa-2018-prime-paths/discussion/77547",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/traveling-santa-2018-prime-paths/discussion/77257",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "EMI Music Data Science Hackathon - July 21st - 24 hours",
+              "metric": "Root Mean Squared Error",
+              "link": "https://www.kaggle.com/c/MusicHackathon",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/MusicHackathon/discussion/2242#12821",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/MusicHackathon/discussion/2242#12619",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://github.com/zenogantner/MyMediaLite",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Passenger Screening Algorithm Challenge",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/passenger-screening-algorithm-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/passenger-screening-algorithm-challenge/discussion/45805#261052",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/passenger-screening-algorithm-challenge/discussion/45805#261490",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://github.com/suchir/passenger_screening_algorithm_challenge",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://suchir.io/posts/passenger-screening-algorithm-challenge-writeup.html",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/passenger-screening-algorithm-challenge/discussion/45805#261169",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/ShayanPersonal/Kaggle-Passenger-Screening-Challenge-Solution",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            }
+          ],
+          "tool_call_id": "call_nqlDaDMkKu67C2E3WSA8nhMZ",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:44:34.851677+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** Passenger Screening Algorithm Challenge\n   - **Competition URL:** [Passenger Screening Algorithm Challenge](https://www.kaggle.com/c/passenger-screening-algorithm-challenge)\n   - **Evaluation Metric:** Log Loss\n   - **Total Number of Solution Writeups:** 6\n   - **List of Available Solution Writeups:**\n       - Rank 1: https://www.kaggle.com/c/passenger-screening-algorithm-challenge/discussion/45805#261052\n       - Rank 4: https://www.kaggle.com/c/passenger-screening-algorithm-challenge/discussion/45805#261490\n       - Rank 7: https://github.com/suchir/passenger_screening_algorithm_challenge\n       - Rank 7: https://suchir.io/posts/passenger-screening-algorithm-challenge-writeup.html\n       - Rank 8: https://www.kaggle.com/c/passenger-screening-algorithm-challenge/discussion/45805#261169\n       - Rank 10: https://github.com/ShayanPersonal/Kaggle-Passenger-Screening-Challenge-Solution",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1595,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 247,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:44:35+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-Czw1LByEDxc6XbuHvNF3rIhIZ2AwT",
+      "finish_reason": "stop"
+    }
+  ]
+}

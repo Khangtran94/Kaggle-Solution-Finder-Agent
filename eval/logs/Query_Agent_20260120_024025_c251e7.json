@@ -1,0 +1,1198 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Is the ordering stable and logically justified?",
+          "timestamp": "2026-01-20T02:40:22.329831+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"ordering stable justified\"}",
+          "tool_call_id": "call_N274lWZWojToyA6txIJMwxQ8",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 648,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 16,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:40:22+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvxGI0BKcYn4r7aOUDqYoQGt99IK",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Home Credit - Credit Risk Model Stability",
+              "metric": "Home Credit 2023 - Gini Stability",
+              "link": "https://www.kaggle.com/c/home-credit-credit-risk-model-stability",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/home-credit-credit-risk-model-stability/discussion/508337",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/home-credit-credit-risk-model-stability/discussion/508113",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Novozymes Enzyme Stability Prediction",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/376134",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/375964",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/375900",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/376070",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/376147",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Enefit - Predict Energy Behavior of Prosumers",
+              "metric": "Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472793",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499938",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499397",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499649",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472537",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499364",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499475",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/499358",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/predict-energy-behavior-of-prosumers/discussion/472598",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 9
+            },
+            {
+              "title": "Stable Diffusion - Image to Prompts",
+              "metric": "MeanCosineSimilarity",
+              "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/411237",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410606",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410686",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410798",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410688",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410768",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410618",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410611",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410657",
+                  "kind": "description"
+                },
+                {
+                  "rank": "33",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410610",
+                  "kind": "description"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410609",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 11
+            },
+            {
+              "title": "Stanford Ribonanza RNA Folding",
+              "metric": "Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460121",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460316",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460403",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460203",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460250",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460392",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460190",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460222",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/463352",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460192",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460130",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460545",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460383",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460145",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460285",
+                  "kind": "description"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460287",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/463253",
+                  "kind": "description"
+                },
+                {
+                  "rank": "44",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460315",
+                  "kind": "description"
+                },
+                {
+                  "rank": "46",
+                  "link": "https://www.kaggle.com/c/stanford-ribonanza-rna-folding/discussion/460252",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 19
+            }
+          ],
+          "tool_call_id": "call_N274lWZWojToyA6txIJMwxQ8",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:23.216298+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"ordering stability\", \"k\": 5}",
+          "tool_call_id": "call_oq1b1xegmCB7iWZ7CxfszTVw",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"stable ordering\", \"k\": 5}",
+          "tool_call_id": "call_6adlpFvkD9j0EjtUWaycGbgT",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"logical justification ordering\", \"k\": 5}",
+          "tool_call_id": "call_KWXhewTAKmd5aueSEd2iu1Jw",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2481,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 74,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:40:23+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvxHPP2GHeYhHGgWXYRIpXhxoE6M",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Novozymes Enzyme Stability Prediction",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/376134",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/375964",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/375900",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/376070",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/376147",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Home Credit - Credit Risk Model Stability",
+              "metric": "Home Credit 2023 - Gini Stability",
+              "link": "https://www.kaggle.com/c/home-credit-credit-risk-model-stability",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/home-credit-credit-risk-model-stability/discussion/508337",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/home-credit-credit-risk-model-stability/discussion/508113",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Stable Diffusion - Image to Prompts",
+              "metric": "MeanCosineSimilarity",
+              "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/411237",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410606",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410686",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410798",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410688",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410768",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410618",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410611",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410657",
+                  "kind": "description"
+                },
+                {
+                  "rank": "33",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410610",
+                  "kind": "description"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410609",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 11
+            },
+            {
+              "title": "Parkinsons Freezing of Gait Prediction",
+              "metric": "sklearn_average_precision_score",
+              "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction/discussion/416026",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction/discussion/416057",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction/discussion/417717",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction/discussion/416410",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction/discussion/418275",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction/discussion/415992",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction/discussion/416021",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction/discussion/416513",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction/discussion/418008",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction/discussion/416248",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction/discussion/416106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/tlvmc-parkinsons-freezing-gait-prediction/discussion/415975",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "Stay Alert! The Ford Challenge",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/stayalert",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/03/25/inference-on-winning-the-ford-stay-alert-competition/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/04/20/mick-wagner-on-finishing-second-in-the-ford-challenge/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/03/16/junpei-komiyama-on-finishing-4th-in-the-ford-competition/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_oq1b1xegmCB7iWZ7CxfszTVw",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:25.726220+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Novozymes Enzyme Stability Prediction",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/376134",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/375964",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/375900",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/376070",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/novozymes-enzyme-stability-prediction/discussion/376147",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Stable Diffusion - Image to Prompts",
+              "metric": "MeanCosineSimilarity",
+              "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/411237",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410606",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410686",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410798",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410688",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410768",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410618",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410611",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410657",
+                  "kind": "description"
+                },
+                {
+                  "rank": "33",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410610",
+                  "kind": "description"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/stable-diffusion-image-to-prompts/discussion/410609",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 11
+            },
+            {
+              "title": "Home Credit - Credit Risk Model Stability",
+              "metric": "Home Credit 2023 - Gini Stability",
+              "link": "https://www.kaggle.com/c/home-credit-credit-risk-model-stability",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/home-credit-credit-risk-model-stability/discussion/508337",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/home-credit-credit-risk-model-stability/discussion/508113",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Coupon Purchase Prediction",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/coupon-purchase-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/coupon-purchase-prediction/discussion/16736#93760",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2015/10/21/recruit-coupon-purchase-winners-interview-2nd-place-halla-yang/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/threecourse/kaggle-coupon-purchase-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/nagadomi/kaggle-coupon-purchase-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/daxiongshu/Coupon-Purchase-Prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/mawicks/KaggleCouponContest",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "H&M Personalized Fashion Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324070",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324197",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324129",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324094",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324098",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324075",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324278",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324185",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324127",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324223",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324084",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324310",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324158",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324595",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/325407",
+                  "kind": "code"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324152",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324085",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324293",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324350",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324411",
+                  "kind": "description"
+                },
+                {
+                  "rank": "46",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324205",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324221",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 24
+            }
+          ],
+          "tool_call_id": "call_6adlpFvkD9j0EjtUWaycGbgT",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:25.745298+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Abstraction and Reasoning Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154597",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154391",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154305",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154409",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154377",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154323",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154300",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154384",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154436",
+                  "kind": "code"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154319",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154294",
+                  "kind": "code"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154308",
+                  "kind": "code"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154304",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154349",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 14
+            },
+            {
+              "title": "ARC Prize 2024",
+              "metric": "Abstraction and Reasoning Challenge",
+              "link": "https://www.kaggle.com/c/arc-prize-2024",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/arc-prize-2024/discussion/545671",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/arc-prize-2024/discussion/550328",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/arc-prize-2024/discussion/550414",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/arc-prize-2024/discussion/550336",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/arc-prize-2024/discussion/546302",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/arc-prize-2024/discussion/550209",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/arc-prize-2024/discussion/545886",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "ARC Prize 2025",
+              "metric": "Abstraction and Reasoning Challenge",
+              "link": "https://www.kaggle.com/c/arc-prize-2025",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/arc-prize-2025/writeups/nvarc",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/arc-prize-2025/writeups/mindsai-and-tufa-labs-arc-prize-2025-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/arc-prize-2025/writeups/arc-prize-2025-competition-writeup-5th-place",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/arc-prize-2025/writeups/exploring-the-combination-of-search-and-learn-for",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/arc-prize-2025/writeups/lb10-00-with-small-change-to-2024architects",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "LLM 20 Questions",
+              "metric": "llm_20_questions",
+              "link": "https://www.kaggle.com/c/llm-20-questions",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531883",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531104",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531081",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/530996",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "Tabular Playground Series - Feb 2022",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-feb-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-feb-2022/discussion/310359",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-feb-2022/discussion/310367",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_KWXhewTAKmd5aueSEd2iu1Jw",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:25.743669+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "No strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 8252,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2432,
+        "output_tokens": 10,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:40:25+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-CzvxJLPrBgvj8d6FlgQm1VOpyCroT",
+      "finish_reason": "stop"
+    }
+  ]
+}

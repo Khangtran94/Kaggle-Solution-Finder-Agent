@@ -1,0 +1,374 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "The response is deterministic; the same query would yield the same result and the ordering follows the structure provided in the user query. ",
+          "timestamp": "2026-01-20T02:45:11.574148+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"completed Kaggle competitions\"}",
+          "tool_call_id": "call_1vLDXQPWzNd6sep5VRXFjHxn",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 666,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 17,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:45:11+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw1vQv5y7imBmhVYUhdycCMCkfcK",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "2022 Kaggle Machine Learning & Data Science Survey",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/kaggle-survey-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/kaggle-survey-2022/discussion/374157",
+                  "kind": "description"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/kaggle-survey-2022/discussion/374969",
+                  "kind": "description"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/kaggle-survey-2022/discussion/375837",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Kaggle - LLM Science Exam",
+              "metric": "MAP@{K}",
+              "link": "https://www.kaggle.com/c/kaggle-llm-science-exam",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446422",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/448256",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446358",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446307",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446293",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/447647",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/447155",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446248",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446660",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446301",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446231",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446484",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446816",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446242",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446261",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446395",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/448114",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/447589",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446610",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446233",
+                  "kind": "description"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446455",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446369",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/447245",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446788",
+                  "kind": "description"
+                },
+                {
+                  "rank": "49",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446355",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 25
+            },
+            {
+              "title": "2019 Kaggle ML & DS Survey",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/kaggle-survey-2019",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/tkubacka/a-story-told-through-a-heatmap",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/artvolgin/exploring-phd-community-with-network-analysis",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/andresionek/is-there-any-job-out-there-kaggle-vs-glassdoor",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/iamleonie/japan-country-of-the-rising-women",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/shivamb/spending-for-ms-in-data-science-worth-it",
+                  "kind": "code"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/kaggle-survey-2019/discussion/121041",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "KDD Cup 2013 - Author-Paper Identification Challenge (Track 1)",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/kdd-cup-2013-author-paper-identification-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.csie.ntu.edu.tw/%7Ecjlin/papers/kddcup2013/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/lucaseustaquio/kdd-cup-2013-track1",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/naokazumizuta/KDD2013AuthorPaperIdentification",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Playground Series - Season 3, Episode 5",
+              "metric": "QuadraticWeightedKappa",
+              "link": "https://www.kaggle.com/c/playground-series-s3e5",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e5/discussion/387882",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e5/discussion/388011",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e5/discussion/386683",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e5/discussion/386645",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e5/discussion/386657",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e5/discussion/386627",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e5/discussion/386745",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e5/discussion/386789",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 8
+            }
+          ],
+          "tool_call_id": "call_1vLDXQPWzNd6sep5VRXFjHxn",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:45:12.323811+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "No strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2435,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 10,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:45:12+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-Czw1wJ2xiyIJ5xFhd0FO0ramAuUEU",
+      "finish_reason": "stop"
+    }
+  ]
+}

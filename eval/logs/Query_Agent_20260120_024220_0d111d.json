@@ -1,0 +1,1208 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Are all relevant items included?",
+          "timestamp": "2026-01-20T02:42:17.754239+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"Are all relevant items included?\"}",
+          "tool_call_id": "call_LIgpSomAkshyOVflXvmlHgbz",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 646,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 19,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:17+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czvz7DBeUjveKpBoKEAgrMk5z4mdR",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Expedia Hotel Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/expedia-hotel-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/expedia-hotel-recommendations/discussion/21607",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://github.com/danielkorzekwa/expedia-hotel-predictor",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/mandalsubhajit/Kaggle--Expedia-Hotel-Recommendations",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/zzsza/Kaggle_Expedia-hotel-recommendations",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "iNaturalist 2019 at FGVC6",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-2019-fgvc6",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/praxitelisk/iNaturalist-2019",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Santander Product Recommendation",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/santander-product-recommendation",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/ttvand/Santander-Product-Recommendation",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2017/01/12/santander-product-recommendation-competition-2nd-place-winners-solution-write-up-tom-van-de-wiele/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/santander-product-recommendation/discussion/26899",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2017/02/22/santander-product-recommendation-competition-3rd-place-winners-interview-ryuji-sakata/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/yaxen/santander-product-recommendation-8th-place",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/vopani/Kaggle_SantanderProductRecommendation",
+                  "kind": "code"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/santander-product-recommendation/discussion/26831",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Whats Cooking? (Kernels Only)",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/whats-cooking-kernels-only",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/whats-cooking-kernels-only/discussion/66795",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_LIgpSomAkshyOVflXvmlHgbz",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:18.481521+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Expedia hotel recommendations\"}",
+          "tool_call_id": "call_346XrPVhC43xubNNVJze5QvO",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Hunt for prohibited content\"}",
+          "tool_call_id": "call_Xbnkr2wu6dWDqBOd6M5lRPPM",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"iNaturalist 2019\"}",
+          "tool_call_id": "call_Fj7f7idC1yZU6tQJHpd1aAVt",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Santander product recommendation\"}",
+          "tool_call_id": "call_kk7SQvbmX4Q18WoIxstouKZ0",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Whats Cooking competition\"}",
+          "tool_call_id": "call_kaZc90OQ1ljCURASvtmSZ0Ez",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1389,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 103,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:18+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czvz8J5UmSlyHuUSWYdtjfnlxGmsS",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Expedia Hotel Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/expedia-hotel-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/expedia-hotel-recommendations/discussion/21607",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://github.com/danielkorzekwa/expedia-hotel-predictor",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/mandalsubhajit/Kaggle--Expedia-Hotel-Recommendations",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/zzsza/Kaggle_Expedia-hotel-recommendations",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2021 - FGVC8",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242087",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242030",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2022 - FGVC9",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328281",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328345",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328237",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Tourism Forecasting Part One",
+              "metric": "Custom Evaluation Metric",
+              "link": "https://www.kaggle.com/c/tourism1",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2010/09/27/how-i-did-it-lee-baker-on-winning-tourism-forecasting-part-one/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "GoDaddy - Microbusiness Density Forecasting",
+              "metric": "SMAPE",
+              "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/395131",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/395264",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/418287",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/394821",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/417821",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/418770",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/417803",
+                  "kind": "description"
+                },
+                {
+                  "rank": "32",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/395011",
+                  "kind": "description"
+                },
+                {
+                  "rank": "35",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/418657",
+                  "kind": "description"
+                },
+                {
+                  "rank": "44",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/418355",
+                  "kind": "description"
+                },
+                {
+                  "rank": "48",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/417946",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 11
+            }
+          ],
+          "tool_call_id": "call_346XrPVhC43xubNNVJze5QvO",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:20.637793+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Open Images 2019 - Object Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-object-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/110953",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111266",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2022 - FGVC9",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328281",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328345",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328237",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2021 - FGVC8",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242087",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242030",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Google AI Open Images - Object Detection Track",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64986",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/65120",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64633",
+                  "kind": "code"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64747",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64734",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64901",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            }
+          ],
+          "tool_call_id": "call_Xbnkr2wu6dWDqBOd6M5lRPPM",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:20.613369+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "iNaturalist Challenge at FGVC 2017",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-challenge-at-fgvc-2017",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://github.com/phunterlau/iNaturalist",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "iNaturalist 2019 at FGVC6",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-2019-fgvc6",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/praxitelisk/iNaturalist-2019",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "CareerCon 2019 - Help Navigate Robots",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/career-con-2019",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/career-con-2019/discussion/89181#latest-523612",
+                  "kind": "code"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/career-con-2019/discussion/89176#latest-514963",
+                  "kind": "code"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/career-con-2019/discussion/89172#latest-515819",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/career-con-2019/discussion/89259#latest-515629",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/career-con-2019/discussion/89194#latest-516220",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "USPTO - Explainable AI for Patent Professionals",
+              "metric": "USPTO 59575",
+              "link": "https://www.kaggle.com/c/uspto-explainable-ai",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522233",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522258",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522639",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522200",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522201",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522202",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522199",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522208",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522301",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522359",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522380",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522327",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522415",
+                  "kind": "description"
+                },
+                {
+                  "rank": "32",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522214",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522347",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/uspto-explainable-ai/discussion/522205",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 17
+            },
+            {
+              "title": "iMaterialist (Fashion) 2019 at FGVC6",
+              "metric": "IntersectionOverUnionObjectSegmentationWithClassification",
+              "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95247#latest-567841",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95233#latest-551075",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95234#latest-555537",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/91536#latest-547636",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95249#latest-550784",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95238#latest-566318",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95281#latest-549999",
+                  "kind": "description"
+                },
+                {
+                  "rank": "33",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95130#latest-549956",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 8
+            }
+          ],
+          "tool_call_id": "call_Fj7f7idC1yZU6tQJHpd1aAVt",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:20.641805+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Santander Product Recommendation",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/santander-product-recommendation",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/ttvand/Santander-Product-Recommendation",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2017/01/12/santander-product-recommendation-competition-2nd-place-winners-solution-write-up-tom-van-de-wiele/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/santander-product-recommendation/discussion/26899",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2017/02/22/santander-product-recommendation-competition-3rd-place-winners-interview-ryuji-sakata/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/yaxen/santander-product-recommendation-8th-place",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/vopani/Kaggle_SantanderProductRecommendation",
+                  "kind": "code"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/santander-product-recommendation/discussion/26831",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Santander Customer Satisfaction",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/santander-customer-satisfaction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santander-customer-satisfaction/discussion/20647#118259",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/diefimov/santander_2016",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/bishwarup307/Santander_Customer_Satisfaction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://github.com/noahhhhhh/Santander_Customer_Satisfaction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "44",
+                  "link": "https://github.com/toshi-k/kaggle-santander-customer-satisfaction",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Santa 2022 - The Christmas Card Conundrum",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/santa-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santa-2022/discussion/379167",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/santa-2022/discussion/379086",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/santa-2022/discussion/379080",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/santa-2022/discussion/379511",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Santander Value Prediction Challenge",
+              "metric": "Root Mean Squared Logarithmic Error",
+              "link": "https://www.kaggle.com/c/santander-value-prediction-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santander-value-prediction-challenge/discussion/63907",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/santander-value-prediction-challenge/discussion/63848",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/santander-value-prediction-challenge/discussion/63864",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/santander-value-prediction-challenge/discussion/63822",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/santander-value-prediction-challenge/discussion/63919",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/santander-value-prediction-challenge/discussion/63812",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/santander-value-prediction-challenge/discussion/63799",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/santander-value-prediction-challenge/discussion/63760",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/rsakata/21st-place-solution-bug-fixed-private-0-52785/code",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/neptune-ml/open-solution-value-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/gestalt-howard/santander-value-prediction",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 11
+            },
+            {
+              "title": "Santas Workshop Tour 2019",
+              "metric": "Santas Workshop Scheduling 2019",
+              "link": "https://www.kaggle.com/c/santa-workshop-tour-2019",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santa-workshop-tour-2019/discussion/127427",
+                  "kind": "description"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santa-2019-revenge-of-the-accountants/discussion/126380",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/santa-workshop-tour-2019/discussion/126255",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/santa-workshop-tour-2019/discussion/126254",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/santa-workshop-tour-2019/discussion/126185",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/santa-workshop-tour-2019/discussion/126364",
+                  "kind": "code"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/santa-workshop-tour-2019/discussion/126225",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/santa-workshop-tour-2019/discussion/126237",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/santa-workshop-tour-2019/discussion/126374",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/santa-workshop-tour-2019/discussion/127606",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 10
+            }
+          ],
+          "tool_call_id": "call_kk7SQvbmX4Q18WoIxstouKZ0",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:20.640956+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Whats Cooking? (Kernels Only)",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/whats-cooking-kernels-only",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/whats-cooking-kernels-only/discussion/66795",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Whats Cooking?",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/whats-cooking",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "4",
+                  "link": "https://github.com/dmcgarry/kaggle_cooking",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/mtad/kaggle/tree/master/whats_cooking",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/SaquibAhmad/Kaggle/tree/master/whats-cooking",
+                  "kind": "code"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://github.com/ogencoglu/WhatsCooking",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "iNaturalist Challenge at FGVC 2017",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-challenge-at-fgvc-2017",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://github.com/phunterlau/iNaturalist",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Abstraction and Reasoning Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154597",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154391",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154305",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154409",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154377",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154323",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154300",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154384",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154436",
+                  "kind": "code"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154319",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154294",
+                  "kind": "code"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154308",
+                  "kind": "code"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154304",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/abstraction-and-reasoning-challenge/discussion/154349",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 14
+            },
+            {
+              "title": "Challenges in Representation Learning; Facial Expression Recognition Challenge",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/discussion/4676#25019",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/discussion/4676#25022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_kaZc90OQ1ljCURASvtmSZ0Ez",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:20.632548+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** Expedia Hotel Recommendations\n   - **Competition URL:** [Expedia Hotel Recommendations](https://www.kaggle.com/c/expedia-hotel-recommendations)\n   - **Evaluation Metric:** Unknown\n   - **Total Number of Solution Writeups:** 4\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/expedia-hotel-recommendations/discussion/21607\n     - Rank 13: https://github.com/danielkorzekwa/expedia-hotel-predictor\n     - Rank ?: https://github.com/mandalsubhajit/Kaggle--Expedia-Hotel-Recommendations\n     - Rank ?: https://github.com/zzsza/Kaggle_Expedia-hotel-recommendations\n\n2. **Competition Name:** The Hunt for Prohibited Content\n   - **Competition URL:** [The Hunt for Prohibited Content](https://www.kaggle.com/c/avito-prohibited-content)\n   - **Evaluation Metric:** Unknown\n   - **Total Number of Solution Writeups:** 2\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/avito-prohibited-content/discussion/10178\n     - Rank 4: https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content\n\n3. **Competition Name:** iNaturalist 2019 at FGVC6\n   - **Competition URL:** [iNaturalist 2019 at FGVC6](https://www.kaggle.com/c/inaturalist-2019-fgvc6)\n   - **Evaluation Metric:** Unknown\n   - **Total Number of Solution Writeups:** 1\n   - **List of Available Solution Writeups:**\n     - Rank ?: https://github.com/praxitelisk/iNaturalist-2019\n\n4. **Competition Name:** Santander Product Recommendation\n   - **Competition URL:** [Santander Product Recommendation](https://www.kaggle.com/c/santander-product-recommendation)\n   - **Evaluation Metric:** Unknown\n   - **Total Number of Solution Writeups:** 7\n   - **List of Available Solution Writeups:**\n     - Rank 2: https://github.com/ttvand/Santander-Product-Recommendation\n     - Rank 2: http://blog.kaggle.com/2017/01/12/santander-product-recommendation-competition-2nd-place-winners-solution-write-up-tom-van-de-wiele/\n     - Rank 3: https://www.kaggle.com/c/santander-product-recommendation/discussion/26899\n     - Rank 3: http://blog.kaggle.com/2017/02/22/santander-product-recommendation-competition-3rd-place-winners-interview-ryuji-sakata/\n     - Rank 8: https://github.com/yaxen/santander-product-recommendation-8th-place\n     - Rank 11: https://github.com/vopani/Kaggle_SantanderProductRecommendation\n     - Rank all solutions: https://www.kaggle.com/c/santander-product-recommendation/discussion/26831\n\n5. **Competition Name:** Whats Cooking? (Kernels Only)\n   - **Competition URL:** [Whats Cooking? (Kernels Only)](https://www.kaggle.com/c/whats-cooking-kernels-only)\n   - **Evaluation Metric:** Categorization Accuracy\n   - **Total Number of Solution Writeups:** 1\n   - **List of Available Solution Writeups:**\n     - Rank 2: https://www.kaggle.com/c/whats-cooking-kernels-only/discussion/66795",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 8015,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1408,
+        "output_tokens": 803,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:20+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-CzvzACyFHQbg9piy3zD8lKVhaSDIC",
+      "finish_reason": "stop"
+    }
+  ]
+}

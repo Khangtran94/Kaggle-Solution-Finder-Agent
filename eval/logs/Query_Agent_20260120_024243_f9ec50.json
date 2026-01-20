@@ -1,0 +1,1538 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Are results correctly classified (Strong / Partial / Weak match)?",
+          "timestamp": "2026-01-20T02:42:40.500420+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"classification of results\"}",
+          "tool_call_id": "call_6rpiIR3KSPvPUjB73iVQLkuT",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 652,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 16,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:40+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvzUimpCoBecGhle4W517obK92z4",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Data Science for Good; CareerVillage.org",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/data-science-for-good-careervillage",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/dataroot/Kaggle-CV",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Data Science London + Scikit-learn",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/data-science-london-scikit-learn",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "7",
+                  "link": "https://github.com/elenacuoco/London-scikit",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Predicting a Biological Response",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/bioresponse",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "17",
+                  "link": "https://github.com/emanuele/kaggle_pbr",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Dog Breed Identification",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/dog-breed-identification",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "6",
+                  "link": "https://github.com/ypwhs/DogBreed_gluon",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/fierceX/Dog-Breed-Identification-Gluon",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Personalized Medicine; Redefining Cancer Treatment",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/msk-redefining-cancer-treatment",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/jorgemf/kaggle_redefining_cancer_treatment",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_6rpiIR3KSPvPUjB73iVQLkuT",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:41.221093+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"classification strong match\", \"k\": 5}",
+          "tool_call_id": "call_XhcM390Ce2Lf0tiAHsbvDfC9",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"classification partial match\", \"k\": 5}",
+          "tool_call_id": "call_wIYvrPNX4dvcMIKKPIxJ4AdK",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"classification weak match\", \"k\": 5}",
+          "tool_call_id": "call_4Znsstxu3ZiLhLhPhjxAz9Wy",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1059,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 76,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:41+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvzVXPBXBzw2sC0c2yFTcFrN31ab",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Shopee - Price Match Guarantee",
+              "metric": "Mean F-Score",
+              "link": "https://www.kaggle.com/c/shopee-product-matching",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238136",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238022",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238362",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238515",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238078",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238010",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238174",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238125",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238039",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238181",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238033",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238029",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/237972",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238146",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238126",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238322",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238110",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238382",
+                  "kind": "description"
+                },
+                {
+                  "rank": "48",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238263",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 21
+            },
+            {
+              "title": "1st and Future - Player Contact Detection",
+              "metric": "Matthews correlation coefficient",
+              "link": "https://www.kaggle.com/c/nfl-player-contact-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/391635",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/391740",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/392182",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/391761",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/392290",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/392402",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/391609",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/391792",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/392162",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/394302",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/392226",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/391703",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "Foursquare - Location Matching",
+              "metric": "Jaccard",
+              "link": "https://www.kaggle.com/c/foursquare-location-matching",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336055",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336062",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336072",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336090",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/338112",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335810",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/348399",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335800",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335928",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336415",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335924",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336051",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336124",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335818",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335860",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335897",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335857",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335883",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 18
+            },
+            {
+              "title": "Image Matching Challenge 2023",
+              "metric": "imc2023",
+              "link": "https://www.kaggle.com/c/image-matching-challenge-2023",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/417407",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/416873",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/416918",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/416816",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/417045",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/416842",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/420471",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/417002",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/417186",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/416847",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/416777",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 11
+            },
+            {
+              "title": "UBC Ovarian Cancer Subtype Classification and Outlier Detection (UBC-OCEAN)",
+              "metric": "Balanced Accuracy Score",
+              "link": "https://www.kaggle.com/c/UBC-OCEAN",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465410",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465527",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465811",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/466017",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465379",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465697",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465382",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465815",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465455",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465358",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465476",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465356",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465425",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465619",
+                  "kind": "description"
+                },
+                {
+                  "rank": "38",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465368",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            }
+          ],
+          "tool_call_id": "call_XhcM390Ce2Lf0tiAHsbvDfC9",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:42.884164+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Shopee - Price Match Guarantee",
+              "metric": "Mean F-Score",
+              "link": "https://www.kaggle.com/c/shopee-product-matching",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238136",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238022",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238362",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238515",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238078",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238010",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238174",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238125",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238039",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238181",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238033",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238029",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/237972",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238146",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238126",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238322",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238110",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238382",
+                  "kind": "description"
+                },
+                {
+                  "rank": "48",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238263",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 21
+            },
+            {
+              "title": "Image Matching Challenge 2025",
+              "metric": "IMC 2025 Metric",
+              "link": "https://www.kaggle.com/c/image-matching-challenge-2025",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/583058",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/583683",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/583401",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/582959",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/583711",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/583076",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/583184",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/582844",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/583464",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/582898",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/583097",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/583185",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/583977",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2025/discussion/582810",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 14
+            },
+            {
+              "title": "Foursquare - Location Matching",
+              "metric": "Jaccard",
+              "link": "https://www.kaggle.com/c/foursquare-location-matching",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336055",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336062",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336072",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336090",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/338112",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335810",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/348399",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335800",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335928",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336415",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335924",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336051",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336124",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335818",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335860",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335897",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335857",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335883",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 18
+            },
+            {
+              "title": "KDD Cup 2013 - Author-Paper Identification Challenge (Track 1)",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/kdd-cup-2013-author-paper-identification-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.csie.ntu.edu.tw/%7Ecjlin/papers/kddcup2013/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/lucaseustaquio/kdd-cup-2013-track1",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/naokazumizuta/KDD2013AuthorPaperIdentification",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "1st and Future - Player Contact Detection",
+              "metric": "Matthews correlation coefficient",
+              "link": "https://www.kaggle.com/c/nfl-player-contact-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/391635",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/391740",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/392182",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/391761",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/392290",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/392402",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/391609",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/391792",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/392162",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/394302",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/392226",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/nfl-player-contact-detection/discussion/391703",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            }
+          ],
+          "tool_call_id": "call_wIYvrPNX4dvcMIKKPIxJ4AdK",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:42.884446+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Shopee - Price Match Guarantee",
+              "metric": "Mean F-Score",
+              "link": "https://www.kaggle.com/c/shopee-product-matching",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238136",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238022",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238362",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238515",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238078",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238010",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238174",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238125",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238039",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238181",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238033",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238029",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/237972",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238146",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238126",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238322",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238110",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238382",
+                  "kind": "description"
+                },
+                {
+                  "rank": "48",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238263",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 21
+            },
+            {
+              "title": "UBC Ovarian Cancer Subtype Classification and Outlier Detection (UBC-OCEAN)",
+              "metric": "Balanced Accuracy Score",
+              "link": "https://www.kaggle.com/c/UBC-OCEAN",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465410",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465527",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465811",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/466017",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465379",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465697",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465382",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465815",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465455",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465358",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465476",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465356",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465425",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465619",
+                  "kind": "description"
+                },
+                {
+                  "rank": "38",
+                  "link": "https://www.kaggle.com/c/UBC-OCEAN/discussion/465368",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "Image Matching Challenge 2023",
+              "metric": "imc2023",
+              "link": "https://www.kaggle.com/c/image-matching-challenge-2023",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/417407",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/416873",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/416918",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/416816",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/417045",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/416842",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/420471",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/417002",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/417186",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/416847",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/image-matching-challenge-2023/discussion/416777",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 11
+            },
+            {
+              "title": "Foursquare - Location Matching",
+              "metric": "Jaccard",
+              "link": "https://www.kaggle.com/c/foursquare-location-matching",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336055",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336062",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336072",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336090",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/338112",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335810",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/348399",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335800",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335928",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336415",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335924",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336051",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336124",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335818",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335860",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335897",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335857",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335883",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 18
+            },
+            {
+              "title": "Feedback Prize - Predicting Effective Arguments",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/feedback-prize-effectiveness",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347536",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347537",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347359",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347433",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347433",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347371",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347692",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347379",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347369",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/352458",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347488",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347891",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347386",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347490",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347713",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347356",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347418",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/feedback-prize-effectiveness/discussion/347450",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 19
+            }
+          ],
+          "tool_call_id": "call_4Znsstxu3ZiLhLhPhjxAz9Wy",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:42.879967+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "No strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 10276,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1024,
+        "output_tokens": 10,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:43+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-CzvzX9w6htzZ4K9DGUw5EZQLOnqA3",
+      "finish_reason": "stop"
+    }
+  ]
+}

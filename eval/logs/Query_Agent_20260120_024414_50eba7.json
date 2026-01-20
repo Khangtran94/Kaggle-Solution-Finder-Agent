@@ -1,0 +1,1158 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Number of Solutions: 9",
+          "timestamp": "2026-01-20T02:44:11.171644+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"Number of Solutions: 9\"}",
+          "tool_call_id": "call_9FI0FdgGLVuwQPddXk6lzvW8",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 646,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 19,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:44:11+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw0xST1ldiRZBC3MErrpHPfNUYc4",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "The 3rd YouTube-8M Video Understanding Challenge",
+              "metric": "YT8M_MAP@{K}",
+              "link": "https://www.kaggle.com/c/youtube8m-2019",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112869",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/113663",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112929",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112296",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112403",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112349",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112298",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112388",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112320",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 9
+            },
+            {
+              "title": "Playground Series Season 3, Episode 3",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/playground-series-s3e3",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e3/discussion/380920",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e3/discussion/381052",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e3/discussion/379347",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e3/discussion/380757",
+                  "kind": "description"
+                },
+                {
+                  "rank": "38",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e3/discussion/380748",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e3/discussion/380738",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "Make Data Count - Finding Data References",
+              "metric": "82370_MDC_Global_F1",
+              "link": "https://www.kaggle.com/c/make-data-count-finding-data-references",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/1st-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/2nd-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/3rd-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/4th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/5th-place-by-standing-on-the-shoulders-of-giants",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/6th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/7th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/8th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/9th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/tricks-10char",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/11th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/12th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/13th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/shake-down-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/20th-place-solution-regex-qwen-deberta-for-mdc",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/23-place-solution-ml",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/25th-place-solution-summary",
+                  "kind": "description"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/28th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/41th-place-solution",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 19
+            },
+            {
+              "title": "LLM 20 Questions",
+              "metric": "llm_20_questions",
+              "link": "https://www.kaggle.com/c/llm-20-questions",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531883",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531104",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531081",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/530996",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "Playground Series - Season 3, Episode 19",
+              "metric": "SMAPE",
+              "link": "https://www.kaggle.com/c/playground-series-s3e19",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e19/discussion/428311",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e19/discussion/428385",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e19/discussion/428682",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e19/discussion/428335",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e19/discussion/428347",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e19/discussion/428514",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e19/discussion/428368",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e19/discussion/428300",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e19/discussion/428438",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e19/discussion/428433",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 10
+            }
+          ],
+          "tool_call_id": "call_9FI0FdgGLVuwQPddXk6lzvW8",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:44:12.094407+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"The 3rd YouTube-8M Video Understanding Challenge\"}",
+          "tool_call_id": "call_0KfERfam0jpT0FYPte0rm3kh",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Make Data Count - Finding Data References\"}",
+          "tool_call_id": "call_aggZ1Sr49rLWPQOZuiBzmmBp",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2777,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 61,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:44:12+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw0yDYcGaBrZv7kzcEPW54uKaGjN",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "The 2nd YouTube-8M Video Understanding Challenge",
+              "metric": "GoogleGlobalAP",
+              "link": "https://www.kaggle.com/c/youtube8m-2018",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/miha-skalic/youtube8mchallange",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/youtube8m-2018/discussion/62781",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/twoleggedeye/youtube8m",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/youtube8m-2018/discussion/63223",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/17Skye17/2nd-YouTube8M",
+                  "kind": "code"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://github.com/wwoody827/kaggle-youtube-8m-2018-404-not-found-solution/tree/master/source/youtube-8m",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "The 3rd YouTube-8M Video Understanding Challenge",
+              "metric": "YT8M_MAP@{K}",
+              "link": "https://www.kaggle.com/c/youtube8m-2019",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112869",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/113663",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112929",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112296",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112403",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112349",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112298",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112388",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/youtube8m-2019/discussion/112320",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 9
+            },
+            {
+              "title": "Google Cloud & YouTube-8M Video Understanding Challenge",
+              "metric": "GoogleGlobalAP",
+              "link": "https://www.kaggle.com/c/youtube8m",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/youtube8m/discussion/35063",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/wangheda/youtube-8m",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/youtube8m/discussion/34751",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/baidu/Youtube-8M",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Playground Series - Season 3, Episode 10",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/playground-series-s3e10",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e10/discussion/396345",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e10/discussion/396346",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e10/discussion/396261",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e10/discussion/396425",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e10/discussion/396374",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e10/discussion/396263",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e10/discussion/396319",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e10/discussion/396471",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 8
+            },
+            {
+              "title": "Playground Series Season 3, Episode 2",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/playground-series-s3e2",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e2/discussion/378780",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e2/discussion/378866",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/playground-series-s3e2/discussion/381377",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_0KfERfam0jpT0FYPte0rm3kh",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:44:13.846030+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Make Data Count - Finding Data References",
+              "metric": "82370_MDC_Global_F1",
+              "link": "https://www.kaggle.com/c/make-data-count-finding-data-references",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/1st-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/2nd-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/3rd-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/4th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/5th-place-by-standing-on-the-shoulders-of-giants",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/6th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/7th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/8th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/9th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/tricks-10char",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/11th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/12th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/13th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/shake-down-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/20th-place-solution-regex-qwen-deberta-for-mdc",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/23-place-solution-ml",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/25th-place-solution-summary",
+                  "kind": "description"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/28th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/41th-place-solution",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 19
+            },
+            {
+              "title": "The Learning Agency Lab - PII Data Detection",
+              "metric": "TLAL_F_beta",
+              "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497374",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497352",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497482",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497367",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497306",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/498304",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497310",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497177",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/498130",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497371",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497968",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497258",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497180",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497220",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497187",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/pii-detection-removal-from-educational-data/discussion/497293",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 16
+            },
+            {
+              "title": "NOAA Fisheries Steller Sea Lion Population Count",
+              "metric": "Mean Columnwise Root Mean Squared Error",
+              "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/outrunner/use-keras-to-count-sea-lions/notebook",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/lopuhin/kaggle-lions-2017",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/35448",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/35442",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/35491",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/35545",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/35462",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/35465",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/36066",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/35460",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/35456",
+                  "kind": "description"
+                },
+                {
+                  "rank": "67",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/35397",
+                  "kind": "description"
+                },
+                {
+                  "rank": "73",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/35432",
+                  "kind": "description"
+                },
+                {
+                  "rank": "163",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/35415",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/noaa-fisheries-steller-sea-lion-population-count/discussion/35454",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "TalkingData AdTracking Fraud Detection Challenge",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/flowlight0/talkingdata-adtracking-fraud-detection",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56475",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56328",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56262",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56545",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56243",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56406",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56319",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56283",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56325",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56279",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56250",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56333",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56422",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56571",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56368",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/55030",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/discussion/56304",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 18
+            },
+            {
+              "title": "Google Research - Identify Contrails to Reduce Global Warming",
+              "metric": "contrails_global_dice",
+              "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430618",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430491",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430685",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432998",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430549",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430581",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430691",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430543",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430479",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432690",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432254",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430904",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430483",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430794",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430684",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430476",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432282",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 17
+            }
+          ],
+          "tool_call_id": "call_aggZ1Sr49rLWPQOZuiBzmmBp",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:44:13.843131+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** The 3rd YouTube-8M Video Understanding Challenge\n   - **Competition URL:** [The 3rd YouTube-8M Video Understanding Challenge](https://www.kaggle.com/c/youtube8m-2019)\n   - **Evaluation Metric:** YT8M_MAP@{K}\n   - **Total Number of Solution Writeups:** 9\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/youtube8m-2019/discussion/112869\n     - Rank 2: https://www.kaggle.com/c/youtube8m-2019/discussion/113663\n     - Rank 3: https://www.kaggle.com/c/youtube8m-2019/discussion/112929\n     - Rank 5: https://www.kaggle.com/c/youtube8m-2019/discussion/112296\n     - Rank 6: https://www.kaggle.com/c/youtube8m-2019/discussion/112403\n     - Rank 7: https://www.kaggle.com/c/youtube8m-2019/discussion/112349\n     - Rank 13: https://www.kaggle.com/c/youtube8m-2019/discussion/112298\n     - Rank 21: https://www.kaggle.com/c/youtube8m-2019/discussion/112388\n     - Rank 24: https://www.kaggle.com/c/youtube8m-2019/discussion/112320\n\n2. **Competition Name:** Make Data Count - Finding Data References\n   - **Competition URL:** [Make Data Count - Finding Data References](https://www.kaggle.com/c/make-data-count-finding-data-references)\n   - **Evaluation Metric:** 82370_MDC_Global_F1\n   - **Total Number of Solution Writeups:** 19\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/1st-place-solution\n     - Rank 2: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/2nd-place-solution\n     - Rank 3: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/3rd-place-solution\n     - Rank 4: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/4th-place-solution\n     - Rank 5: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/5th-place-by-standing-on-the-shoulders-of-giants\n     - Rank 6: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/6th-place-solution\n     - Rank 7: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/7th-place-solution\n     - Rank 8: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/8th-place-solution\n     - Rank 9: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/9th-place-solution\n     - Rank 10: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/tricks-10char\n     - Rank 11: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/11th-place-solution\n     - Rank 12: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/12th-place-solution\n     - Rank 13: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/13th-place-solution\n     - Rank 15: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/shake-down-solution\n     - Rank 20: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/20th-place-solution-regex-qwen-deberta-for-mdc\n     - Rank 22: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/23-place-solution-ml\n     - Rank 24: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/25th-place-solution-summary\n     - Rank 27: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/28th-place-solution\n     - Rank 40: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/41th-place-solution",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 8102,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 1053,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:44:14+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-Czw10rPEjayEAeBcHzhXKxkpmxUQV",
+      "finish_reason": "stop"
+    }
+  ]
+}

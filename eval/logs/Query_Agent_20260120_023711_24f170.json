@@ -1,0 +1,1053 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Is the ordering of items stable and logically justified?",
+          "timestamp": "2026-01-20T02:37:06.847723+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"Is the ordering of items stable and logically justified?\"}",
+          "tool_call_id": "call_z7qx8gDIlmfXEIPWxRUDy4Au",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 650,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 23,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:37:07+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czvu7LlMnoQDNe7vnNAlwWUFvDxY2",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Santas Uncertain Bags",
+              "metric": "SantaWeightedBins",
+              "link": "https://www.kaggle.com/c/santas-uncertain-bags",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/santas-uncertain-bags/discussion/28286",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Feb 2022",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-feb-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-feb-2022/discussion/310359",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-feb-2022/discussion/310367",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "H&M Personalized Fashion Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324070",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324197",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324129",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324094",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324098",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324075",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324278",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324185",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324127",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324223",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324084",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324310",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324158",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324595",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/325407",
+                  "kind": "code"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324152",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324085",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324293",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324350",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324411",
+                  "kind": "description"
+                },
+                {
+                  "rank": "46",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324205",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324221",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 24
+            },
+            {
+              "title": "Tabular Playground Series - Apr 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021/discussion/235739",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Dec 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021/discussion/298304",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_z7qx8gDIlmfXEIPWxRUDy4Au",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:37:08.302773+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Santas Uncertain Bags\"}",
+          "tool_call_id": "call_YR3A6yyW7ghrg2JaBBS8p5We",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Tabular Playground Series - Feb 2022\"}",
+          "tool_call_id": "call_nxTEEU21xQRQLfVqibbULsBI",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"H&M Personalized Fashion Recommendations\"}",
+          "tool_call_id": "call_QJBgT79kj5mJWbfNxX5rCbRh",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Tabular Playground Series - Apr 2021\"}",
+          "tool_call_id": "call_qSfWMazeiCy65P98oOgQCIib",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Tabular Playground Series - Dec 2021\"}",
+          "tool_call_id": "call_TsAwZ03mIzYwRw2PA5diRvqD",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1912,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 118,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:37:08+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czvu8swDL4EMjlxMTWkzLBk6M29Jf",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Santas Uncertain Bags",
+              "metric": "SantaWeightedBins",
+              "link": "https://www.kaggle.com/c/santas-uncertain-bags",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/santas-uncertain-bags/discussion/28286",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Helping Santas Helpers",
+              "metric": "Packing Santas Sleigh Metric",
+              "link": "https://www.kaggle.com/c/helping-santas-helpers",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/helping-santas-helpers/discussion/12441",
+                  "kind": "code"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/helping-santas-helpers/discussion/11452",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Santa 2023 - The Polytope Permutation Puzzle",
+              "metric": "Santa 2023 Metric",
+              "link": "https://www.kaggle.com/c/santa-2023",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santa-2023/discussion/472405",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/santa-2023/discussion/473094",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/santa-2023/discussion/472437",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/santa-2023/discussion/472489",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/santa-2023/discussion/472530",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Santas Stolen Sleigh",
+              "metric": "SantaRideShare",
+              "link": "https://www.kaggle.com/c/santas-stolen-sleigh",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santas-stolen-sleigh/discussion/18312",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/woshialex/SantaStolenSleigh",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2016/01/28/santas-stolen-sleigh-winners-interview-2nd-place-woshialex-weezy/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2016/03/03/santas-stolen-sleigh-winners-interview-3rd-place-marcin-marek/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://github.com/nagadomi/kaggle-santas-stolen-sleigh",
+                  "kind": "code"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/santas-stolen-sleigh/discussion/18336",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/danieloliveira56/SantaStolenSleigh",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Santa 2021 - The Merry Movie Montage",
+              "metric": "Santas Superpermutations 2021",
+              "link": "https://www.kaggle.com/c/santa-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/santa-2021/discussion/300509",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/santa-2021/discussion/300543",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/santa-2021/discussion/300572",
+                  "kind": "code"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/santa-2021/discussion/300901",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_YR3A6yyW7ghrg2JaBBS8p5We",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:37:10.988037+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Tabular Playground Series - Apr 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021/discussion/235739",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Nov 2022",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/369674",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/370126",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/369731",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Tabular Playground Series - Dec 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021/discussion/298304",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Sep 2022",
+              "metric": "SMAPE",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-sep-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-sep-2022/discussion/356746",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-sep-2022/discussion/356643",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Tabular Playground Series - Jul 2022",
+              "metric": "Adjusted Rand Index",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-jul-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-jul-2022/discussion/341023",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_nxTEEU21xQRQLfVqibbULsBI",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:37:10.995579+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "H&M Personalized Fashion Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324070",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324197",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324129",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324094",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324098",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324075",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324278",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324185",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324127",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324223",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324084",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324310",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324158",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324595",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/325407",
+                  "kind": "code"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324152",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324085",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324293",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324350",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324411",
+                  "kind": "description"
+                },
+                {
+                  "rank": "46",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324205",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324221",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 24
+            },
+            {
+              "title": "iMaterialist Challenge (Fashion) at FGVC5",
+              "metric": "Mean F-Score Beta",
+              "link": "https://www.kaggle.com/c/imaterialist-challenge-fashion-2018",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/imaterialist-challenge-fashion-2018/discussion/57944",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/imaterialist-challenge-fashion-2018/discussion/57934",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/imaterialist-challenge-fashion-2018/discussion/57984",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://github.com/gombru/iMaterialistFashion",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Expedia Hotel Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/expedia-hotel-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/expedia-hotel-recommendations/discussion/21607",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://github.com/danielkorzekwa/expedia-hotel-predictor",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/mandalsubhajit/Kaggle--Expedia-Hotel-Recommendations",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/zzsza/Kaggle_Expedia-hotel-recommendations",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "iMaterialist (Fashion) 2020 at FGVC7",
+              "metric": "IntersectionOverUnionObjectSegmentationWithF1",
+              "link": "https://www.kaggle.com/c/imaterialist-fashion-2020-fgvc7",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2020-fgvc7/discussion/154306",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "iMaterialist (Fashion) 2019 at FGVC6",
+              "metric": "IntersectionOverUnionObjectSegmentationWithClassification",
+              "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95247#latest-567841",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95233#latest-551075",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95234#latest-555537",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/91536#latest-547636",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95249#latest-550784",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95238#latest-566318",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95281#latest-549999",
+                  "kind": "description"
+                },
+                {
+                  "rank": "33",
+                  "link": "https://www.kaggle.com/c/imaterialist-fashion-2019-FGVC6/discussion/95130#latest-549956",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 8
+            }
+          ],
+          "tool_call_id": "call_QJBgT79kj5mJWbfNxX5rCbRh",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:37:10.998118+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Tabular Playground Series - Apr 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021/discussion/235739",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Nov 2022",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/369674",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/370126",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/369731",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Tabular Playground Series - Dec 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021/discussion/298304",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Jul 2022",
+              "metric": "Adjusted Rand Index",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-jul-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-jul-2022/discussion/341023",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Sep 2022",
+              "metric": "SMAPE",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-sep-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-sep-2022/discussion/356746",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-sep-2022/discussion/356643",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_qSfWMazeiCy65P98oOgQCIib",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:37:10.997468+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Tabular Playground Series - Apr 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021/discussion/235739",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Dec 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021/discussion/298304",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Nov 2022",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/369674",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/370126",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/369731",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Tabular Playground Series - Jul 2022",
+              "metric": "Adjusted Rand Index",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-jul-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-jul-2022/discussion/341023",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - May 2021",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021/discussion/243054",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021/discussion/243093",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021/discussion/243028",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_TsAwZ03mIzYwRw2PA5diRvqD",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:37:10.999898+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "No strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 6889,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1920,
+        "output_tokens": 10,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:37:11+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-CzvuBtCw3V7c3iADx3npuIRwmDh9p",
+      "finish_reason": "stop"
+    }
+  ]
+}

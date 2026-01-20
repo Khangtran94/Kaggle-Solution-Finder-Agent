@@ -1,0 +1,1119 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Are links plausible and correctly associated with the competition?",
+          "timestamp": "2026-01-20T02:42:46.154249+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"Are links plausible and correctly associated with the competition?\"}",
+          "tool_call_id": "call_kDxzvayznUIvzmhPQS1nNdey",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 650,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 23,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:46+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvzaAJl5xXVcqYSZXkDpNHOCAShy",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Click-Through Rate Prediction",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/avazu-ctr-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/owenzhang/kaggle-avazu",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Google AI Open Images - Visual Relationship Track",
+              "metric": "OpenImagesVisualRelations",
+              "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64651",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64642",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64826",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64630",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64631",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Cause-effect pairs",
+              "metric": "Bidirectional AUC for Cause Effect Pairs",
+              "link": "https://www.kaggle.com/c/cause-effect-pairs",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/jarfo/cause-effect",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_kDxzvayznUIvzmhPQS1nNdey",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:46.986460+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"link plausibility competition association\"}",
+          "tool_call_id": "call_ZaKUJfHYqY5Qsiwe2qAlLUfW",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1251,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 18,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:47+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvzbVCkUVbcs8UGyhuX8tVtDqOg8",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Cause-effect pairs",
+              "metric": "Bidirectional AUC for Cause Effect Pairs",
+              "link": "https://www.kaggle.com/c/cause-effect-pairs",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/jarfo/cause-effect",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Google AI Open Images - Visual Relationship Track",
+              "metric": "OpenImagesVisualRelations",
+              "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64651",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64642",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64826",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64630",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64631",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "iNaturalist 2019 at FGVC6",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-2019-fgvc6",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/praxitelisk/iNaturalist-2019",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Click-Through Rate Prediction",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/avazu-ctr-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/owenzhang/kaggle-avazu",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_ZaKUJfHYqY5Qsiwe2qAlLUfW",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:47.789444+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"competition link whether valid or correct\"}",
+          "tool_call_id": "call_GYg3x21ef3L392kZWPkw6gK6",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1845,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 19,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:48+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvzcxWqjnHUJvxwvVGFLcsEVsmuw",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Click-Through Rate Prediction",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/avazu-ctr-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/owenzhang/kaggle-avazu",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Linking Writing Processes to Writing Quality",
+              "metric": "Mean Squared Error",
+              "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466873",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466775",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466906",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466961",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/467848",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466941",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/467328",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466993",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/467674",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466789",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466771",
+                  "kind": "description"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466839",
+                  "kind": "description"
+                },
+                {
+                  "rank": "38",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466862",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466774",
+                  "kind": "description"
+                },
+                {
+                  "rank": "44",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466965",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "Cause-effect pairs",
+              "metric": "Bidirectional AUC for Cause Effect Pairs",
+              "link": "https://www.kaggle.com/c/cause-effect-pairs",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/jarfo/cause-effect",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_GYg3x21ef3L392kZWPkw6gK6",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:49.487027+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"competition links validation assessment\"}",
+          "tool_call_id": "call_RluFJY5lPEY02w3i19OLFyKw",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2755,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1792,
+        "output_tokens": 17,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:49+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvzdxCkP5NIxsvWG7uzXKDcp1fZ3",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Click-Through Rate Prediction",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/avazu-ctr-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/owenzhang/kaggle-avazu",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Linking Writing Processes to Writing Quality",
+              "metric": "Mean Squared Error",
+              "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466873",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466775",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466906",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466961",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/467848",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466941",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/467328",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466993",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/467674",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466789",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466771",
+                  "kind": "description"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466839",
+                  "kind": "description"
+                },
+                {
+                  "rank": "38",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466862",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466774",
+                  "kind": "description"
+                },
+                {
+                  "rank": "44",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466965",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Data Science London + Scikit-learn",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/data-science-london-scikit-learn",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "7",
+                  "link": "https://github.com/elenacuoco/London-scikit",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Facebook V; Predicting Check Ins",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/ttvand/Facebook-V",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/mkliegl/kaggle-Facebook-V",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/aikinogard/5th_place_solution_facebook_check_ins",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22123",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22078#126195",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/pershinmr/kaggle_facebook_v",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22078#126222",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://github.com/tonyzhangrt/facebook-checkin",
+                  "kind": "code"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22189",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 9
+            }
+          ],
+          "tool_call_id": "call_RluFJY5lPEY02w3i19OLFyKw",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:50.396067+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"validity of competition links\"}",
+          "tool_call_id": "call_ZySiMWbPX06ETeZZr4oS4H6k",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3861,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2688,
+        "output_tokens": 18,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:50+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czvzep2lNzFvtgbo65IYbAasVQfpp",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Click-Through Rate Prediction",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/avazu-ctr-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/owenzhang/kaggle-avazu",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Cause-effect pairs",
+              "metric": "Bidirectional AUC for Cause Effect Pairs",
+              "link": "https://www.kaggle.com/c/cause-effect-pairs",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/jarfo/cause-effect",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Open Images 2019 - Visual Relationship",
+              "metric": "OpenImagesVisualRelations",
+              "link": "https://www.kaggle.com/c/open-images-2019-visual-relationship",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/open-images-2019-visual-relationship/discussion/111361",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/open-images-2019-visual-relationship/discussion/110935",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_ZySiMWbPX06ETeZZr4oS4H6k",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:51.287577+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"competition links credibility and correctness\"}",
+          "tool_call_id": "call_rP3ghOfhrovxWz7pO8zJXGIy",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 4358,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 3840,
+        "output_tokens": 18,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:51+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czvzfjt0HXFQwTGYZf23UlrJHaDuV",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Data Science London + Scikit-learn",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/data-science-london-scikit-learn",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "7",
+                  "link": "https://github.com/elenacuoco/London-scikit",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Linking Writing Processes to Writing Quality",
+              "metric": "Mean Squared Error",
+              "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466873",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466775",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466906",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466961",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/467848",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466941",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/467328",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466993",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/467674",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466789",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466771",
+                  "kind": "description"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466839",
+                  "kind": "description"
+                },
+                {
+                  "rank": "38",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466862",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466774",
+                  "kind": "description"
+                },
+                {
+                  "rank": "44",
+                  "link": "https://www.kaggle.com/c/linking-writing-processes-to-writing-quality/discussion/466965",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "Click-Through Rate Prediction",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/avazu-ctr-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/owenzhang/kaggle-avazu",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Challenges in Representation Learning; The Black Box Learning Challenge",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/challenges-in-representation-learning-the-black-box-learning-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-the-black-box-learning-challenge/discussion/4717",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-the-black-box-learning-challenge/discussion/4726",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_rP3ghOfhrovxWz7pO8zJXGIy",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:42:52.156928+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "No strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 5294,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 4352,
+        "output_tokens": 10,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:42:52+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-CzvzgH4xhEaWUss5QnGRnTtXGci92",
+      "finish_reason": "stop"
+    }
+  ]
+}

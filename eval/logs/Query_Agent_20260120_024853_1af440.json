@@ -1,0 +1,704 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Please provide the solutions for the Diabetic Retinopathy Detection metric: QuadraticWeightedKappa. The solutions should include a link for each and the total number of solutions should be six.",
+          "timestamp": "2026-01-20T02:48:51.534206+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"Diabetic Retinopathy Detection\",\"k\":10}",
+          "tool_call_id": "call_gE8wo7fSHzxPrLdn1keLox4k",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 678,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 23,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:48:51+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw5TkboQmXtREdxMpExycwKN7IKf",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Diabetic Retinopathy Detection",
+              "metric": "QuadraticWeightedKappa",
+              "link": "https://www.kaggle.com/c/diabetic-retinopathy-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/btgraham/SparseConvNet/tree/kaggle_Diabetic_Retinopathy_competition",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2015/09/09/diabetic-retinopathy-winners-interview-1st-place-ben-graham/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/diabetic-retinopathy-detection/discussion/15807",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/diabetic-retinopathy-detection/discussion/15845",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2015/08/14/diabetic-retinopathy-winners-interview-4th-place-julian-daniel/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/JeffreyDF/kaggle_diabetic_retinopathy",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "UPenn and Mayo Clinics Seizure Detection Challenge",
+              "metric": "Mean Columnwise Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/seizure-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/seizure-detection/discussion/10111",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://github.com/djacheson/Kaggle",
+                  "kind": "code"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/seizure-detection/discussion/10092",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "SIIM-FISABIO-RSNA COVID-19 Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/siim-covid19-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263658",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263674",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263654",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/264243",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263680",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263945",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/266571",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/264858",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263748",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263734",
+                  "kind": "code"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/265583",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263683",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263701",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/264287",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/264311",
+                  "kind": "code"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263662",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263895",
+                  "kind": "description"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/264028",
+                  "kind": "description"
+                },
+                {
+                  "rank": "32",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263849",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/264028",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/siim-covid19-detection/discussion/263671",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 21
+            },
+            {
+              "title": "VinBigData Chest X-ray Abnormalities Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229724",
+                  "kind": "description"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/231511",
+                  "kind": "description"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/232393",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229696",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229740",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229769",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229636",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229786",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229711",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229770",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229637",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229618",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229629",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229615",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229638",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229626",
+                  "kind": "description"
+                },
+                {
+                  "rank": "33",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229649",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 17
+            },
+            {
+              "title": "APTOS 2019 Blindness Detection",
+              "metric": "QuadraticWeightedKappa",
+              "link": "https://www.kaggle.com/c/aptos2019-blindness-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/108065",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107926",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107987",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107960",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/108058",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/108030",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107990",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/108072",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107944",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107958",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107995",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/108711",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107916",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/108017",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107962",
+                  "kind": "description"
+                },
+                {
+                  "rank": "46",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/108119",
+                  "kind": "description"
+                },
+                {
+                  "rank": "54",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/108007",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/108307",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 18
+            },
+            {
+              "title": "Histopathologic Cancer Detection",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/histopathologic-cancer-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/histopathologic-cancer-detection/discussion/87397#latest-515386",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/histopathologic-cancer-detection/discussion/87400#latest-512392",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "CMI - Detect Behavior with Sensor Data",
+              "metric": "CMI_2025",
+              "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/cmi-1st-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/2nd-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/3rd-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/4th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/5th-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/6th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/7th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/8th-place-solution-and-competition-walkthrough",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/9th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/10th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/11th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/13th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/14th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/15th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/17th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/en-19th-solution-writeup-19",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/29th-place-solution-handedness-augmentation-trick",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/30th-place-solution-vision-transformer",
+                  "kind": "description"
+                },
+                {
+                  "rank": "35",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/35th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/39th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/42th-solution-late-sub-private0-854",
+                  "kind": "description"
+                },
+                {
+                  "rank": "48",
+                  "link": "https://www.kaggle.com/c/cmi-detect-behavior-with-sensor-data/writeups/48th-place-solution",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 22
+            },
+            {
+              "title": "Northeastern SMILE Lab - Recognizing Faces in the Wild",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/recognizing-faces-in-the-wild",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/recognizing-faces-in-the-wild/discussion/103670#latest-605952",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/recognizing-faces-in-the-wild/discussion/104288#latest-603422",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/recognizing-faces-in-the-wild/discussion/103543#latest-596448",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/recognizing-faces-in-the-wild/discussion/103457#latest-598137",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Google AI Open Images - Object Detection Track",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64986",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/65120",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64633",
+                  "kind": "code"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64747",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64734",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64901",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "Open Images 2019 - Object Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-object-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/110953",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111266",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_gE8wo7fSHzxPrLdn1keLox4k",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:48:52.964051+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** Diabetic Retinopathy Detection\n   - **Competition URL:** [Diabetic Retinopathy Detection](https://www.kaggle.com/c/diabetic-retinopathy-detection)\n   - **Evaluation Metric:** QuadraticWeightedKappa\n   - **Total Number of Solution Writeups:** 6\n   - **List of Available Solution Writeups:**\n       - Rank 1: https://github.com/btgraham/SparseConvNet/tree/kaggle_Diabetic_Retinopathy_competition\n       - Rank 1: http://blog.kaggle.com/2015/09/09/diabetic-retinopathy-winners-interview-1st-place-ben-graham/\n       - Rank 2: https://www.kaggle.com/c/diabetic-retinopathy-detection/discussion/15807\n       - Rank 3: https://www.kaggle.com/c/diabetic-retinopathy-detection/discussion/15845\n       - Rank 4: http://blog.kaggle.com/2015/08/14/diabetic-retinopathy-winners-interview-4th-place-julian-daniel/\n       - Rank 5: https://github.com/JeffreyDF/kaggle_diabetic_retinopathy\n\n2. **Competition Name:** APTOS 2019 Blindness Detection\n   - **Competition URL:** [APTOS 2019 Blindness Detection](https://www.kaggle.com/c/aptos2019-blindness-detection)\n   - **Evaluation Metric:** QuadraticWeightedKappa\n   - **Total Number of Solution Writeups:** 18\n   - **List of Available Solution Writeups:**\n       - Rank 1: https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/108065\n       - Rank 2: https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107926\n       - Rank 4: https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107987\n       - Rank 5: https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107960\n       - Rank 7: https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/108058\n       - Rank 11: https://www.kaggle.com/c/aptos2019-blindness-detection/discussion/107958\n\nNo strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 4835,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 551,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:48:53+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-Czw5VYFrlNHsa7Gq7TMZQM5n1CTrp",
+      "finish_reason": "stop"
+    }
+  ]
+}

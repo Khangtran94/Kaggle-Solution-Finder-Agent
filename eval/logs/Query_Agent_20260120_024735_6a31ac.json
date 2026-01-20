@@ -1,0 +1,2432 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Would the same query reasonably yield the same set of results? Is the ordering stable and logically justified?",
+          "timestamp": "2026-01-20T02:47:28.899543+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"Would the same query reasonably yield the same set of results? Is the ordering stable and logically justified?\"}",
+          "tool_call_id": "call_26zvIdOJw3zrWks5YzR5II29",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 660,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 33,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:47:29+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw4946UYoWvcQSoq3mdAg1yTFMwH",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "LLM 20 Questions",
+              "metric": "llm_20_questions",
+              "link": "https://www.kaggle.com/c/llm-20-questions",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531883",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531104",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531081",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/530996",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "Google QUEST Q&A Labeling",
+              "metric": "Mean Columnwise Spearmans r (rank correlation  coefficient)",
+              "link": "https://www.kaggle.com/c/google-quest-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129840",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129978",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129927",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129896",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129875",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130243",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129857",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130167",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129901",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129915",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129839",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129914",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129926",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130036",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129859",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130112",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130010",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129895",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130320",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130158",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129904",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130043",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130076",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130050",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130056",
+                  "kind": "description"
+                },
+                {
+                  "rank": "44",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129835",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130077",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129885",
+                  "kind": "description"
+                },
+                {
+                  "rank": "52",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130195",
+                  "kind": "description"
+                },
+                {
+                  "rank": "55",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129893",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129844",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 33
+            },
+            {
+              "title": "Tabular Playground Series - Feb 2022",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-feb-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-feb-2022/discussion/310359",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-feb-2022/discussion/310367",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "LLM Prompt Recovery",
+              "metric": "LLM Nerd-Off Sharpened Cosine Similarity",
+              "link": "https://www.kaggle.com/c/llm-prompt-recovery",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494343",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494497",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494621",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494362",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/499079",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494755",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494650",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494689",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494526",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494536",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494641",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 11
+            },
+            {
+              "title": "Tabular Playground Series - Dec 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021/discussion/298304",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_26zvIdOJw3zrWks5YzR5II29",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:47:30.180658+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"LLM 20 Questions\", \"k\": 5}",
+          "tool_call_id": "call_jZBWZZdv83Sv0mKUZwLb2Iyx",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Google QUEST Q&A Labeling\", \"k\": 5}",
+          "tool_call_id": "call_HQ3kJbEDzHb2YShyKt3LokIt",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Tabular Playground Series - Feb 2022\", \"k\": 5}",
+          "tool_call_id": "call_A3gJ3iXuaPfH9IEsg7GENRMc",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"LLM Prompt Recovery\", \"k\": 5}",
+          "tool_call_id": "call_bHNpFkl14azWuBbbSXDHXeIh",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Tabular Playground Series - Dec 2021\", \"k\": 5}",
+          "tool_call_id": "call_632EVEIitDTN50Ksbj9pO906",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2731,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 134,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:47:30+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw4AUYjKECQK4LuN2wGhXocx21IZ",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "LLM 20 Questions",
+              "metric": "llm_20_questions",
+              "link": "https://www.kaggle.com/c/llm-20-questions",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531883",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531104",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531081",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/530996",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "LLMs - You Cant Please Them All",
+              "metric": "LLMYCPTA metric 20241120",
+              "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566372",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566602",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566515",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566479",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566322",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566333",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566469",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566386",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566380",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/567031",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566324",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566404",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566345",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566376",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "LLM Prompt Recovery",
+              "metric": "LLM Nerd-Off Sharpened Cosine Similarity",
+              "link": "https://www.kaggle.com/c/llm-prompt-recovery",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494343",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494497",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494621",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494362",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/499079",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494755",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494650",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494689",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494526",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494536",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494641",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 11
+            },
+            {
+              "title": "Kaggle - LLM Science Exam",
+              "metric": "MAP@{K}",
+              "link": "https://www.kaggle.com/c/kaggle-llm-science-exam",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446422",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/448256",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446358",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446307",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446293",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/447647",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/447155",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446248",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446660",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446301",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446231",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446484",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446816",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446242",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446261",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446395",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/448114",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/447589",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446610",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446233",
+                  "kind": "description"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446455",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446369",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/447245",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446788",
+                  "kind": "description"
+                },
+                {
+                  "rank": "49",
+                  "link": "https://www.kaggle.com/c/kaggle-llm-science-exam/discussion/446355",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 25
+            },
+            {
+              "title": "LLM - Detect AI Generated Text",
+              "metric": "Roc Auc Score",
+              "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/473295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470333",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470179",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470093",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471831",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470255",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470396",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470593",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470193",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470061",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470181",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470148",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470153",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470077",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470134",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470256",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470353",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471898",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470290",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471788",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 22
+            }
+          ],
+          "tool_call_id": "call_jZBWZZdv83Sv0mKUZwLb2Iyx",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:47:33.363230+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Google QUEST Q&A Labeling",
+              "metric": "Mean Columnwise Spearmans r (rank correlation  coefficient)",
+              "link": "https://www.kaggle.com/c/google-quest-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129840",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129978",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129927",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129896",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129875",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130243",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129857",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130167",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129901",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129915",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129839",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129914",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129926",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130036",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129859",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130112",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130010",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129895",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130320",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130158",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129904",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130043",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130076",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130050",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130056",
+                  "kind": "description"
+                },
+                {
+                  "rank": "44",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129835",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130077",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129885",
+                  "kind": "description"
+                },
+                {
+                  "rank": "52",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/130195",
+                  "kind": "description"
+                },
+                {
+                  "rank": "55",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129893",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/google-quest-challenge/discussion/129844",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 33
+            },
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "H&M Personalized Fashion Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324070",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324197",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324129",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324094",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324098",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324075",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324278",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324185",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324127",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324223",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324084",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324310",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324158",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324595",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/325407",
+                  "kind": "code"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324152",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324085",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324293",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324350",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324411",
+                  "kind": "description"
+                },
+                {
+                  "rank": "46",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324205",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324221",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 24
+            },
+            {
+              "title": "Coupon Purchase Prediction",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/coupon-purchase-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/coupon-purchase-prediction/discussion/16736#93760",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2015/10/21/recruit-coupon-purchase-winners-interview-2nd-place-halla-yang/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/threecourse/kaggle-coupon-purchase-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/nagadomi/kaggle-coupon-purchase-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/daxiongshu/Coupon-Purchase-Prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/mawicks/KaggleCouponContest",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            }
+          ],
+          "tool_call_id": "call_HQ3kJbEDzHb2YShyKt3LokIt",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:47:33.399159+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Tabular Playground Series - Apr 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021/discussion/235739",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Nov 2022",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/369674",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/370126",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/369731",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Tabular Playground Series - Dec 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021/discussion/298304",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Sep 2022",
+              "metric": "SMAPE",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-sep-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-sep-2022/discussion/356746",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-sep-2022/discussion/356643",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Tabular Playground Series - Jul 2022",
+              "metric": "Adjusted Rand Index",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-jul-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-jul-2022/discussion/341023",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_A3gJ3iXuaPfH9IEsg7GENRMc",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:47:33.399210+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "LLM Prompt Recovery",
+              "metric": "LLM Nerd-Off Sharpened Cosine Similarity",
+              "link": "https://www.kaggle.com/c/llm-prompt-recovery",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494343",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494497",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494621",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494362",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/499079",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494755",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494650",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494689",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494526",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494536",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494641",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 11
+            },
+            {
+              "title": "LLMs - You Cant Please Them All",
+              "metric": "LLMYCPTA metric 20241120",
+              "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566372",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566602",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566515",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566479",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566322",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566333",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566469",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566386",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566380",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/567031",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566324",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566404",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566345",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566376",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "LLM - Detect AI Generated Text",
+              "metric": "Roc Auc Score",
+              "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/473295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470333",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470179",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470093",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471831",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470255",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470396",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470593",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470193",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470061",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470181",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470148",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470153",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470077",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470134",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470256",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470353",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471898",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470290",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471788",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 22
+            },
+            {
+              "title": "LLM 20 Questions",
+              "metric": "llm_20_questions",
+              "link": "https://www.kaggle.com/c/llm-20-questions",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531883",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531104",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531081",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/530996",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "LMSYS - Chatbot Arena Human Preference Predictions",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/lmsys-chatbot-arena",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/lmsys-chatbot-arena/discussion/527629",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/lmsys-chatbot-arena/discussion/527685",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/lmsys-chatbot-arena/discussion/527766",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/lmsys-chatbot-arena/discussion/529067",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/lmsys-chatbot-arena/discussion/527669",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/lmsys-chatbot-arena/discussion/527704",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/lmsys-chatbot-arena/discussion/527596",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/lmsys-chatbot-arena/discussion/527595",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/lmsys-chatbot-arena/discussion/528288",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/lmsys-chatbot-arena/discussion/527627",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/lmsys-chatbot-arena/discussion/527673",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/lmsys-chatbot-arena/discussion/527591",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            }
+          ],
+          "tool_call_id": "call_bHNpFkl14azWuBbbSXDHXeIh",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:47:33.393241+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Tabular Playground Series - Apr 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-apr-2021/discussion/235739",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Dec 2021",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-dec-2021/discussion/298304",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - Nov 2022",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/369674",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/370126",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-nov-2022/discussion/369731",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Tabular Playground Series - Jul 2022",
+              "metric": "Adjusted Rand Index",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-jul-2022",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-jul-2022/discussion/341023",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tabular Playground Series - May 2021",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021/discussion/243054",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021/discussion/243093",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/tabular-playground-series-may-2021/discussion/243028",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_632EVEIitDTN50Ksbj9pO906",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:47:33.399189+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"strong match LLM\",\"k\":5}",
+          "tool_call_id": "call_tSkVkyIw6pzEMnfXOHZh1Q9V",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 13524,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2816,
+        "output_tokens": 21,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:47:33+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw4DMTzro2oqrsYmYBI6DRekKcSF",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Shopee - Price Match Guarantee",
+              "metric": "Mean F-Score",
+              "link": "https://www.kaggle.com/c/shopee-product-matching",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238136",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238022",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238362",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238515",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238078",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238010",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238174",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238125",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238039",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238181",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238033",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238029",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/237972",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238146",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238126",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238322",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238110",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238382",
+                  "kind": "description"
+                },
+                {
+                  "rank": "48",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238263",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 21
+            },
+            {
+              "title": "LLM Prompt Recovery",
+              "metric": "LLM Nerd-Off Sharpened Cosine Similarity",
+              "link": "https://www.kaggle.com/c/llm-prompt-recovery",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494343",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494497",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494621",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494362",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/499079",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494755",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494650",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494689",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494526",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494536",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/llm-prompt-recovery/discussion/494641",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 11
+            },
+            {
+              "title": "LLMs - You Cant Please Them All",
+              "metric": "LLMYCPTA metric 20241120",
+              "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566372",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566602",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566515",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566479",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566322",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566333",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566469",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566386",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566380",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/567031",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566324",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566404",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566345",
+                  "kind": "description"
+                },
+                {
+                  "rank": "39",
+                  "link": "https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566376",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "LLM 20 Questions",
+              "metric": "llm_20_questions",
+              "link": "https://www.kaggle.com/c/llm-20-questions",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531883",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531104",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531081",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/530996",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "U.S. Patent Phrase to Phrase Matching",
+              "metric": "PearsonCorrelationCoefficient",
+              "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/332243",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/332234",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/332420",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/332418",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/332928",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/332492",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/332273",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/332567",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/332270",
+                  "kind": "description"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/334797",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/332355",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/332654",
+                  "kind": "description"
+                },
+                {
+                  "rank": "52",
+                  "link": "https://www.kaggle.com/c/us-patent-phrase-to-phrase-matching/discussion/333425",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 13
+            }
+          ],
+          "tool_call_id": "call_tSkVkyIw6pzEMnfXOHZh1Q9V",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:47:34.664411+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** LLM Prompt Recovery\n   - **Competition URL:** [LLM Prompt Recovery](https://www.kaggle.com/c/llm-prompt-recovery)\n   - **Evaluation Metric:** LLM Nerd-Off Sharpened Cosine Similarity\n   - **Total Number of Solution Writeups:** 11\n   - **List of Available Solution Writeups:**\n       - Rank 1: https://www.kaggle.com/c/llm-prompt-recovery/discussion/494343\n       - Rank 2: https://www.kaggle.com/c/llm-prompt-recovery/discussion/494497\n       - Rank 3: https://www.kaggle.com/c/llm-prompt-recovery/discussion/494621\n       - Rank 4: https://www.kaggle.com/c/llm-prompt-recovery/discussion/494362\n       - Rank 5: https://www.kaggle.com/c/llm-prompt-recovery/discussion/499079\n       - Rank 6: https://www.kaggle.com/c/llm-prompt-recovery/discussion/494755\n       - Rank 7: https://www.kaggle.com/c/llm-prompt-recovery/discussion/494650\n       - Rank 10: https://www.kaggle.com/c/llm-prompt-recovery/discussion/494689\n       - Rank 12: https://www.kaggle.com/c/llm-prompt-recovery/discussion/494526\n       - Rank 19: https://www.kaggle.com/c/llm-prompt-recovery/discussion/494536\n       - Rank 42: https://www.kaggle.com/c/llm-prompt-recovery/discussion/494641\n\n2. **Competition Name:** LLMs - You Cant Please Them All\n   - **Competition URL:** [LLMs - You Cant Please Them All](https://www.kaggle.com/c/llms-you-cant-please-them-all)\n   - **Evaluation Metric:** LLMYCPTA metric 20241120\n   - **Total Number of Solution Writeups:** 15\n   - **List of Available Solution Writeups:**\n       - Rank 1: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566372\n       - Rank 2: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566602\n       - Rank 3: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566515\n       - Rank 4: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566479\n       - Rank 5: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566322\n       - Rank 7: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566643\n       - Rank 8: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566333\n       - Rank 9: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566469\n       - Rank 11: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566386\n       - Rank 12: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566380\n       - Rank 13: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/567031\n       - Rank 22: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566324\n       - Rank 24: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566404\n       - Rank 29: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566345\n       - Rank 39: https://www.kaggle.com/c/llms-you-cant-please-them-all/discussion/566376\n\n3. **Competition Name:** LLM 20 Questions\n   - **Competition URL:** [LLM 20 Questions](https://www.kaggle.com/c/llm-20-questions)\n   - **Evaluation Metric:** llm_20_questions\n   - **Total Number of Solution Writeups:** 12\n   - **List of Available Solution Writeups:**\n       - Rank 1: https://www.kaggle.com/c/llm-20-questions/discussion/531106\n       - Rank 2: https://www.kaggle.com/c/llm-20-questions/discussion/529643\n       - Rank 3: https://www.kaggle.com/c/llm-20-questions/discussion/531387\n       - Rank 4: https://www.kaggle.com/c/llm-20-questions/discussion/531883\n       - Rank 5: https://www.kaggle.com/c/llm-20-questions/discussion/531128\n       - Rank 9: https://www.kaggle.com/c/llm-20-questions/discussion/529525\n       - Rank 10: https://www.kaggle.com/c/llm-20-questions/discussion/531569\n       - Rank 11: https://www.kaggle.com/c/llm-20-questions/discussion/529931\n       - Rank 20: https://www.kaggle.com/c/llm-20-questions/discussion/531083\n       - Rank 21: https://www.kaggle.com/c/llm-20-questions/discussion/531104\n       - Rank 26: https://www.kaggle.com/c/llm-20-questions/discussion/531081\n       - Rank 45: https://www.kaggle.com/c/llm-20-questions/discussion/530996\n\nNo strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 16135,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 13440,
+        "output_tokens": 1351,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:47:35+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-Czw4F1RsK5foqnEyoGx63C6gC9F9r",
+      "finish_reason": "stop"
+    }
+  ]
+}

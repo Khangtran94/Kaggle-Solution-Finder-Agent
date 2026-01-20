@@ -1,0 +1,1972 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Are links plausible and correctly associated with the competition?",
+          "timestamp": "2026-01-20T02:50:37.947663+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"Are links plausible and correctly associated with the competition?\"}",
+          "tool_call_id": "call_7NrYFnWeETCuUfRR2R1LSHrL",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 650,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 23,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:50:38+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw7CFy9m0nNJxX7ygacDFtoiMNVf",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Click-Through Rate Prediction",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/avazu-ctr-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/owenzhang/kaggle-avazu",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Google AI Open Images - Visual Relationship Track",
+              "metric": "OpenImagesVisualRelations",
+              "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64651",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64642",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64826",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64630",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64631",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Cause-effect pairs",
+              "metric": "Bidirectional AUC for Cause Effect Pairs",
+              "link": "https://www.kaggle.com/c/cause-effect-pairs",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/jarfo/cause-effect",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_7NrYFnWeETCuUfRR2R1LSHrL",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:50:39.388610+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"The Hunt for Prohibited Content\"}",
+          "tool_call_id": "call_hUyFyp6J7k49FEZdIafM0zmf",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Click-Through Rate Prediction\"}",
+          "tool_call_id": "call_IcpK7bUELTBGyaeXteq4skcw",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Personalized Web Search Challenge\"}",
+          "tool_call_id": "call_sl1ZCnZhl1sNLSyes4YMprxL",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Google AI Open Images Visual Relationship Track\"}",
+          "tool_call_id": "call_PkKHAi5UFBA2hyh8vVMt4afj",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Cause-effect pairs\"}",
+          "tool_call_id": "call_F6YV9Wx5jNkGo9TIoDHn0m8Z",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1251,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 107,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:50:39+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw7DHUvHwvH9VwSQg3yklwfFbNnj",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Open Images 2019 - Object Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-object-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/110953",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111266",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2022 - FGVC9",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328281",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328345",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328237",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2021 - FGVC8",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242087",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242030",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "NIPS 2017; Non-targeted Adversarial Attack",
+              "metric": "Score",
+              "link": "https://www.kaggle.com/c/nips-2017-non-targeted-adversarial-attack",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/dongyp13/Non-Targeted-Adversarial-Attacks",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/nips-2017-non-targeted-adversarial-attack/discussion/43413",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/anlthms/nips-2017",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/erko/nips17-attack",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_hUyFyp6J7k49FEZdIafM0zmf",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:50:42.279845+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Click-Through Rate Prediction",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/avazu-ctr-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/owenzhang/kaggle-avazu",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Outbrain Click Prediction",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/outbrain-click-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/alno/kaggle-outbrain-click-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2017/03/17/outbrain-click-prediction-competition-winners-interview-2nd-place-team-brain-afk-darragh-marios-mathias-alexey/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/daxiongshu/light-ffm",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/outbrain-click-prediction/discussion/27923",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/outbrain-click-prediction/discussion/27926",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://github.com/alexeygrigorev/outbrain-click-prediction-kaggle",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "Coupon Purchase Prediction",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/coupon-purchase-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/coupon-purchase-prediction/discussion/16736#93760",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2015/10/21/recruit-coupon-purchase-winners-interview-2nd-place-halla-yang/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/threecourse/kaggle-coupon-purchase-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/nagadomi/kaggle-coupon-purchase-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/daxiongshu/Coupon-Purchase-Prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/mawicks/KaggleCouponContest",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "Avito Context Ad Clicks",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/avito-context-ad-clicks",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/owenzhang/kaggle-avito",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2015/08/26/avito-winners-interview-1st-place-owen-zhang/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/Gzsiceberg/kaggle-avito",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2015/08/21/avito-winners-interview-2nd-place-changsheng-gu-aka-gzs_iceberg/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/diefimov/avito_context_click_2015",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/avito-context-ad-clicks/discussion/15606#87421",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/avito-context-ad-clicks/discussion/15606#87438",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Facebook V; Predicting Check Ins",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/ttvand/Facebook-V",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/mkliegl/kaggle-Facebook-V",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/aikinogard/5th_place_solution_facebook_check_ins",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22123",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22078#126195",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/pershinmr/kaggle_facebook_v",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22078#126222",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://github.com/tonyzhangrt/facebook-checkin",
+                  "kind": "code"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22189",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 9
+            }
+          ],
+          "tool_call_id": "call_IcpK7bUELTBGyaeXteq4skcw",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:50:42.278189+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "dunnhumbys Shopper Challenge",
+              "metric": "% Correct Visits",
+              "link": "https://www.kaggle.com/c/dunnhumbychallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Challenges in Representation Learning; Facial Expression Recognition Challenge",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/discussion/4676#25019",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/discussion/4676#25022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "iNaturalist Challenge at FGVC 2017",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-challenge-at-fgvc-2017",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://github.com/phunterlau/iNaturalist",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_sl1ZCnZhl1sNLSyes4YMprxL",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:50:42.278116+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Google AI Open Images - Visual Relationship Track",
+              "metric": "OpenImagesVisualRelations",
+              "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64651",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64642",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64826",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64630",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64631",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Google AI Open Images - Object Detection Track",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64986",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/65120",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64633",
+                  "kind": "code"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64747",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64734",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64901",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "Open Images 2019 - Visual Relationship",
+              "metric": "OpenImagesVisualRelations",
+              "link": "https://www.kaggle.com/c/open-images-2019-visual-relationship",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/open-images-2019-visual-relationship/discussion/111361",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/open-images-2019-visual-relationship/discussion/110935",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Open Images 2019 - Instance Segmentation",
+              "metric": "OpenImagesObjDetectionSegmentationAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation/discussion/110983",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation/discussion/111351",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation/discussion/110908",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Open Images 2019 - Object Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-object-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/110953",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111266",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_PkKHAi5UFBA2hyh8vVMt4afj",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:50:42.278212+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Cause-effect pairs",
+              "metric": "Bidirectional AUC for Cause Effect Pairs",
+              "link": "https://www.kaggle.com/c/cause-effect-pairs",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/jarfo/cause-effect",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "CONNECTOMICS",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/connectomics",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/asutera/kaggle-connectomics",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Mechanisms of Action (MoA) Prediction",
+              "metric": "Mean Columnwise Log Loss",
+              "link": "https://www.kaggle.com/c/lish-moa",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/201510",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200736",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/202256",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/202078",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200808",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200533",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200784",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200992",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200585",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/201565",
+                  "kind": "code"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200630",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200679",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200798",
+                  "kind": "description"
+                },
+                {
+                  "rank": "35",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200795",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200552",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "Google Research - Identify Contrails to Reduce Global Warming",
+              "metric": "contrails_global_dice",
+              "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430618",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430491",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430685",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432998",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430549",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430581",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430691",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430543",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430479",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432690",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432254",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430904",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430483",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430794",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430684",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430476",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432282",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 17
+            },
+            {
+              "title": "Predict Grant Applications",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/unimelb",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/02/21/jeremy-howard-on-winning-the-predict-grant-applications-competition/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/02/21/quan-sun-on-finishing-in-second-place-in-predict-grant-applications/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_F6YV9Wx5jNkGo9TIoDHn0m8Z",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:50:42.273088+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"The Hunt for Prohibited Content\"}",
+          "tool_call_id": "call_KCTqCsQXfgglHosA22Pr1rmM",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Click-Through Rate Prediction\"}",
+          "tool_call_id": "call_nPKzdqgsMEjKPk4VBgqL2AVe",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Personalized Web Search Challenge\"}",
+          "tool_call_id": "call_u46p7Q71iZEpszLqqWIXXIX1",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Google AI Open Images - Visual Relationship Track\"}",
+          "tool_call_id": "call_ahPQm8DN84tStH7HdBSg1j9r",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Cause-effect pairs\"}",
+          "tool_call_id": "call_XPoEHVGA3qNljdYu0zUEy7F5",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 7019,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1280,
+        "output_tokens": 108,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:50:42+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw7GYdIlRki89VjRRjcGSzkucAUC",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Open Images 2019 - Object Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-object-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/110953",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111266",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2022 - FGVC9",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328281",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328345",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328237",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2021 - FGVC8",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242087",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242030",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "NIPS 2017; Non-targeted Adversarial Attack",
+              "metric": "Score",
+              "link": "https://www.kaggle.com/c/nips-2017-non-targeted-adversarial-attack",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/dongyp13/Non-Targeted-Adversarial-Attacks",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/nips-2017-non-targeted-adversarial-attack/discussion/43413",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/anlthms/nips-2017",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/erko/nips17-attack",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_KCTqCsQXfgglHosA22Pr1rmM",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:50:45.403644+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Click-Through Rate Prediction",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/avazu-ctr-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avazu-ctr-prediction/discussion/12608",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/owenzhang/kaggle-avazu",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Outbrain Click Prediction",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/outbrain-click-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/alno/kaggle-outbrain-click-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2017/03/17/outbrain-click-prediction-competition-winners-interview-2nd-place-team-brain-afk-darragh-marios-mathias-alexey/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/daxiongshu/light-ffm",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/outbrain-click-prediction/discussion/27923",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/outbrain-click-prediction/discussion/27926",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://github.com/alexeygrigorev/outbrain-click-prediction-kaggle",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "Coupon Purchase Prediction",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/coupon-purchase-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/coupon-purchase-prediction/discussion/16736#93760",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2015/10/21/recruit-coupon-purchase-winners-interview-2nd-place-halla-yang/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/threecourse/kaggle-coupon-purchase-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/nagadomi/kaggle-coupon-purchase-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/daxiongshu/Coupon-Purchase-Prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/mawicks/KaggleCouponContest",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "Avito Context Ad Clicks",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/avito-context-ad-clicks",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/owenzhang/kaggle-avito",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2015/08/26/avito-winners-interview-1st-place-owen-zhang/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/Gzsiceberg/kaggle-avito",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2015/08/21/avito-winners-interview-2nd-place-changsheng-gu-aka-gzs_iceberg/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/diefimov/avito_context_click_2015",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/avito-context-ad-clicks/discussion/15606#87421",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/avito-context-ad-clicks/discussion/15606#87438",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Facebook V; Predicting Check Ins",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/ttvand/Facebook-V",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/mkliegl/kaggle-Facebook-V",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/aikinogard/5th_place_solution_facebook_check_ins",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22123",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22078#126195",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/pershinmr/kaggle_facebook_v",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22078#126222",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://github.com/tonyzhangrt/facebook-checkin",
+                  "kind": "code"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/facebook-v-predicting-check-ins/discussion/22189",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 9
+            }
+          ],
+          "tool_call_id": "call_nPKzdqgsMEjKPk4VBgqL2AVe",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:50:45.391883+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "dunnhumbys Shopper Challenge",
+              "metric": "% Correct Visits",
+              "link": "https://www.kaggle.com/c/dunnhumbychallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Challenges in Representation Learning; Facial Expression Recognition Challenge",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/discussion/4676#25019",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/discussion/4676#25022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "iNaturalist Challenge at FGVC 2017",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-challenge-at-fgvc-2017",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://github.com/phunterlau/iNaturalist",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_u46p7Q71iZEpszLqqWIXXIX1",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:50:45.403248+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Google AI Open Images - Visual Relationship Track",
+              "metric": "OpenImagesVisualRelations",
+              "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64651",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64642",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64826",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64630",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-visual-relationship-track/discussion/64631",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Open Images 2019 - Visual Relationship",
+              "metric": "OpenImagesVisualRelations",
+              "link": "https://www.kaggle.com/c/open-images-2019-visual-relationship",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/open-images-2019-visual-relationship/discussion/111361",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/open-images-2019-visual-relationship/discussion/110935",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Google AI Open Images - Object Detection Track",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64986",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/65120",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64633",
+                  "kind": "code"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64747",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64734",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64901",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "Open Images 2019 - Instance Segmentation",
+              "metric": "OpenImagesObjDetectionSegmentationAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation/discussion/110983",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation/discussion/111351",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation/discussion/110908",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Open Images 2019 - Object Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-object-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/110953",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111266",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_ahPQm8DN84tStH7HdBSg1j9r",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:50:45.398185+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Cause-effect pairs",
+              "metric": "Bidirectional AUC for Cause Effect Pairs",
+              "link": "https://www.kaggle.com/c/cause-effect-pairs",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/jarfo/cause-effect",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "CONNECTOMICS",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/connectomics",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/asutera/kaggle-connectomics",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Mechanisms of Action (MoA) Prediction",
+              "metric": "Mean Columnwise Log Loss",
+              "link": "https://www.kaggle.com/c/lish-moa",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/201510",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200736",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/202256",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/202078",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200808",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200533",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200784",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200992",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200585",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/201565",
+                  "kind": "code"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200630",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200679",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200798",
+                  "kind": "description"
+                },
+                {
+                  "rank": "35",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200795",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/lish-moa/discussion/200552",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "Google Research - Identify Contrails to Reduce Global Warming",
+              "metric": "contrails_global_dice",
+              "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430618",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430491",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430685",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432998",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430549",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430581",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430691",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430543",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430479",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432690",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432254",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430904",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430483",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430794",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430684",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430476",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432282",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 17
+            },
+            {
+              "title": "Predict Grant Applications",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/unimelb",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/02/21/jeremy-howard-on-winning-the-predict-grant-applications-competition/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/02/21/quan-sun-on-finishing-in-second-place-in-predict-grant-applications/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_XPoEHVGA3qNljdYu0zUEy7F5",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:50:45.390857+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "No strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 12788,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 7040,
+        "output_tokens": 10,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:50:45+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-Czw7Ji12CLHcf1ALRQghbpv5oScCl",
+      "finish_reason": "stop"
+    }
+  ]
+}

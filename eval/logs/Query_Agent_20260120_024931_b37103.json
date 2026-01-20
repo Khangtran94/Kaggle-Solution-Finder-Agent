@@ -1,0 +1,349 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Is uncertainty explicitly stated?",
+          "timestamp": "2026-01-20T02:49:30.614115+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"uncertainty\"}",
+          "tool_call_id": "call_oc1rlvqvdSqb8Eq9mAMk1iyR",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 645,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 16,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:49:30+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw66uJJd7nN2mPKcja4tI36jDNGQ",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "M5 Forecasting - Uncertainty",
+              "metric": "Weighted Rowwise Pinball Loss",
+              "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163368",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/166875",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/166854",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163559",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/168053",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163151",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163219",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/164191",
+                  "kind": "code"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163640",
+                  "kind": "code"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163099",
+                  "kind": "description"
+                },
+                {
+                  "rank": "48",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163389",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163415",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "Optiver Realized Volatility Prediction",
+              "metric": "Root Mean Square Percentage Error",
+              "link": "https://www.kaggle.com/c/optiver-realized-volatility-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/274970",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/302626",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/278588",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/278676",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/276506",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/275169",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/276137",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Santas Uncertain Bags",
+              "metric": "SantaWeightedBins",
+              "link": "https://www.kaggle.com/c/santas-uncertain-bags",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/santas-uncertain-bags/discussion/28286",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "LANL Earthquake Prediction",
+              "metric": "Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94390#latest-568449",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94369#latest-564291",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94459#latest-565843",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94484#latest-544389",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94407#latest-555528",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94718#latest-546332",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94609#latest-545993",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94466#latest-552715",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94467#latest-547452",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94363#latest-548737",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94500#latest-553545",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94556#latest-553091",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94594#latest-547714",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94450#latest-544035",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94903#latest-547809",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "Optiver - Trading at the Close",
+              "metric": "Mean Columnwise Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/optiver-trading-at-the-close",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/optiver-trading-at-the-close/discussion/487446",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://github.com/nimashahbazi/optiver-trading-close?tab=readme-ov-file",
+                  "kind": "code"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/optiver-trading-at-the-close/discussion/486868",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/optiver-trading-at-the-close/discussion/462653",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/optiver-trading-at-the-close/discussion/486086",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            }
+          ],
+          "tool_call_id": "call_oc1rlvqvdSqb8Eq9mAMk1iyR",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:49:31.534453+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** M5 Forecasting - Uncertainty\n   - **Competition URL:** [M5 Forecasting - Uncertainty](https://www.kaggle.com/c/m5-forecasting-uncertainty)\n   - **Evaluation Metric:** Weighted Rowwise Pinball Loss\n   - **Total Number of Solution Writeups:** 12\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163368\n     - Rank 3: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/166875\n     - Rank 4: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/166854\n     - Rank 6: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163559\n     - Rank 7: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/168053\n     - Rank 12: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163151\n     - Rank 13: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163219\n     - Rank 18: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/164191\n     - Rank 24: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163640\n     - Rank 36: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163099\n     - Rank 48: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163389\n     - Rank all solutions: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163415\n\n2. **Competition Name:** Optiver Realized Volatility Prediction\n   - **Competition URL:** [Optiver Realized Volatility Prediction](https://www.kaggle.com/c/optiver-realized-volatility-prediction)\n   - **Evaluation Metric:** Root Mean Square Percentage Error\n   - **Total Number of Solution Writeups:** 7\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/274970\n     - Rank 1: https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/302626\n     - Rank 3: https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/278588\n     - Rank 4: https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/278676\n     - Rank 7: https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/276506\n     - Rank 18: https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/275169\n     - Rank 25: https://www.kaggle.com/c/optiver-realized-volatility-prediction/discussion/276137\n\n3. **Competition Name:** Santas Uncertain Bags\n   - **Competition URL:** [Santas Uncertain Bags](https://www.kaggle.com/c/santas-uncertain-bags)\n   - **Evaluation Metric:** SantaWeightedBins\n   - **Total Number of Solution Writeups:** 1\n   - **List of Available Solution Writeups:**\n     - Rank 7: https://www.kaggle.com/c/santas-uncertain-bags/discussion/28286\n\nNo strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2317,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 842,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:49:31+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-Czw67e1Xe6T9eqBjvlzoYwrIewnYx",
+      "finish_reason": "stop"
+    }
+  ]
+}

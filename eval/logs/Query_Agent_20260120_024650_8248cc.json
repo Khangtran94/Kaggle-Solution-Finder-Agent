@@ -1,0 +1,1828 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Assumptions and uncertainties about the content are minimal, and no hallucinated or unverifiable information is present.",
+          "timestamp": "2026-01-20T02:46:46.240193+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"Assumptions and uncertainties\"}",
+          "tool_call_id": "call_V56MMTgk68a2sCCNY7nJvYYm",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 662,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 18,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:46:46+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw3SWFGXJxAzBNaGcK8DlnBxlpyg",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "M5 Forecasting - Uncertainty",
+              "metric": "Weighted Rowwise Pinball Loss",
+              "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163368",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/166875",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/166854",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163559",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/168053",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163151",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163219",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/164191",
+                  "kind": "code"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163640",
+                  "kind": "code"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163099",
+                  "kind": "description"
+                },
+                {
+                  "rank": "48",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163389",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163415",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "LANL Earthquake Prediction",
+              "metric": "Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94390#latest-568449",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94369#latest-564291",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94459#latest-565843",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94484#latest-544389",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94407#latest-555528",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94718#latest-546332",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94609#latest-545993",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94466#latest-552715",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94467#latest-547452",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94363#latest-548737",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94500#latest-553545",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94556#latest-553091",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94594#latest-547714",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94450#latest-544035",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94903#latest-547809",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "Santas Uncertain Bags",
+              "metric": "SantaWeightedBins",
+              "link": "https://www.kaggle.com/c/santas-uncertain-bags",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/santas-uncertain-bags/discussion/28286",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Nomad2018 Predicting Transparent Conductors",
+              "metric": "Mean Columnwise Root Mean Squared Logarithmic Error",
+              "link": "https://www.kaggle.com/c/nomad2018-predict-transparent-conductors",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/nomad2018-predict-transparent-conductors/discussion/49903",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/nomad2018-predict-transparent-conductors/discussion/49905",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/nomad2018-predict-transparent-conductors/discussion/49884",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "ICDAR 2011 - Arabic Writer Identification",
+              "metric": "Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/WIC2011",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/05/04/andrew-newell-and-lewis-griffin-on-winning-the-icdar-2011-competition/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_V56MMTgk68a2sCCNY7nJvYYm",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:46:47.422929+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"M5 Forecasting - Uncertainty\"}",
+          "tool_call_id": "call_OgthUEvNhEn8oIoblPqBRohW",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"LANL Earthquake Prediction\"}",
+          "tool_call_id": "call_UyUVSx8D6cda15eYr8cwmfu6",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Santas Uncertain Bags\"}",
+          "tool_call_id": "call_gNQl7ITGoa7mXFbP1cREs4G9",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Nomad2018 Predicting Transparent Conductors\"}",
+          "tool_call_id": "call_aeGCmoyL9aSe31W5DWNmiwp7",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"ICDAR 2011 - Arabic Writer Identification\"}",
+          "tool_call_id": "call_X8Y6OskbhcdAbLNwVHy1Mrqo",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2092,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 116,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:46:47+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czw3T8LgKS19PoRkfvVGwuvtSikXT",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "M5 Forecasting - Accuracy",
+              "metric": "M5 Weighted (Rowwise) Root Mean Squared Scaled Error",
+              "link": "https://www.kaggle.com/c/m5-forecasting-accuracy",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/163684",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/164599",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/164374",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/163216",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/163916",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/164826",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/163211",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/169085",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/164685",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/163208",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/163564",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/163199",
+                  "kind": "description"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/163346",
+                  "kind": "code"
+                },
+                {
+                  "rank": "54",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-accuracy/discussion/163183",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 14
+            },
+            {
+              "title": "M5 Forecasting - Uncertainty",
+              "metric": "Weighted Rowwise Pinball Loss",
+              "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163368",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/166875",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/166854",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163559",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/168053",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163151",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163219",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/164191",
+                  "kind": "code"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163640",
+                  "kind": "code"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163099",
+                  "kind": "description"
+                },
+                {
+                  "rank": "48",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163389",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163415",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "Global Energy Forecasting Competition 2012 - Wind Forecasting",
+              "metric": "Root Mean Squared Error",
+              "link": "https://www.kaggle.com/c/GEF2012-wind-forecasting",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/lucaseustaquio/gefcom-2012-wind-track",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "COVID19 Global Forecasting (Week 4)",
+              "metric": "Mean Columnwise Root Mean Squared Logarithmic Error",
+              "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-4",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-4/discussion/146006",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-4/discussion/143893",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-4/discussion/151461",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-4/discussion/146754",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "GoDaddy - Microbusiness Density Forecasting",
+              "metric": "SMAPE",
+              "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/395131",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/395264",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/418287",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/394821",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/417821",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/418770",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/417803",
+                  "kind": "description"
+                },
+                {
+                  "rank": "32",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/395011",
+                  "kind": "description"
+                },
+                {
+                  "rank": "35",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/418657",
+                  "kind": "description"
+                },
+                {
+                  "rank": "44",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/418355",
+                  "kind": "description"
+                },
+                {
+                  "rank": "48",
+                  "link": "https://www.kaggle.com/c/godaddy-microbusiness-density-forecasting/discussion/417946",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 11
+            }
+          ],
+          "tool_call_id": "call_OgthUEvNhEn8oIoblPqBRohW",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:46:50.494820+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "LANL Earthquake Prediction",
+              "metric": "Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94390#latest-568449",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94369#latest-564291",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94459#latest-565843",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94484#latest-544389",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94407#latest-555528",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94718#latest-546332",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94609#latest-545993",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94466#latest-552715",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94467#latest-547452",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94363#latest-548737",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94500#latest-553545",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94556#latest-553091",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94594#latest-547714",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94450#latest-544035",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94903#latest-547809",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "COVID19 Global Forecasting (Week 5)",
+              "metric": "Weighted Pinball Loss",
+              "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-5",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-5/discussion/155638",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-5/discussion/143893",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-5/discussion/146754",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-5/discussion/154804",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-5/discussion/154664",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-5/discussion/154773",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-5/discussion/154951",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/covid19-global-forecasting-week-5/discussion/151461",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 8
+            },
+            {
+              "title": "INGV - Volcanic Eruption Prediction",
+              "metric": "Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/predict-volcanic-eruptions-ingv-oe",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/predict-volcanic-eruptions-ingv-oe/discussion/211315",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/predict-volcanic-eruptions-ingv-oe/discussion/209600",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/predict-volcanic-eruptions-ingv-oe/discussion/215463",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/predict-volcanic-eruptions-ingv-oe/discussion/209534",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/predict-volcanic-eruptions-ingv-oe/discussion/209339",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/predict-volcanic-eruptions-ingv-oe/discussion/209369",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/predict-volcanic-eruptions-ingv-oe/discussion/211120",
+                  "kind": "code"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/predict-volcanic-eruptions-ingv-oe/discussion/209766",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 8
+            },
+            {
+              "title": "COVID19 Local US-CA Forecasting (Week 1)",
+              "metric": "Mean Columnwise Root Mean Squared Logarithmic Error",
+              "link": "https://www.kaggle.com/c/covid19-local-us-ca-forecasting-week-1",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/covid19-local-us-ca-forecasting-week-1/discussion/144829",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Africa Soil Property Prediction Challenge",
+              "metric": "Mean Columnwise Root Mean Squared Error",
+              "link": "https://www.kaggle.com/c/afsis-soil-properties",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/afsis-soil-properties/discussion/10825",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/CharlyBi/Soil-Prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/afsis-soil-properties/discussion/10831",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_UyUVSx8D6cda15eYr8cwmfu6",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:46:50.468492+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Santas Uncertain Bags",
+              "metric": "SantaWeightedBins",
+              "link": "https://www.kaggle.com/c/santas-uncertain-bags",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/santas-uncertain-bags/discussion/28286",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Helping Santas Helpers",
+              "metric": "Packing Santas Sleigh Metric",
+              "link": "https://www.kaggle.com/c/helping-santas-helpers",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/helping-santas-helpers/discussion/12441",
+                  "kind": "code"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/helping-santas-helpers/discussion/11452",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Santa 2023 - The Polytope Permutation Puzzle",
+              "metric": "Santa 2023 Metric",
+              "link": "https://www.kaggle.com/c/santa-2023",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santa-2023/discussion/472405",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/santa-2023/discussion/473094",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/santa-2023/discussion/472437",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/santa-2023/discussion/472489",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/santa-2023/discussion/472530",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Santas Stolen Sleigh",
+              "metric": "SantaRideShare",
+              "link": "https://www.kaggle.com/c/santas-stolen-sleigh",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santas-stolen-sleigh/discussion/18312",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/woshialex/SantaStolenSleigh",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2016/01/28/santas-stolen-sleigh-winners-interview-2nd-place-woshialex-weezy/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2016/03/03/santas-stolen-sleigh-winners-interview-3rd-place-marcin-marek/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://github.com/nagadomi/kaggle-santas-stolen-sleigh",
+                  "kind": "code"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/santas-stolen-sleigh/discussion/18336",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/danieloliveira56/SantaStolenSleigh",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Santa 2021 - The Merry Movie Montage",
+              "metric": "Santas Superpermutations 2021",
+              "link": "https://www.kaggle.com/c/santa-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/santa-2021/discussion/300509",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/santa-2021/discussion/300543",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/santa-2021/discussion/300572",
+                  "kind": "code"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/santa-2021/discussion/300901",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_gNQl7ITGoa7mXFbP1cREs4G9",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:46:50.489486+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Nomad2018 Predicting Transparent Conductors",
+              "metric": "Mean Columnwise Root Mean Squared Logarithmic Error",
+              "link": "https://www.kaggle.com/c/nomad2018-predict-transparent-conductors",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/nomad2018-predict-transparent-conductors/discussion/49903",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/nomad2018-predict-transparent-conductors/discussion/49905",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/nomad2018-predict-transparent-conductors/discussion/49884",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "ISIC 2024 - Skin Cancer Detection with 3D-TBP",
+              "metric": "ISIC pAUC-aboveTPR",
+              "link": "https://www.kaggle.com/c/isic-2024-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/533196",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532704",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532919",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532760",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/533056",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532868",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532687",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532728",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532577",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/533179",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532595",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532642",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532654",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532786",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532580",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/533005",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532723",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532564",
+                  "kind": "description"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532620",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/532593",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/isic-2024-challenge/discussion/533046",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 21
+            },
+            {
+              "title": "SIIM-ISIC Melanoma Classification",
+              "metric": "Mean Columnwise Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175412",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175324",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175633",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/176154",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175391",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175624",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175765",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175403",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175361",
+                  "kind": "code"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175410",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175538",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/176338",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175352",
+                  "kind": "description"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/181830",
+                  "kind": "description"
+                },
+                {
+                  "rank": "53",
+                  "link": "https://www.kaggle.com/c/siim-isic-melanoma-classification/discussion/175344",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 15
+            },
+            {
+              "title": "G2Net Detecting Continuous Gravitational Waves",
+              "metric": "",
+              "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/375910",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/376504",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/376233",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/376357",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/376022",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/375923",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/376253",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/375897",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/376052",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/375981",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/375961",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/376724",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/375957",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/g2net-detecting-continuous-gravitational-waves/discussion/375927",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 14
+            },
+            {
+              "title": "Human Protein Atlas - Single Cell Classification",
+              "metric": "OpenImagesObjDetectionSegmentationAP",
+              "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/239001",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238645",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238862",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238898",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238910",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/239071",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238527",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238487",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/239166",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238365",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238507",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238361",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238678",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238364",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/239211",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238343",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238333",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/239035",
+                  "kind": "code"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238552",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238385",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/239641",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238474",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238512",
+                  "kind": "code"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238401",
+                  "kind": "description"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238439",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/241355",
+                  "kind": "code"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/239048",
+                  "kind": "description"
+                },
+                {
+                  "rank": "32",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/241637",
+                  "kind": "code"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/239861",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238380",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238624",
+                  "kind": "description"
+                },
+                {
+                  "rank": "43",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238504",
+                  "kind": "description"
+                },
+                {
+                  "rank": "46",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238373",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/hpa-single-cell-image-classification/discussion/238348",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 35
+            }
+          ],
+          "tool_call_id": "call_aeGCmoyL9aSe31W5DWNmiwp7",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:46:50.500217+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "ICDAR 2011 - Arabic Writer Identification",
+              "metric": "Mean Absolute Error",
+              "link": "https://www.kaggle.com/c/WIC2011",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/05/04/andrew-newell-and-lewis-griffin-on-winning-the-icdar-2011-competition/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "KDD Cup 2013 - Author-Paper Identification Challenge (Track 1)",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/kdd-cup-2013-author-paper-identification-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.csie.ntu.edu.tw/%7Ecjlin/papers/kddcup2013/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/lucaseustaquio/kdd-cup-2013-track1",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/naokazumizuta/KDD2013AuthorPaperIdentification",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Spooky Author Identification",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/spooky-author-identification",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/pkubik/horror",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "LLM - Detect AI Generated Text",
+              "metric": "Roc Auc Score",
+              "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/473295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470333",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470179",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470093",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471831",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470255",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470396",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470593",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470193",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470061",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470181",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470148",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470153",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470077",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470134",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470256",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470353",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471898",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470290",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471788",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 22
+            },
+            {
+              "title": "chaii - Hindi and Tamil Question Answering",
+              "metric": "Jaccard",
+              "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287923",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287917",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287929",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287911",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/288049",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/288442",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287948",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/289511",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/288110",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/288001",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/288058",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287918",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/288168",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287956",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287914",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287945",
+                  "kind": "code"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/288045",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287946",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287972",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287938",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287940",
+                  "kind": "description"
+                },
+                {
+                  "rank": "35",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287919",
+                  "kind": "description"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/288365",
+                  "kind": "description"
+                },
+                {
+                  "rank": "43",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/288419",
+                  "kind": "description"
+                },
+                {
+                  "rank": "56",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/288209",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/chaii-hindi-and-tamil-question-answering/discussion/287921",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 26
+            }
+          ],
+          "tool_call_id": "call_X8Y6OskbhcdAbLNwVHy1Mrqo",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:46:50.492577+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** M5 Forecasting - Uncertainty\n   - **Competition URL:** [M5 Forecasting - Uncertainty](https://www.kaggle.com/c/m5-forecasting-uncertainty)\n   - **Evaluation Metric:** Weighted Rowwise Pinball Loss\n   - **Total Number of Solution Writeups:** 12\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163368\n     - Rank 3: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/166875\n     - Rank 4: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/166854\n     - Rank 6: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163559\n     - Rank 7: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/168053\n     - Rank 12: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163151\n     - Rank 13: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163219\n     - Rank 18: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/164191\n     - Rank 24: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163640\n     - Rank 36: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163099\n     - Rank 48: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163389\n     - Rank all solutions: https://www.kaggle.com/c/m5-forecasting-uncertainty/discussion/163415\n\n2. **Competition Name:** LANL Earthquake Prediction\n   - **Competition URL:** [LANL Earthquake Prediction](https://www.kaggle.com/c/LANL-Earthquake-Prediction)\n   - **Evaluation Metric:** Mean Absolute Error\n   - **Total Number of Solution Writeups:** 15\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94390#latest-568449\n     - Rank 2: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94369#latest-564291\n     - Rank 3: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94459#latest-565843\n     - Rank 5: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94484#latest-544389\n     - Rank 7: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94407#latest-555528\n     - Rank 8: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94718#latest-546332\n     - Rank 9: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94609#latest-545993\n     - Rank 10: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94466#latest-552715\n     - Rank 10: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94467#latest-547452\n     - Rank 11: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94363#latest-548737\n     - Rank 12: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94500#latest-553545\n     - Rank 15: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94556#latest-553091\n     - Rank 19: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94594#latest-547714\n     - Rank 19: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94450#latest-544035\n     - Rank 22: https://www.kaggle.com/c/LANL-Earthquake-Prediction/discussion/94903#latest-547809\n\n3. **Competition Name:** Santas Uncertain Bags\n   - **Competition URL:** [Santas Uncertain Bags](https://www.kaggle.com/c/santas-uncertain-bags)\n   - **Evaluation Metric:** SantaWeightedBins\n   - **Total Number of Solution Writeups:** 1\n   - **List of Available Solution Writeups:**\n     - Rank 7: https://www.kaggle.com/c/santas-uncertain-bags/discussion/28286\n\n4. **Competition Name:** Nomad2018 Predicting Transparent Conductors\n   - **Competition URL:** [Nomad2018 Predicting Transparent Conductors](https://www.kaggle.com/c/nomad2018-predict-transparent-conductors)\n   - **Evaluation Metric:** Mean Columnwise Root Mean Squared Logarithmic Error\n   - **Total Number of Solution Writeups:** 3\n   - **List of Available Solution Writeups:**\n     - Rank 5: https://www.kaggle.com/c/nomad2018-predict-transparent-conductors/discussion/49903\n     - Rank 9: https://www.kaggle.com/c/nomad2018-predict-transparent-conductors/discussion/49905\n     - Rank 17: https://www.kaggle.com/c/nomad2018-predict-transparent-conductors/discussion/49884\n\n5. **Competition Name:** ICDAR 2011 - Arabic Writer Identification\n   - **Competition URL:** [ICDAR 2011 - Arabic Writer Identification](https://www.kaggle.com/c/WIC2011)\n   - **Evaluation Metric:** Mean Absolute Error\n   - **Total Number of Solution Writeups:** 1\n   - **List of Available Solution Writeups:**\n     - Rank 1: http://blog.kaggle.com/2011/05/04/andrew-newell-and-lewis-griffin-on-winning-the-icdar-2011-competition/\n\n",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 13046,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2176,
+        "output_tokens": 1437,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:46:50+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-Czw3Wl3p9AupiZ5AR7r0Zi6SFrXa4",
+      "finish_reason": "stop"
+    }
+  ]
+}

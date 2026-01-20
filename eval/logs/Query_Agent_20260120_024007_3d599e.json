@@ -1,0 +1,2132 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Are all relevant items included?",
+          "timestamp": "2026-01-20T02:40:01.194658+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"Are all relevant items included?\"}",
+          "tool_call_id": "call_Z1IBRYpZCu7UcrYnMVwO7RQu",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 646,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 19,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:40:01+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvwvHpbOgXS3kSo3qzo42ipbXySP",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Expedia Hotel Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/expedia-hotel-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/expedia-hotel-recommendations/discussion/21607",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://github.com/danielkorzekwa/expedia-hotel-predictor",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/mandalsubhajit/Kaggle--Expedia-Hotel-Recommendations",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/zzsza/Kaggle_Expedia-hotel-recommendations",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "iNaturalist 2019 at FGVC6",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/inaturalist-2019-fgvc6",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/praxitelisk/iNaturalist-2019",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Santander Product Recommendation",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/santander-product-recommendation",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/ttvand/Santander-Product-Recommendation",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2017/01/12/santander-product-recommendation-competition-2nd-place-winners-solution-write-up-tom-van-de-wiele/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/santander-product-recommendation/discussion/26899",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2017/02/22/santander-product-recommendation-competition-3rd-place-winners-interview-ryuji-sakata/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/yaxen/santander-product-recommendation-8th-place",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/vopani/Kaggle_SantanderProductRecommendation",
+                  "kind": "code"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/santander-product-recommendation/discussion/26831",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Whats Cooking? (Kernels Only)",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/whats-cooking-kernels-only",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/whats-cooking-kernels-only/discussion/66795",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_Z1IBRYpZCu7UcrYnMVwO7RQu",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:02.066074+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Hotel Recommendations\"}",
+          "tool_call_id": "call_HfgtXFyoO9jzH0eLDNi5f2bN",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Prohibited content detection\"}",
+          "tool_call_id": "call_fbdneIM4zKFIbUcdq0xuNuYp",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Image classification\"}",
+          "tool_call_id": "call_2UdEHg8EszEJJ7mtBup5NWvD",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Product Recommendation\"}",
+          "tool_call_id": "call_4Ex96uNJs8lzdCGbYD1mawtW",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Food Classification\"}",
+          "tool_call_id": "call_KvF7tIXvQAPyGvN7ufYI3eYm",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1389,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 93,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:40:02+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czvwwa9hn1msc9Sz8YBHTpCQX7RDs",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Expedia Hotel Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/expedia-hotel-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/expedia-hotel-recommendations/discussion/21607",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://github.com/danielkorzekwa/expedia-hotel-predictor",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/mandalsubhajit/Kaggle--Expedia-Hotel-Recommendations",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/zzsza/Kaggle_Expedia-hotel-recommendations",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2021 - FGVC8",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242087",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242030",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2022 - FGVC9",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328281",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328345",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328237",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Tourism Forecasting Part One",
+              "metric": "Custom Evaluation Metric",
+              "link": "https://www.kaggle.com/c/tourism1",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2010/09/27/how-i-did-it-lee-baker-on-winning-tourism-forecasting-part-one/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tourism Forecasting Part Two",
+              "metric": "Custom Evaluation Metric",
+              "link": "https://www.kaggle.com/c/tourism2",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2010/11/24/how-we-did-it-jeremy-howard-on-winning-the-tourism-forecasting-competitoin/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/03/22/phil-brierley-on-winning-tourism-forecasting-part-two/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_HfgtXFyoO9jzH0eLDNi5f2bN",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:04.574591+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "The Hunt for Prohibited Content",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/avito-prohibited-content",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/avito-prohibited-content/discussion/10178",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Open Images 2019 - Object Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-object-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/110953",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111266",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "LLM - Detect AI Generated Text",
+              "metric": "Roc Auc Score",
+              "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/473295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470333",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470179",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470093",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471831",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470255",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470396",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470593",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470193",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470061",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470181",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470148",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470153",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470077",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470134",
+                  "kind": "description"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470256",
+                  "kind": "description"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470353",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471898",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/470290",
+                  "kind": "description"
+                },
+                {
+                  "rank": "47",
+                  "link": "https://www.kaggle.com/c/llm-detect-ai-generated-text/discussion/471788",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 22
+            },
+            {
+              "title": "Google AI Open Images - Object Detection Track",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64986",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/65120",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64633",
+                  "kind": "code"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64747",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64734",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/google-ai-open-images-object-detection-track/discussion/64901",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "VinBigData Chest X-ray Abnormalities Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229724",
+                  "kind": "description"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/231511",
+                  "kind": "description"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/232393",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229696",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229740",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229769",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229636",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229786",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229711",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229770",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229637",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229618",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229629",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229615",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229638",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229626",
+                  "kind": "description"
+                },
+                {
+                  "rank": "33",
+                  "link": "https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection/discussion/229649",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 17
+            }
+          ],
+          "tool_call_id": "call_fbdneIM4zKFIbUcdq0xuNuYp",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:04.587472+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Cdiscount\u2019s Image Classification Challenge",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/cdiscount-image-classification-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45863",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/miha-skalic/convolutedPredictions_Cdiscount",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45709",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45737",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45721",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45798",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "CIFAR-10 - Object Recognition in Images",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/cifar-10",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/cifar-10/discussion/10493",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/nagadomi/kaggle-cifar10-torch7",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Open Images 2019 - Object Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-object-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/110953",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111266",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Recursion Cellular Image Classification",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/recursion-cellular-image-classification",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110543",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110457",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110340",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110337",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110362",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110391",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110335",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110366",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110375",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110394",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110390",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110361",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110444",
+                  "kind": "code"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110376",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 14
+            },
+            {
+              "title": "Open Images 2019 - Instance Segmentation",
+              "metric": "OpenImagesObjDetectionSegmentationAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation/discussion/110983",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation/discussion/111351",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation/discussion/110908",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_2UdEHg8EszEJJ7mtBup5NWvD",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:04.592077+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "H&M Personalized Fashion Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324070",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324197",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324129",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324094",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324098",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324075",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324278",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324185",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324127",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324223",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324084",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324310",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324158",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324595",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/325407",
+                  "kind": "code"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324152",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324085",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324293",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324350",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324411",
+                  "kind": "description"
+                },
+                {
+                  "rank": "46",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324205",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324221",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 24
+            },
+            {
+              "title": "Santander Product Recommendation",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/santander-product-recommendation",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/ttvand/Santander-Product-Recommendation",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2017/01/12/santander-product-recommendation-competition-2nd-place-winners-solution-write-up-tom-van-de-wiele/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/santander-product-recommendation/discussion/26899",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2017/02/22/santander-product-recommendation-competition-3rd-place-winners-interview-ryuji-sakata/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/yaxen/santander-product-recommendation-8th-place",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/vopani/Kaggle_SantanderProductRecommendation",
+                  "kind": "code"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/santander-product-recommendation/discussion/26831",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Expedia Hotel Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/expedia-hotel-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/expedia-hotel-recommendations/discussion/21607",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://github.com/danielkorzekwa/expedia-hotel-predictor",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/mandalsubhajit/Kaggle--Expedia-Hotel-Recommendations",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/zzsza/Kaggle_Expedia-hotel-recommendations",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "OTTO \u2013 Multi-Objective Recommender System",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/otto-recommender-system",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/384022",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/382790",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/383013",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/382783",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/382802",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/384120",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/383769",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/383130",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/383792",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/382851",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/383374",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/382834",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/383229",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/383382",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/382905",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/383121",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/382924",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/382771",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/382812",
+                  "kind": "description"
+                },
+                {
+                  "rank": "32",
+                  "link": "https://www.kaggle.com/c/otto-recommender-system/discussion/383843",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 20
+            },
+            {
+              "title": "dunnhumbys Shopper Challenge",
+              "metric": "% Correct Visits",
+              "link": "https://www.kaggle.com/c/dunnhumbychallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_4Ex96uNJs8lzdCGbYD1mawtW",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:04.587514+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Whats Cooking? (Kernels Only)",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/whats-cooking-kernels-only",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/whats-cooking-kernels-only/discussion/66795",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Whats Cooking?",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/whats-cooking",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "4",
+                  "link": "https://github.com/dmcgarry/kaggle_cooking",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/mtad/kaggle/tree/master/whats_cooking",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/SaquibAhmad/Kaggle/tree/master/whats-cooking",
+                  "kind": "code"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://github.com/ogencoglu/WhatsCooking",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Yelp Restaurant Photo Classification",
+              "metric": "Mean F-Score",
+              "link": "https://www.kaggle.com/c/yelp-restaurant-photo-classification",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/u1234x1234/kaggle-yelp-restaurant-photo-classification",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2016/04/28/yelp-restaurant-photo-classification-winners-interview-1st-place-dmitrii-tsybulevskii/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/bzshang/yelp-photo-classification",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://github.com/bluelight773/Kaggle_Yelp_Photo_Top10_Solution",
+                  "kind": "code"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://github.com/ncchen55414/Kaggle-Yelp",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Multi-label Bird Species Classification - NIPS 2013",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/multilabel-bird-species-classification-nips2013",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/mattwescott/bird-recognition",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Bag of Words Meets Bags of Popcorn",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/word2vec-nlp-tutorial",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "3",
+                  "link": "https://github.com/vinhkhuc/kaggle-sentiment-popcorn",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/tjflexic/kaggle-word2vec-movie-reviews",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/vsl9/Sentiment-Analysis-with-Convolutional-Networks",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_KvF7tIXvQAPyGvN7ufYI3eYm",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:04.588051+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Image Classification\"}",
+          "tool_call_id": "call_SvrdaimjKjM55weRwOxGMTEN",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Restaurant Classification\"}",
+          "tool_call_id": "call_yEgsa27jMl1EGbBSwQdaYGRv",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Sentiment Analysis\"}",
+          "tool_call_id": "call_Bs9Lz3QxSDDMClzobHhxlcmj",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 9283,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 62,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:40:04+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvwyDPGMnpnhppvV59JMY9zWIEqJ",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Cdiscount\u2019s Image Classification Challenge",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/cdiscount-image-classification-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45863",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/miha-skalic/convolutedPredictions_Cdiscount",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45709",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45737",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45721",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45798",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "CIFAR-10 - Object Recognition in Images",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/cifar-10",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/cifar-10/discussion/10493",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/nagadomi/kaggle-cifar10-torch7",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 2
+            },
+            {
+              "title": "Open Images 2019 - Object Detection",
+              "metric": "OpenImagesObjectDetectionAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-object-detection",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/110953",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111266",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/open-images-2019-object-detection/discussion/111022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Recursion Cellular Image Classification",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/recursion-cellular-image-classification",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110543",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110457",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110340",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110337",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110362",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110391",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110335",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110366",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110375",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110394",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110390",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110361",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110444",
+                  "kind": "code"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/recursion-cellular-image-classification/discussion/110376",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 14
+            },
+            {
+              "title": "Open Images 2019 - Instance Segmentation",
+              "metric": "OpenImagesObjDetectionSegmentationAP",
+              "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation/discussion/110983",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation/discussion/111351",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/open-images-2019-instance-segmentation/discussion/110908",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_SvrdaimjKjM55weRwOxGMTEN",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:06.412890+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Yelp Restaurant Photo Classification",
+              "metric": "Mean F-Score",
+              "link": "https://www.kaggle.com/c/yelp-restaurant-photo-classification",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/u1234x1234/kaggle-yelp-restaurant-photo-classification",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2016/04/28/yelp-restaurant-photo-classification-winners-interview-1st-place-dmitrii-tsybulevskii/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/bzshang/yelp-photo-classification",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://github.com/bluelight773/Kaggle_Yelp_Photo_Top10_Solution",
+                  "kind": "code"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://github.com/ncchen55414/Kaggle-Yelp",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Whats Cooking?",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/whats-cooking",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "4",
+                  "link": "https://github.com/dmcgarry/kaggle_cooking",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/mtad/kaggle/tree/master/whats_cooking",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/SaquibAhmad/Kaggle/tree/master/whats-cooking",
+                  "kind": "code"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://github.com/ogencoglu/WhatsCooking",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Whats Cooking? (Kernels Only)",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/whats-cooking-kernels-only",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/whats-cooking-kernels-only/discussion/66795",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Restaurant Revenue Prediction",
+              "metric": "Root Mean Squared Error",
+              "link": "https://www.kaggle.com/c/restaurant-revenue-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/restaurant-revenue-prediction/discussion/14066#78118",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://github.com/bensolucky/TFI/",
+                  "kind": "code"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://github.com/vopani/Kaggle_TFI",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Expedia Hotel Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/expedia-hotel-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/expedia-hotel-recommendations/discussion/21607",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://github.com/danielkorzekwa/expedia-hotel-predictor",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/mandalsubhajit/Kaggle--Expedia-Hotel-Recommendations",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/zzsza/Kaggle_Expedia-hotel-recommendations",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_yEgsa27jMl1EGbBSwQdaYGRv",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:06.423143+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Sentiment Analysis on Movie Reviews",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/rafacarrascosa/samr",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Tweet Sentiment Extraction",
+              "metric": "Jaccard",
+              "link": "https://www.kaggle.com/c/tweet-sentiment-extraction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159477",
+                  "kind": "description"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159264",
+                  "kind": "description"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159254",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159310",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159910",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159499",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159268",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159245",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159384",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159244",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159440",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159817",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159505",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159918",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159246",
+                  "kind": "code"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159347",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159296",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159455",
+                  "kind": "description"
+                },
+                {
+                  "rank": "48",
+                  "link": "https://www.kaggle.com/c/tweet-sentiment-extraction/discussion/159276",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 20
+            },
+            {
+              "title": "Detecting Insults in Social Commentary",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/detecting-insults-in-social-commentary",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/detecting-insults-in-social-commentary/discussion/2744#15951",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/detecting-insults-in-social-commentary/discussion/2744#14755",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/tuzzeg/detect_insults",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://webmining.olariu.org/my-first-kaggle-competition-and-how-i-ranked/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/cbrew/Insults",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/detecting-insults-in-social-commentary/discussion/2744#15060",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "http://peekaboo-vision.blogspot.com/2012/09/recap-of-my-first-kaggle-competition.html",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "http://steve-p0ulson.blogspot.com/2012/09/recently-i-entered-kaggle-detecting.html",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 8
+            },
+            {
+              "title": "Feedback Prize - Evaluating Student Writing",
+              "metric": "TextOverlapFBeta",
+              "link": "https://www.kaggle.com/c/feedback-prize-2021",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313177",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313389",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313235",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313330",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313478",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313424",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/315887",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/316071",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313201",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313718",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313184",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313833",
+                  "kind": "code"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313253",
+                  "kind": "code"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313274",
+                  "kind": "description"
+                },
+                {
+                  "rank": "33",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313331",
+                  "kind": "description"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313452",
+                  "kind": "code"
+                },
+                {
+                  "rank": "55",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313229",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/feedback-prize-2021/discussion/313376",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 18
+            },
+            {
+              "title": "Bengali.AI Speech Recognition",
+              "metric": "Word Error Rate",
+              "link": "https://www.kaggle.com/c/bengaliai-speech",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/447961",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/447976",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/447957",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/447995",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/448006",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/448074",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/448126",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/447986",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/447965",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/448066",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/448119",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/448343",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/450606",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/448030",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/450531",
+                  "kind": "description"
+                },
+                {
+                  "rank": "44",
+                  "link": "https://www.kaggle.com/c/bengaliai-speech/discussion/450635",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 16
+            }
+          ],
+          "tool_call_id": "call_Bs9Lz3QxSDDMClzobHhxlcmj",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:06.422541+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** Expedia Hotel Recommendations\n   - **Competition URL:** [Expedia Hotel Recommendations](https://www.kaggle.com/c/expedia-hotel-recommendations)\n   - **Evaluation Metric:** Unknown\n   - **Total Number of Solution Writeups:** 4\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/expedia-hotel-recommendations/discussion/21607\n     - Rank 13: https://github.com/danielkorzekwa/expedia-hotel-predictor\n     - Rank ?: https://github.com/mandalsubhajit/Kaggle--Expedia-Hotel-Recommendations\n     - Rank ?: https://github.com/zzsza/Kaggle_Expedia-hotel-recommendations\n\n2. **Competition Name:** The Hunt for Prohibited Content\n   - **Competition URL:** [The Hunt for Prohibited Content](https://www.kaggle.com/c/avito-prohibited-content)\n   - **Evaluation Metric:** Unknown\n   - **Total Number of Solution Writeups:** 2\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/avito-prohibited-content/discussion/10178\n     - Rank 4: https://github.com/ChenglongChen/Kaggle_The_Hunt_for_Prohibited_Content\n\n3. **Competition Name:** Cdiscount's Image Classification Challenge\n   - **Competition URL:** [Cdiscount's Image Classification Challenge](https://www.kaggle.com/c/cdiscount-image-classification-challenge)\n   - **Evaluation Metric:** Categorization Accuracy\n   - **Total Number of Solution Writeups:** 6\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45863\n     - Rank 2: https://github.com/miha-skalic/convolutedPredictions_Cdiscount\n     - Rank 2: https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45709\n     - Rank 7: https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45737\n     - Rank 9: https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45721\n     - Rank 12: https://www.kaggle.com/c/cdiscount-image-classification-challenge/discussion/45798\n\n4. **Competition Name:** Yelp Restaurant Photo Classification\n   - **Competition URL:** [Yelp Restaurant Photo Classification](https://www.kaggle.com/c/yelp-restaurant-photo-classification)\n   - **Evaluation Metric:** Mean F-Score\n   - **Total Number of Solution Writeups:** 5\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://github.com/u1234x1234/kaggle-yelp-restaurant-photo-classification\n     - Rank 1: http://blog.kaggle.com/2016/04/28/yelp-restaurant-photo-classification-winners-interview-1st-place-dmitrii-tsybulevskii/\n     - Rank 4: https://github.com/bzshang/yelp-photo-classification\n     - Rank 7: https://github.com/bluelight773/Kaggle_Yelp_Photo_Top10_Solution\n     - Rank 24: https://github.com/ncchen55414/Kaggle-Yelp\n\nNo strong matches were found for this query.",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 14165,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 9216,
+        "output_tokens": 766,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:40:07+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-Czvx18IFAxz3Z4pRC6liNQGSjAAsz",
+      "finish_reason": "stop"
+    }
+  ]
+}

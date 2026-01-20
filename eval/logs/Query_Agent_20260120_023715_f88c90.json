@@ -1,0 +1,544 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "Is the reported number of solutions consistent with the listed solutions?",
+          "timestamp": "2026-01-20T02:37:14.888062+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"reported number of solutions inconsistent with listed solutions\"}",
+          "tool_call_id": "call_8rCq1NwP0CXSW89ZdYkZLvoc",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 652,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 21,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:37:15+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvuFyu0I53NSoOEihv9CDBnhIVQq",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Make Data Count - Finding Data References",
+              "metric": "82370_MDC_Global_F1",
+              "link": "https://www.kaggle.com/c/make-data-count-finding-data-references",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/1st-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/2nd-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/3rd-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/4th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/5th-place-by-standing-on-the-shoulders-of-giants",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/6th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/7th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/8th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/9th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/tricks-10char",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/11th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/12th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/13th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/shake-down-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/20th-place-solution-regex-qwen-deberta-for-mdc",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/23-place-solution-ml",
+                  "kind": "description"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/25th-place-solution-summary",
+                  "kind": "description"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/28th-place-solution",
+                  "kind": "description"
+                },
+                {
+                  "rank": "40",
+                  "link": "https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/41th-place-solution",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 19
+            },
+            {
+              "title": "LLM 20 Questions",
+              "metric": "llm_20_questions",
+              "link": "https://www.kaggle.com/c/llm-20-questions",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531106",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529643",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531387",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531883",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529525",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531569",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/529931",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531083",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531104",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/531081",
+                  "kind": "description"
+                },
+                {
+                  "rank": "45",
+                  "link": "https://www.kaggle.com/c/llm-20-questions/discussion/530996",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            },
+            {
+              "title": "Quora Question Pairs",
+              "metric": "Log Loss",
+              "link": "https://www.kaggle.com/c/quora-question-pairs",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/quora-question-pairs/discussion/34355",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/quora-question-pairs/discussion/34310",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/sjvasquez/quora-duplicate-questions",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/quora-question-pairs/discussion/34288",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://github.com/HouJP/kaggle-quora-question-pairs",
+                  "kind": "code"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/quora-question-pairs/discussion/34349",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/quora-question-pairs/discussion/34359",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/quora-question-pairs/discussion/34697",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/quora-question-pairs/discussion/34371",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/quora-question-pairs/discussion/34342",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://github.com/Wrosinski/Kaggle-Quora",
+                  "kind": "code"
+                },
+                {
+                  "rank": "24",
+                  "link": "https://www.kaggle.com/c/quora-question-pairs/discussion/34534",
+                  "kind": "code"
+                },
+                {
+                  "rank": "34",
+                  "link": "https://www.kaggle.com/c/quora-question-pairs/discussion/34292",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://github.com/YuriyGuts/kaggle-quora-question-pairs",
+                  "kind": "code"
+                },
+                {
+                  "rank": "43",
+                  "link": "https://www.kaggle.com/rethfro/1d-cnn-single-model-score-0-14-0-16-or-0-23",
+                  "kind": "description"
+                },
+                {
+                  "rank": "79",
+                  "link": "https://github.com/stys/kaggle-quora-question-pairs",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/bradleypallen/keras-quora-question-pairs",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://www.kaggle.com/c/quora-question-pairs/discussion/30260",
+                  "kind": "code"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/quora-question-pairs/discussion/34325",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 19
+            },
+            {
+              "title": "Google Research - Identify Contrails to Reduce Global Warming",
+              "metric": "contrails_global_dice",
+              "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430618",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430491",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430685",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432998",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430549",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430581",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430691",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430543",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430479",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432690",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432254",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430904",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430483",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430794",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430684",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430476",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432282",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 17
+            },
+            {
+              "title": "Al Mathematical Olympiad - Progress Prize 2",
+              "metric": "Accuracy Score",
+              "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/574765",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/572948",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/573314",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/573671",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/574262",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/572760",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/571356",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/571252",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/573086",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/573071",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/575172",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/571289",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 12
+            }
+          ],
+          "tool_call_id": "call_8rCq1NwP0CXSW89ZdYkZLvoc",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:37:15.780955+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** Make Data Count - Finding Data References\n   - **Competition URL:** [Make Data Count - Finding Data References](https://www.kaggle.com/c/make-data-count-finding-data-references)\n   - **Evaluation Metric:** 82370_MDC_Global_F1\n   - **Total Number of Solution Writeups:** 19\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/1st-place-solution\n     - Rank 2: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/2nd-place-solution\n     - Rank 3: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/3rd-place-solution\n     - Rank 4: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/4th-place-solution\n     - Rank 5: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/5th-place-by-standing-on-the-shoulders-of-giants\n     - Rank 6: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/6th-place-solution\n     - Rank 7: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/7th-place-solution\n     - Rank 8: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/8th-place-solution\n     - Rank 9: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/9th-place-solution\n     - Rank 10: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/tricks-10char\n     - Rank 11: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/11th-place-solution\n     - Rank 12: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/12th-place-solution\n     - Rank 13: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/13th-place-solution\n     - Rank 15: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/shake-down-solution\n     - Rank 20: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/20th-place-solution-regex-qwen-deberta-for-mdc\n     - Rank 22: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/23-place-solution-ml\n     - Rank 24: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/25th-place-solution-summary\n     - Rank 27: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/28th-place-solution\n     - Rank 40: https://www.kaggle.com/c/make-data-count-finding-data-references/writeups/41th-place-solution\n\n2. **Competition Name:** LLM 20 Questions\n   - **Competition URL:** [LLM 20 Questions](https://www.kaggle.com/c/llm-20-questions)\n   - **Evaluation Metric:** llm_20_questions\n   - **Total Number of Solution Writeups:** 12\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/llm-20-questions/discussion/531106\n     - Rank 2: https://www.kaggle.com/c/llm-20-questions/discussion/529643\n     - Rank 3: https://www.kaggle.com/c/llm-20-questions/discussion/531387\n     - Rank 4: https://www.kaggle.com/c/llm-20-questions/discussion/531883\n     - Rank 5: https://www.kaggle.com/c/llm-20-questions/discussion/531128\n     - Rank 9: https://www.kaggle.com/c/llm-20-questions/discussion/529525\n     - Rank 10: https://www.kaggle.com/c/llm-20-questions/discussion/531569\n     - Rank 11: https://www.kaggle.com/c/llm-20-questions/discussion/529931\n     - Rank 20: https://www.kaggle.com/c/llm-20-questions/discussion/531083\n     - Rank 21: https://www.kaggle.com/c/llm-20-questions/discussion/531104\n     - Rank 26: https://www.kaggle.com/c/llm-20-questions/discussion/531081\n     - Rank 45: https://www.kaggle.com/c/llm-20-questions/discussion/530996\n\n3. **Competition Name:** Quora Question Pairs\n   - **Competition URL:** [Quora Question Pairs](https://www.kaggle.com/c/quora-question-pairs)\n   - **Evaluation Metric:** Log Loss\n   - **Total Number of Solution Writeups:** 19\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/quora-question-pairs/discussion/34355\n     - Rank 2: https://www.kaggle.com/c/quora-question-pairs/discussion/34310\n     - Rank 3: https://github.com/sjvasquez/quora-duplicate-questions\n     - Rank 3: https://www.kaggle.com/c/quora-question-pairs/discussion/34288\n     - Rank 4: https://github.com/HouJP/kaggle-quora-question-pairs\n     - Rank 4: https://www.kaggle.com/c/quora-question-pairs/discussion/34349\n     - Rank 5: https://www.kaggle.com/c/quora-question-pairs/discussion/34359\n     - Rank 7: https://www.kaggle.com/c/quora-question-pairs/discussion/34697\n     - Rank 8: https://www.kaggle.com/c/quora-question-pairs/discussion/34371\n     - Rank 12: https://www.kaggle.com/c/quora-question-pairs/discussion/34342\n     - Rank 14: https://github.com/Wrosinski/Kaggle-Quora\n     - Rank 24: https://www.kaggle.com/c/quora-question-pairs/discussion/34534\n     - Rank 34: https://www.kaggle.com/c/quora-question-pairs/discussion/34292\n     - Rank 37: https://github.com/YuriyGuts/kaggle-quora-question-pairs\n     - Rank 43: https://www.kaggle.com/rethfro/1d-cnn-single-model-score-0-14-0-16-or-0-23\n     - Rank 79: https://github.com/stys/kaggle-quora-question-pairs\n     - Rank ?: https://github.com/bradleypallen/keras-quora-question-pairs\n     - Rank ?: https://www.kaggle.com/c/quora-question-pairs/discussion/30260\n     - Rank all solutions: https://www.kaggle.com/c/quora-question-pairs/discussion/34325\n\n4. **Competition Name:** Google Research - Identify Contrails to Reduce Global Warming\n   - **Competition URL:** [Google Research - Identify Contrails to Reduce Global Warming](https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming)\n   - **Evaluation Metric:** contrails_global_dice\n   - **Total Number of Solution Writeups:** 17\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430618\n     - Rank 2: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430491\n     - Rank 3: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430685\n     - Rank 4: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432998\n     - Rank 5: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430549\n     - Rank 6: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430581\n     - Rank 7: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430691\n     - Rank 8: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430543\n     - Rank 9: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430479\n     - Rank 11: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432690\n     - Rank 13: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432254\n     - Rank 14: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430904\n     - Rank 15: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430483\n     - Rank 25: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430794\n     - Rank 26: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430684\n     - Rank 28: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/430476\n     - Rank 30: https://www.kaggle.com/c/google-research-identify-contrails-reduce-global-warming/discussion/432282\n\n5. **Competition Name:** Al Mathematical Olympiad - Progress Prize 2\n   - **Competition URL:** [Al Mathematical Olympiad - Progress Prize 2](https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2)\n   - **Evaluation Metric:** Accuracy Score\n   - **Total Number of Solution Writeups:** 12\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/574765\n     - Rank 2: https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/572948\n     - Rank 3: https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/573314\n     - Rank 4: https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/573671\n     - Rank 5: https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/574262\n     - Rank 7: https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/572760\n     - Rank 8: https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/571356\n     - Rank 9: https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/571252\n     - Rank 11: https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/573086\n     - Rank 18: https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/573071\n     - Rank 20: https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/575172\n     - Rank 22: https://www.kaggle.com/c/ai-mathematical-olympiad-progress-prize-2/discussion/571289",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3669,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 2832,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:37:15+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-CzvuFuCkCAMLcOtbtoCH66HF8jadh",
+      "finish_reason": "stop"
+    }
+  ]
+}

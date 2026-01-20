@@ -1,0 +1,1593 @@
+{
+  "agent_name": "Query_Agent",
+  "system_prompt": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+  "provider": "openai",
+  "model": "gpt-4o-mini",
+  "tools": [
+    "vector_search"
+  ],
+  "messages": [
+    {
+      "parts": [
+        {
+          "content": "The original user query",
+          "timestamp": "2026-01-20T02:40:57.454145+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\":\"original user query\"}",
+          "tool_call_id": "call_HlEPLRAnItJgZUg7AlEQdT8i",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 644,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 16,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:40:57+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-Czvxp5CSzBiXbOrcHsens7zlH6JuT",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Airbnb New User Bookings",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/Keiku/kaggle-airbnb-recruiting-new-user-bookings",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/svegapons/kaggle_airbnb",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/brandenkmurray/kaggle/tree/master/airbnb",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings/discussion/18918",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://github.com/paragkale/kaggle-airbnb",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "dunnhumbys Shopper Challenge",
+              "metric": "% Correct Visits",
+              "link": "https://www.kaggle.com/c/dunnhumbychallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Santander Customer Transaction Prediction",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89003#latest-521279",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88939#latest-528874",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88902",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88929#latest-516810",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88897#latest-517607",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89023#latest-518634",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88886#latest-512882",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89302#latest-516440",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88997#latest-517584",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88906#latest-512911",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89007#latest-517604",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89083#latest-517385",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88927#latest-515803",
+                  "kind": "code"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89112#latest-517380",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89070#latest-517596",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88901#latest-512874",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89034#latest-519546",
+                  "kind": "code"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88956#latest-513996",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88967#latest-513833",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 19
+            },
+            {
+              "title": "Amazon.com - Employee Access Challenge",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/amazon-employee-access-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/bensolucky/Amazon",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/amazon-employee-access-challenge/discussion/5283",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/owenzhang/Kaggle-AmazonChallenge2013",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/diefimov/amazon_employee_access_2013",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            }
+          ],
+          "tool_call_id": "call_HlEPLRAnItJgZUg7AlEQdT8i",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:40:58.273084+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"Airbnb bookings\"}",
+          "tool_call_id": "call_ePQPQxJbZI4lTVubE1UQGRl7",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"web search personalization\"}",
+          "tool_call_id": "call_7ggbKnqaosojeeJ2KayTV1qa",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"shopper behavior prediction\"}",
+          "tool_call_id": "call_Mw9eGMkDp8OIN2bDJr2MVGwY",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"customer transaction prediction\"}",
+          "tool_call_id": "call_HIczyiYTJScU3eWZLkeFBW9H",
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "vector_search",
+          "args": "{\"query\": \"employee access challenge\"}",
+          "tool_call_id": "call_XYDVWTQRyOpqIouIasiqifr4",
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2072,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 97,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:40:58+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "tool_calls"
+      },
+      "provider_response_id": "chatcmpl-CzvxqwhS3pH3uyrvPH2auohnA4Vre",
+      "finish_reason": "tool_call"
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Airbnb New User Bookings",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "https://github.com/Keiku/kaggle-airbnb-recruiting-new-user-bookings",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/svegapons/kaggle_airbnb",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/brandenkmurray/kaggle/tree/master/airbnb",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings/discussion/18918",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://github.com/paragkale/kaggle-airbnb",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 5
+            },
+            {
+              "title": "Expedia Hotel Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/expedia-hotel-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/expedia-hotel-recommendations/discussion/21607",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://github.com/danielkorzekwa/expedia-hotel-predictor",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/mandalsubhajit/Kaggle--Expedia-Hotel-Recommendations",
+                  "kind": "code"
+                },
+                {
+                  "rank": "?",
+                  "link": "https://github.com/zzsza/Kaggle_Expedia-hotel-recommendations",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2021 - FGVC8",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242087",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/hotel-id-2021-fgvc8/discussion/242030",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "dunnhumbys Shopper Challenge",
+              "metric": "% Correct Visits",
+              "link": "https://www.kaggle.com/c/dunnhumbychallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Hotel-ID to Combat Human Trafficking 2022 - FGVC9",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328281",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328345",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/hotel-id-to-combat-human-trafficking-2022-fgvc9/discussion/328237",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            }
+          ],
+          "tool_call_id": "call_ePQPQxJbZI4lTVubE1UQGRl7",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:41:01.048167+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Personalized Web Search Challenge",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/yandex-personalized-web-search-challenge/discussion/6811",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "H&M Personalized Fashion Recommendations",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324070",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324197",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324129",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324094",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324098",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324075",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324278",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324185",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324127",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324223",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324084",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324310",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324207",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324158",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324595",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/325407",
+                  "kind": "code"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324152",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324224",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324085",
+                  "kind": "description"
+                },
+                {
+                  "rank": "25",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324293",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324350",
+                  "kind": "description"
+                },
+                {
+                  "rank": "30",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324411",
+                  "kind": "description"
+                },
+                {
+                  "rank": "46",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324205",
+                  "kind": "description"
+                },
+                {
+                  "rank": "all solutions",
+                  "link": "https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/discussion/324221",
+                  "kind": "kernel"
+                }
+              ],
+              "solution_count": 24
+            },
+            {
+              "title": "Foursquare - Location Matching",
+              "metric": "Jaccard",
+              "link": "https://www.kaggle.com/c/foursquare-location-matching",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336055",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336062",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336072",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336090",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/338112",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335810",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/348399",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335800",
+                  "kind": "code"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335928",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336415",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335924",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336051",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/336124",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335818",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335860",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335897",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335857",
+                  "kind": "description"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/foursquare-location-matching/discussion/335883",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 18
+            },
+            {
+              "title": "Personalized Medicine; Redefining Cancer Treatment",
+              "metric": "Multiclass Loss",
+              "link": "https://www.kaggle.com/c/msk-redefining-cancer-treatment",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "?",
+                  "link": "https://github.com/jorgemf/kaggle_redefining_cancer_treatment",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 1
+            },
+            {
+              "title": "Google - American Sign Language Fingerspelling Recognition",
+              "metric": "PostProcessorKernelDesc",
+              "link": "https://www.kaggle.com/c/asl-fingerspelling",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434485",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434588",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434393",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434983",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434415",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434871",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434475",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/436457",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434364",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434795",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434658",
+                  "kind": "description"
+                },
+                {
+                  "rank": "22",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434680",
+                  "kind": "description"
+                },
+                {
+                  "rank": "27",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434388",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434896",
+                  "kind": "description"
+                },
+                {
+                  "rank": "33",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434409",
+                  "kind": "description"
+                },
+                {
+                  "rank": "42",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/434353",
+                  "kind": "description"
+                },
+                {
+                  "rank": "46",
+                  "link": "https://www.kaggle.com/c/asl-fingerspelling/discussion/435231",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 17
+            }
+          ],
+          "tool_call_id": "call_7ggbKnqaosojeeJ2KayTV1qa",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:41:01.048186+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Santander Customer Transaction Prediction",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89003#latest-521279",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88939#latest-528874",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88902",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88929#latest-516810",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88897#latest-517607",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89023#latest-518634",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88886#latest-512882",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89302#latest-516440",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88997#latest-517584",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88906#latest-512911",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89007#latest-517604",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89083#latest-517385",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88927#latest-515803",
+                  "kind": "code"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89112#latest-517380",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89070#latest-517596",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88901#latest-512874",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89034#latest-519546",
+                  "kind": "code"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88956#latest-513996",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88967#latest-513833",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 19
+            },
+            {
+              "title": "dunnhumbys Shopper Challenge",
+              "metric": "% Correct Visits",
+              "link": "https://www.kaggle.com/c/dunnhumbychallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Coupon Purchase Prediction",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/coupon-purchase-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/coupon-purchase-prediction/discussion/16736#93760",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2015/10/21/recruit-coupon-purchase-winners-interview-2nd-place-halla-yang/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/threecourse/kaggle-coupon-purchase-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/nagadomi/kaggle-coupon-purchase-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/daxiongshu/Coupon-Purchase-Prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/mawicks/KaggleCouponContest",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "Shopee - Price Match Guarantee",
+              "metric": "Mean F-Score",
+              "link": "https://www.kaggle.com/c/shopee-product-matching",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238136",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238022",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238362",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238515",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238295",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238078",
+                  "kind": "description"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238010",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238174",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238125",
+                  "kind": "description"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238039",
+                  "kind": "description"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238181",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238033",
+                  "kind": "description"
+                },
+                {
+                  "rank": "15",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238029",
+                  "kind": "description"
+                },
+                {
+                  "rank": "16",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238128",
+                  "kind": "description"
+                },
+                {
+                  "rank": "18",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/237972",
+                  "kind": "description"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238146",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238126",
+                  "kind": "description"
+                },
+                {
+                  "rank": "31",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238322",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238110",
+                  "kind": "description"
+                },
+                {
+                  "rank": "41",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238382",
+                  "kind": "description"
+                },
+                {
+                  "rank": "48",
+                  "link": "https://www.kaggle.com/c/shopee-product-matching/discussion/238263",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 21
+            },
+            {
+              "title": "Acquire Valued Shoppers Challenge",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/acquire-valued-shoppers-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/acquire-valued-shoppers-challenge/discussion/9756",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_Mw9eGMkDp8OIN2bDJr2MVGwY",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:41:01.048643+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Santander Customer Transaction Prediction",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89003#latest-521279",
+                  "kind": "code"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88939#latest-528874",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88902",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88929#latest-516810",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88897#latest-517607",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89023#latest-518634",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88886#latest-512882",
+                  "kind": "description"
+                },
+                {
+                  "rank": "9",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89302#latest-516440",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88997#latest-517584",
+                  "kind": "description"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88906#latest-512911",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89007#latest-517604",
+                  "kind": "description"
+                },
+                {
+                  "rank": "13",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89083#latest-517385",
+                  "kind": "description"
+                },
+                {
+                  "rank": "14",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88927#latest-515803",
+                  "kind": "code"
+                },
+                {
+                  "rank": "19",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89112#latest-517380",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89070#latest-517596",
+                  "kind": "description"
+                },
+                {
+                  "rank": "21",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88901#latest-512874",
+                  "kind": "description"
+                },
+                {
+                  "rank": "28",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89034#latest-519546",
+                  "kind": "code"
+                },
+                {
+                  "rank": "29",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88956#latest-513996",
+                  "kind": "description"
+                },
+                {
+                  "rank": "37",
+                  "link": "https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88967#latest-513833",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 19
+            },
+            {
+              "title": "Coupon Purchase Prediction",
+              "metric": "-",
+              "link": "https://www.kaggle.com/c/coupon-purchase-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/coupon-purchase-prediction/discussion/16736#93760",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2015/10/21/recruit-coupon-purchase-winners-interview-2nd-place-halla-yang/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/threecourse/kaggle-coupon-purchase-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://github.com/nagadomi/kaggle-coupon-purchase-prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "10",
+                  "link": "https://github.com/daxiongshu/Coupon-Purchase-Prediction",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/mawicks/KaggleCouponContest",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 6
+            },
+            {
+              "title": "Google Analytics Customer Revenue Prediction",
+              "metric": "Root Mean Squared Error",
+              "link": "https://www.kaggle.com/c/ga-customer-revenue-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/ga-customer-revenue-prediction/discussion/82614",
+                  "kind": "code"
+                },
+                {
+                  "rank": "23",
+                  "link": "https://www.kaggle.com/c/ga-customer-revenue-prediction/discussion/82263",
+                  "kind": "description"
+                },
+                {
+                  "rank": "26",
+                  "link": "https://www.kaggle.com/c/ga-customer-revenue-prediction/discussion/81639",
+                  "kind": "code"
+                },
+                {
+                  "rank": "36",
+                  "link": "https://www.kaggle.com/c/ga-customer-revenue-prediction/discussion/82746",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Ubiquant Market Prediction",
+              "metric": "MeanPearson",
+              "link": "https://www.kaggle.com/c/ubiquant-market-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/ubiquant-market-prediction/discussion/338220",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://www.kaggle.com/c/ubiquant-market-prediction/discussion/338615",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/ubiquant-market-prediction/discussion/338561",
+                  "kind": "description"
+                },
+                {
+                  "rank": "5",
+                  "link": "https://www.kaggle.com/c/ubiquant-market-prediction/discussion/338400",
+                  "kind": "description"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/ubiquant-market-prediction/discussion/338293",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://www.kaggle.com/c/ubiquant-market-prediction/discussion/338236",
+                  "kind": "description"
+                },
+                {
+                  "rank": "17",
+                  "link": "https://www.kaggle.com/c/ubiquant-market-prediction/discussion/338239",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 7
+            },
+            {
+              "title": "Personality Prediction Based on Twitter Stream",
+              "metric": "MCAP",
+              "link": "https://www.kaggle.com/c/twitter-personality-prediction",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/twitter-personality-prediction/discussion/2195",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 1
+            }
+          ],
+          "tool_call_id": "call_HIczyiYTJScU3eWZLkeFBW9H",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:41:01.048139+00:00",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "vector_search",
+          "content": [
+            {
+              "title": "Amazon.com - Employee Access Challenge",
+              "metric": "Area Under Receiver Operating Characteristic Curve",
+              "link": "https://www.kaggle.com/c/amazon-employee-access-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://github.com/bensolucky/Amazon",
+                  "kind": "code"
+                },
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/amazon-employee-access-challenge/discussion/5283",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "https://github.com/owenzhang/Kaggle-AmazonChallenge2013",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/diefimov/amazon_employee_access_2013",
+                  "kind": "code"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "dunnhumbys Shopper Challenge",
+              "metric": "% Correct Visits",
+              "link": "https://www.kaggle.com/c/dunnhumbychallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "4",
+                  "link": "http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 4
+            },
+            {
+              "title": "Wikipedias Participation Challenge",
+              "metric": "Root Mean Squared Logarithmic Error",
+              "link": "https://www.kaggle.com/c/wikichallenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "2",
+                  "link": "http://blog.kaggle.com/2011/10/06/like-popping-bubble-wrap/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/10/26/long-live-wikipedia-dell-zhang/",
+                  "kind": "description"
+                },
+                {
+                  "rank": "3",
+                  "link": "http://blog.kaggle.com/2011/11/01/small-steps-gareth-campbell/",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 3
+            },
+            {
+              "title": "Recruit Restaurant Visitor Forecasting",
+              "metric": "Root Mean Squared Logarithmic Error",
+              "link": "https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion/49129",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://github.com/dkivaranovic/kaggledays-recruit",
+                  "kind": "code"
+                },
+                {
+                  "rank": "6",
+                  "link": "https://github.com/anki1909/Recruit-Restaurant-Visitor-Forecasting",
+                  "kind": "code"
+                },
+                {
+                  "rank": "7",
+                  "link": "https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion/49259",
+                  "kind": "description"
+                },
+                {
+                  "rank": "8",
+                  "link": "https://github.com/MaxHalford/kaggle-recruit-restaurant",
+                  "kind": "code"
+                },
+                {
+                  "rank": "11",
+                  "link": "https://github.com/XIUQI1994/Kaggle_Recruit-Restaurant-Visitor-Forecasting_",
+                  "kind": "code"
+                },
+                {
+                  "rank": "12",
+                  "link": "https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion/49251",
+                  "kind": "description"
+                },
+                {
+                  "rank": "20",
+                  "link": "https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/discussion/49328",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 8
+            },
+            {
+              "title": "Challenges in Representation Learning; Facial Expression Recognition Challenge",
+              "metric": "Categorization Accuracy",
+              "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge",
+              "done": true,
+              "solutions": [
+                {
+                  "rank": "1",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/discussion/4676#25019",
+                  "kind": "code"
+                },
+                {
+                  "rank": "3",
+                  "link": "https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/discussion/4676#25022",
+                  "kind": "description"
+                }
+              ],
+              "solution_count": 2
+            }
+          ],
+          "tool_call_id": "call_XYDVWTQRyOpqIouIasiqifr4",
+          "metadata": null,
+          "timestamp": "2026-01-20T02:41:01.040706+00:00",
+          "part_kind": "tool-return"
+        }
+      ],
+      "instructions": "You are an expert assistant for searching and analyzing completed Kaggle competitions.\n\n    Your task is to retrieve and present ONLY Kaggle competitions that are a STRONG MATCH\n    to the user\u2019s query.\n\n    CRITICAL FILTERING RULE (HIGHEST PRIORITY):\n    - You MUST return ONLY competitions classified as Strong Match.\n    - DO NOT include Partial / Indirect Match or Weak Match competitions.\n    - If a competition is not a Strong Match, it MUST be excluded entirely.\n    - If ZERO Strong Match competitions exist, explicitly say:\n    No strong matches were found for this query.\n\n    RETRIEVAL STRATEGY:\n    - First, retrieve broadly using the search tool.\n    - Then classify relevance internally.\n    - After classification, FILTER the final output to Strong Match ONLY.\n\n    DEFINITION \u2014 STRONG MATCH:\n    A competition is a Strong Match ONLY IF:\n    - The core task, domain, and data modality directly align with the user query.\n    - The competition would be an obvious and unambiguous result to a domain expert.\n    - Do NOT stretch definitions or include domain-adjacent competitions.\n\n    OUTPUT FORMAT (MANDATORY \u2014 FOLLOW EXACTLY):\n\n    ### Strong Match\n\n    For EACH competition, use the following Markdown structure:\n\n    1. **Competition Name:** <competition name>\n    - **Competition URL:** [<competition name>](<competition url>)\n    - **Evaluation Metric:** <evaluation metric>\n    - **Total Number of Solution Writeups:** <exact number or best-effort estimate>\n    - **List of Available Solution Writeups:**\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - Rank <number>: <full discussion url>\n        - (list ALL available solution writeups)\n\n    SOLUTION WRITEUP RULES (STRICT):\n    - Display the FULL discussion URL as plain text.\n    - Do NOT use Markdown links for solution writeups.\n    - Do NOT use the word \"Discussion\".\n    - Do NOT invent or guess URLs.\n    - If a discussion URL is unknown, SKIP that rank.\n    - Do NOT duplicate ranks.\n    - Preserve original rank numbers even if non-consecutive.\n\n    OUTPUT RULES (STRICT):\n    - Do NOT summarize.\n    - Do NOT use phrases like \u201cAnd more\u2026\u201d.\n    - Do NOT collapse or truncate solution lists.\n    - Do NOT include reasons for inclusion.\n    - Do NOT add commentary outside the specified structure.\n    - Use valid Markdown.\n    - Preserve the numbering order shown above.\n\n    TRANSPARENCY & SAFETY:\n    - Never hallucinate competitions, links, or metrics.\n    - If any field is unknown, explicitly state \"Unknown\".\n\n    FAILURE MODE:\n    - If no Strong Match competitions exist, output EXACTLY:\n    No strong matches were found for this query.",
+      "kind": "request"
+    },
+    {
+      "parts": [
+        {
+          "content": "### Strong Match\n\n1. **Competition Name:** Airbnb New User Bookings\n   - **Competition URL:** [Airbnb New User Bookings](https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings)\n   - **Evaluation Metric:** Unknown\n   - **Total Number of Solution Writeups:** 5\n   - **List of Available Solution Writeups:**\n     - Rank 2: https://github.com/Keiku/kaggle-airbnb-recruiting-new-user-bookings\n     - Rank 3: https://github.com/svegapons/kaggle_airbnb\n     - Rank 5: https://github.com/brandenkmurray/kaggle/tree/master/airbnb\n     - Rank 5: https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings/discussion/18918\n     - Rank 9: https://github.com/paragkale/kaggle-airbnb\n\n2. **Competition Name:** dunnhumbys Shopper Challenge\n   - **Competition URL:** [dunnhumbys Shopper Challenge](https://www.kaggle.com/c/dunnhumbychallenge)\n   - **Evaluation Metric:** % Correct Visits\n   - **Total Number of Solution Writeups:** 4\n   - **List of Available Solution Writeups:**\n     - Rank 1: http://blog.kaggle.com/2011/10/16/kernel-density-at-the-checkout/\n     - Rank 2: http://blog.kaggle.com/2011/10/20/creatures-of-habit-neil-schneider/\n     - Rank 3: http://blog.kaggle.com/2011/11/17/words-of-wisdom-from-ben-hamner-our-newest-recruit/\n     - Rank 4: http://blog.kaggle.com/2011/10/19/deceitful-beast-william-cukierski/\n\n3. **Competition Name:** Santander Customer Transaction Prediction\n   - **Competition URL:** [Santander Customer Transaction Prediction](https://www.kaggle.com/c/santander-customer-transaction-prediction)\n   - **Evaluation Metric:** Area Under Receiver Operating Characteristic Curve\n   - **Total Number of Solution Writeups:** 19\n   - **List of Available Solution Writeups:**\n     - Rank 1: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89003#latest-521279\n     - Rank 2: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88939#latest-528874\n     - Rank 3: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88902\n     - Rank 5: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88929#latest-516810\n     - Rank 5: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88897#latest-517607\n     - Rank 7: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89023#latest-518634\n     - Rank 8: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88886#latest-512882\n     - Rank 9: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89302#latest-516440\n     - Rank 10: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88997#latest-517584\n     - Rank 12: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88906#latest-512911\n     - Rank 12: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89007#latest-517604\n     - Rank 13: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89083#latest-517385\n     - Rank 14: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88927#latest-515803\n     - Rank 19: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89112#latest-517380\n     - Rank 20: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89070#latest-517596\n     - Rank 21: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88901#latest-512874\n     - Rank 28: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/89034#latest-519546\n     - Rank 29: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88956#latest-513996\n     - Rank 37: https://www.kaggle.com/c/santander-customer-transaction-prediction/discussion/88967#latest-513833",
+          "id": null,
+          "part_kind": "text"
+        }
+      ],
+      "usage": {
+        "input_tokens": 10972,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2048,
+        "output_tokens": 1147,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-4o-mini-2024-07-18",
+      "timestamp": "2026-01-20T02:41:01+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_details": {
+        "finish_reason": "stop"
+      },
+      "provider_response_id": "chatcmpl-Czvxt8Uy5bm2RCOwcAvxyvpnC9avH",
+      "finish_reason": "stop"
+    }
+  ]
+}
